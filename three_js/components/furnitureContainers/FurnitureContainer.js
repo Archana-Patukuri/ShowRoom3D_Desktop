@@ -2,7 +2,6 @@ import { furnitureTypesUI } from "../../systems/UI-Generators/furnitureTypesUI";
 import { gltfLoad } from "../gltf_loader/gltfLoad.js";
 import { animationUI } from "../../systems/UI-Generators/animationUI";
 import { AnimationMixer, Group } from "three";
-import { setupModel } from "./setupModel";
 let mobile = false;
 if (/Android|iPhone/i.test(navigator.userAgent)) {
   mobile = true;
@@ -51,7 +50,7 @@ class FurnitureContainer {
       this.spinnerDisplay(spinner, "block");
       let modelURL = await fetch(URL); 
       const { gltfData } = await gltfLoad(modelURL.url);      
-      let loadedModel = setupModel(gltfData);         
+      let loadedModel = gltfData.scene;         
       this.models[i] = loadedModel;
 
       let mixer = new AnimationMixer(this.models[i]);

@@ -61,13 +61,16 @@ import { Line2 } from "../node_modules/three/examples/jsm/lines/Line2.js";
 import { LineMaterial } from "../node_modules/three/examples/jsm/lines/LineMaterial.js";
 import { LineGeometry } from "../node_modules/three/examples/jsm/lines/LineGeometry.js";
 
-import { CSS2DRenderer, CSS2DObject } from '../measurements-files/CSS2DRenderer.js';
+
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
 import { RectAreaLightUniformsLib } from "three/addons/lights/RectAreaLightUniformsLib.js";
 
 import eruda from "eruda";
-
+import {
+  CSS2DObject,
+  CSS2DRenderer,
+} from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 let mobile = false;
 if (/Android|iPhone/i.test(navigator.userAgent)) {
   mobile = true;
