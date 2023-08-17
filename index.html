@@ -119,13 +119,44 @@
       <div class="col border overflow-auto" id="UI">
 
       <div id="desktopUI">
+
+        <div class="home_card_container" id="home_card_container_Desktop">
+          <div id="home_card_close" style="margin-left: 95%;">
+            <img id="home_card_close_Desktop" src="./icons/close.png" style="width: 15px;height: 15px;margin-top: 250px;"/>                   
+        </div>
+        <div>
+          <h1 class="home_card_head">Welcome to VisCommerce</h1>
+            <ul >
+                <li class="home_card_points">Room3D ...  A Try & Buy 3DCommerce innovation</li>
+                <li class="home_card_points">Leapfrogging Amazon Showroom</li>
+                <li class="home_card_points">Mix, match, customize & layout furniture to your liking</li>
+                <li class="home_card_points">Live lighting and measurements</li>
+                <li class="home_card_points">Paints and flooring</li>
+                <li class="home_card_points">Photo-realistic images and video.</li>
+            </ul>    
+            <div class="d-flex">                                        
+            <div class="d-flex flex-row justify-content-center home_video_tour_container">
+              <a class="home_video_tour_btn" style="text-decoration: none;" id="Tour" href="https://youtu.be/wYvqHJ7FNAM" target="_blank">Video Tour
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="16" viewBox="0 0 27 16" fill="none">
+                  <path d="M1 7C0.447715 7 -4.82823e-08 7.44772 0 8C4.82823e-08 8.55228 0.447715 9 1 9L1 7ZM26.7071 8.7071C27.0976 8.31658 27.0976 7.68342 26.7071 7.29289L20.3431 0.92893C19.9526 0.538406 19.3195 0.538406 18.9289 0.928931C18.5384 1.31946 18.5384 1.95262 18.9289 2.34314L24.5858 8L18.9289 13.6569C18.5384 14.0474 18.5384 14.6805 18.9289 15.0711C19.3195 15.4616 19.9526 15.4616 20.3431 15.0711L26.7071 8.7071ZM1 9L26 9L26 7L1 7L1 9Z" fill="#FF5A50"/>
+                </svg>                    
+              </a>                                    
+            </div>  
+            <img src="./icons/3DCommerceLogo.png" class="commerce_logo"/> 
+          </div>
+            
+        </div>            
+        </div> 
+
+        <div id="desktopUIContainer" style="display: none;">
         <div class="d-flex" style="height: 100%;width: 100%;">
         <div class="verticalTab" style="width: 80%;">
 
         <div class="tab">
         <div class="d-flex flex-column justify-content-between;">
-        <div style="margin-bottom: 30%;">
-          <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Furniture_Dekstop')" id="defaultVerticalOpen"><img src="./icons/desktopUI/furniture.svg" class="icon"/>Furniture</button>
+        <div>
+          <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'SampleRoom_Dekstop')" id="defaultVerticalOpen"><img src="./icons/desktopUI/room.svg" style="width: 12px;height: 12px;margin-right: 5px;"/>Sample Room</button>
+          <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Furniture_Dekstop')"><img src="./icons/desktopUI/furniture.svg" class="icon"/>Furniture</button>
           <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Lighting_Desktop')"><img src="./icons/desktopUI/light.svg" class="icon"/>Lighting</button>
           <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Paints_Desktop')"><img src="./icons/desktopUI/paint.svg" class="icon"/>Paints</button>
           <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Tiles_Desktop')"><img src="./icons/desktopUI/tiles.svg" class="icon"/>Tiles</button>
@@ -140,17 +171,31 @@
             <input type="checkbox" class="btn-check" name="setOneBtns" id="measurements_Desktop" autocomplete="off">
             <label class="tablinks_vertical desktop_bottom_buttons Measurements" for="measurements_Desktop" style="font-size: 10px;padding-left: 5px;padding-top: 4px;"><img src="./icons/desktopUI/measurements.svg" class="icon"/>Measurements</label> 
              <span class="measurementsHover">click on two different places on the screen to get measurements</span>                              
-          </div>
-          <!-- <button class="tablinks_vertical desktop_bottom_buttons Measurements" id="measurements_Desktop" style="font-size: 10px;">Measurements</button> -->
-          <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Spin_Dekstop')"><img src="./icons/desktopUI/render.svg" class="icon"/>HD Render</button>
-          <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Spin_Dekstop')"><img src="./icons/desktopUI/collaboration.svg" class="icon"/>Collaboration</button>
-          <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Spin_Dekstop')"><img src="./icons/desktopUI/Advanced.svg" class="icon"/>Advanced</button>
-          <button style="background: linear-gradient(133deg, #FFC1BD 0%, #FFDEBF 100%);" class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Spin_Dekstop')"><img src="./icons/desktopUI/open_Project.svg" class="icon"/>Open project</button>
-          <button style="background: linear-gradient(133deg, #FFC1BD 0%, #FFDEBF 100%);" class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Spin_Dekstop')"><img src="./icons/desktopUI/save_Project.svg" class="icon"/>Save project</button>
+          </div>         
+          <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Render_Dekstop')"><img src="./icons/desktopUI/render.svg" class="icon"/>HD Render</button>
+          <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Collaboration_Desktop')"><img src="./icons/desktopUI/collaboration.svg" class="icon"/>Collaboration</button>
+          <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Advanced_Dekstop')"><img src="./icons/desktopUI/Advanced.svg" class="icon"/>Advanced</button>
+          <button style="background: linear-gradient(133deg, #FFC1BD 0%, #FFDEBF 100%);" class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'OpenProject_Dekstop')"><img src="./icons/desktopUI/open_Project.svg" class="icon"/>Open project</button>
+          <button style="background: linear-gradient(133deg, #FFC1BD 0%, #FFDEBF 100%);" class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'SaveProject_Dekstop')"><img src="./icons/desktopUI/save_Project.svg" class="icon"/>Save project</button>
         </div>
       </div>
 
-        </div>                
+        </div>   
+        <div id="SampleRoom_Dekstop" class="tabcontent tabcontent_vertical">
+          <div class="horizontalTab">
+            <div class="d-flex flex-row justify-content-center align-items-center">                   
+              <div id="load_Furniture_Desktop" style="margin: 5px;">
+                <button class="buttonH buttonC"> <img src="./icons/desktopUI/furniture.svg" style="width: 12px;height: 12px;"/> Furniture</button>                                        
+              </div>
+              <div id="load_Lighting_Desktop">
+                <button class="buttonH buttonC"><img src="./icons/desktopUI/light.svg" style="width: 13px;height: 13px;"/> Lighting</button>                         
+              </div>  
+              <div id="load_Accessories_Desktop" style="margin: 5px;justify-content: start;">
+                <button class="buttonH buttonC" style="width: 100px;"> <img src="./icons/desktopUI/accessories.svg" style="width: 12px;height: 12px;margin-right: 2px;"/>Accessories</button>                         
+              </div>                  
+            </div>                                             
+          </div>          
+        </div>             
         <div id="Furniture_Dekstop" class="tabcontent tabcontent_vertical">
           <div class="horizontalTab">
             <div class="tabH">
@@ -161,11 +206,9 @@
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Cabinets_Desktop')">Cabinets</button>
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Dresser_Desktop')">Dresser</button>
             </div>        
-            <div id="Chair_Desktop" class="tabcontent_horizontal">
-              <p>Chair Coming Soon</p>                           
+            <div id="Chair_Desktop" class="tabcontent_horizontal p-1">                                       
             </div>        
-            <div id="Table_Desktop" class="tabcontent_horizontal">
-              <p>Table Coming Soon</p>              
+            <div id="Table_Desktop" class="tabcontent_horizontal p-1">                          
             </div>        
             <div id="Sofa_Desktop" class="tabcontent_horizontal">
               <p>Sofa Coming Soon</p>
@@ -190,7 +233,8 @@
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Wall_Desktop')">Wall</button>
             </div>        
             <div id="Floor_Desktop" class="tabcontent_horizontal">
-              <p>Floor Coming Soon</p>                           
+              <div class="d-flex justify-content-start p-1" id="lightsUIContainer_Desktop">                  
+              </div>                         
             </div>        
             <div id="TableLighting_Desktop" class="tabcontent_horizontal">
               <p>Table Lamp Coming Soon</p>              
@@ -272,8 +316,7 @@
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Window_Desktop')">Window</button>
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Doors_Desktop')">Doors</button>              
             </div>        
-            <div id="windowBlinds_Desktop" class="tabcontent_horizontal">
-              <p>Window Blinds Coming Soon</p>                           
+            <div id="windowBlinds_Desktop" class="tabcontent_horizontal p-1">                                       
             </div>        
             <div id="Window_Desktop" class="tabcontent_horizontal">
               <p>Window Coming Soon</p>              
@@ -304,6 +347,20 @@
               <p>Plants Coming Soon</p>
             </div>                                  
           </div>          
+        </div>
+        <div id="Render_Dekstop" class="tabcontent tabcontent_vertical">
+          <div>                                
+            <form name = "passdata">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label" style="margin-left: 5px;font-size: 14px;">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" style="width: fit-content;margin-left: 5px;" aria-describedby="emailHelp">
+              </div> 
+              <div class="d-flex">
+               <p  class="buttons" style="background-color: #FF5A50;color: #FFFFFF;padding: 4px;margin: 5px;" id="Export_Image">Image Render</p> 
+               <p  class="buttons" style="background-color: #FF5A50;color: #FFFFFF;padding: 4px;margin: 5px;" id="Export_Video">Video Render</p> 
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 
@@ -360,31 +417,52 @@
             <div class="panel">  
               <div style="font-size: 12px;">
                 <div class="d-flex flex-row"> 
-                <input type="radio" class="form-check-input largerCheckbox" id="Camera_Main_View" name="viewPoints" value="0">
-                <label for="Camera_Main_View">Main</label>
+                <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop"  name="viewPoints" value="0">
+                <label >Main</label>
                 </div>
                 <div class="d-flex flex-row"> 
-                <input type="radio" class="form-check-input largerCheckbox" id="Camera_Near_Table" name="viewPoints" value="3">
-                <label for="Camera_Near_Table">Table</label>
+                <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="3">
+                <label >Table</label>
                 </div>
                 <div class="d-flex flex-row"> 
-                <input type="radio" class="form-check-input largerCheckbox" id="Camera_Near_Chair" name="viewPoints" value="5">
-                <label for="Camera_Near_Chair">Chair</label>
+                <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop"  name="viewPoints" value="5">
+                <label >Chair</label>
                 </div>
                 <div class="d-flex flex-row"> 
-                <input type="radio" class="form-check-input largerCheckbox" id="Camera_Near_Blinds" name="viewPoints" value="4">
-                <label for="Camera_Near_Blinds">Blinds</label>
+                <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="4">
+                <label >Blinds</label>
                 </div>
                 <div class="d-flex flex-row"> 
-                <input type="radio" class="form-check-input largerCheckbox" id="Camera_Focus_On_Cealing_Lights" name="viewPoints" value="1">
-                <label for="Camera_Focus_On_Cealing_Lights">Ceiling</label>
+                <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="1">
+                <label >Ceiling</label>
                 </div>
                 <div class="d-flex flex-row"> 
-                <input type="radio" class="form-check-input largerCheckbox" id="Camera_Back_View" name="viewPoints" value="2">
-                <label for="Camera_Back_View">Back</label>                                         
+                <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="2">
+                <label>Back</label>                                         
                  </div> 
               </div>
             </div>
+            <!-- ANIMATIONS & VARIANTS -->
+            <div >
+              <div class="d-flex justify-content-start" id="Chair_Desktop_AnimationsUI">
+                <div class="animationsUI">
+
+                </div>
+                <!-- tables animations UI -->
+              </div>
+              <div class="d-flex justify-content-start gap-2" id="Table_Desktop_AnimationsUI">
+                <!-- tables animations UI -->
+                <div class="animationsUI">
+
+                </div>
+              </div>
+              <div class="d-flex justify-content-start gap-2" id="windowBlinds_Desktop_AnimationsUI">
+                <!-- tables animations UI -->
+                <div class="animationsUI">
+
+                </div>
+              </div>
+            </div>           
             <!-- <div class="initialControlsContainer" style="width: 100%; margin-right: 20px;">
               <div style="width: 100%; display: flex; justify-content: end; gap: 20px;">
                 <span style="margin-right: 25px;">Intensity</span>
@@ -392,6 +470,8 @@
               </div>                        
             </div>   -->
       </div>
+    </div>
+
       </div>
     </div>
 
@@ -439,7 +519,7 @@
             </div>
               
           </div>            
-        </div> 
+          </div> 
         
           <div id="home_ui" class="item-card" style="display: none;width:380px; height:150px;padding-top: 0px;padding-bottom: 0px;margin-bottom: 0px;" >
           <div class="d-flex">
@@ -1007,28 +1087,28 @@
                     <div class="d-flex justify-content-center" style="font-size: 12px;" id="controlsUI">
                       <div>
                         <div class="d-flex flex-row pb-1"> 
-                        <input type="radio" id="Camera_Main_View" name="viewPoints" value="0" class="largerCheckbox">
-                        <label for="Camera_Main_View">Main</label>
+                        <input type="radio" name="viewPoints" value="0" class="largerCheckbox viewPoints_Mobile">
+                        <label>Main</label>
                         </div>
                         <div class="d-flex flex-row pb-1"> 
-                        <input type="radio" id="Camera_Near_Table" name="viewPoints" value="3" class="largerCheckbox">
-                        <label for="Camera_Near_Table">Table</label>
+                        <input type="radio" name="viewPoints" value="3" class="largerCheckbox viewPoints_Mobile">
+                        <label>Table</label>
                         </div>
                         <div class="d-flex flex-row pb-1"> 
-                        <input type="radio" id="Camera_Near_Chair" name="viewPoints" value="5" class="largerCheckbox">
-                        <label for="Camera_Near_Chair">Chair</label>
+                        <input type="radio" name="viewPoints" value="5" class="largerCheckbox viewPoints_Mobile">
+                        <label>Chair</label>
                         </div>
                         <div class="d-flex flex-row pb-1"> 
-                        <input type="radio" id="Camera_Near_Blinds" name="viewPoints" value="4" class="largerCheckbox">
-                        <label for="Camera_Near_Blinds">Blinds</label>
+                        <input type="radio" name="viewPoints" value="4" class="largerCheckbox viewPoints_Mobile">
+                        <label >Blinds</label>
                         </div>
                         <div class="d-flex flex-row pb-1"> 
-                        <input type="radio" id="Camera_Focus_On_Cealing_Lights" name="viewPoints" value="1" class="largerCheckbox">
-                        <label for="Camera_Focus_On_Cealing_Lights">Ceiling</label>
+                        <input type="radio" name="viewPoints" value="1" class="largerCheckbox viewPoints_Mobile">
+                        <label >Ceiling</label>
                         </div>
                         <div class="d-flex flex-row pb-1"> 
-                        <input type="radio" id="Camera_Back_View" name="viewPoints" value="2" class="largerCheckbox">
-                        <label for="Camera_Back_View">Back</label>                                         
+                        <input type="radio" name="viewPoints" value="2" class="largerCheckbox viewPoints_Mobile">
+                        <label>Back</label>                                         
                          </div> 
                       </div>
                     </div>
@@ -1122,9 +1202,10 @@
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                   </div> 
+                  <div class="d-flex">
                    <p  class="buttons" style="background-color: #FF5A50;color: #FFFFFF;padding-top: 4px;" id="Export_Image">Image Render</p> 
                    <p  class="buttons" style="background-color: #FF5A50;color: #FFFFFF;padding-top: 4px;" id="Export_Video">Video Render</p> 
-                  
+                  </div>
                 </form>
               </div>
             </div>

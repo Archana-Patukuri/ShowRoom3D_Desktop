@@ -5,9 +5,6 @@ import {
     Color 
   } from "three";
 import { Reflector } from '../../node_modules/three/examples/jsm/objects/Reflector.js';
-import useSpinner from '../../use-spinner';
-import '../../use-spinner/assets/use-spinner.css';
-let container_3d=document.getElementById("3dcontainer");
 function reflection(scene,clock,gui) {
     let groundMirror,verticalMirror,Floor ;          
     let geometry = new PlaneGeometry( 3.88, 3.88 );  
@@ -40,13 +37,10 @@ function reflection(scene,clock,gui) {
     verticalMirror.position.y = 1.83;    
     verticalMirror.position.z = -1.46; 
     
-    const Reflections_Floor_Add_fn = async () => {
-        await new Promise(resolve => setTimeout(() => {                            
-          scene.add( groundMirror );
-          Floor.material.transparent=true;                                                                                                                                                 
-          resolve();
-        }, 10));
-      };       
+    function Reflections_Floor_Add(){
+      scene.add( groundMirror );
+      Floor.material.transparent=true;      
+    }
       let gui_ref=document.getElementById("gui_ref");
       gui_ref.addEventListener("click",function(e){
         if(e.target.checked){
@@ -79,56 +73,17 @@ function reflection(scene,clock,gui) {
           gui.hide();
         }
       })
-      async function Reflections_Floor_Add() {                                      
-        const spinnedFn = useSpinner(Reflections_Floor_Add_fn, {
-         container: container_3d
-       });             
-       // execute with a loading spinner
-       await spinnedFn();      
-     }         
-      const Reflections_Floor_Remove_fn = async () => {
-        await new Promise(resolve => setTimeout(() => {
-            Floor.material.transparent=false;
-            scene.remove( groundMirror );
-          if(gui)gui.hide();
-          resolve();
-        }, 10));
-      }; 
-      async function Reflections_Floor_Remove() {                                      
-        const spinnedFn = useSpinner(Reflections_Floor_Remove_fn, {
-         container: container_3d
-       });      
-       // execute with a loading spinner
-       await spinnedFn();
-     }    
-
-      const ReflectionsMirror_Add_fn = async () => {
-        await new Promise(resolve => setTimeout(() => {
-            scene.add( verticalMirror );   
-          resolve();
-        }, 10));
-      }; 
-      async function ReflectionsMirror_Add() {                                      
-        const spinnedFn = useSpinner(ReflectionsMirror_Add_fn, {
-         container: container_3d
-       });      
-       // execute with a loading spinner
-       await spinnedFn();
-     }    
-      const ReflectionsMirror_Remove_fn = async () => {
-        await new Promise(resolve => setTimeout(() => {
-            scene.remove( verticalMirror ); 
-          resolve();
-        }, 10));
-      }; 
-      async function ReflectionsMirror_Remove() {                                      
-        const spinnedFn = useSpinner(ReflectionsMirror_Remove_fn, {
-         container: container_3d
-       });      
-       // execute with a loading spinner
-       await spinnedFn();
-     }    
-          
+      function Reflections_Floor_Remove(){
+        Floor.material.transparent=false;
+        scene.remove( groundMirror );
+      if(gui)gui.hide();
+      }     
+     function ReflectionsMirror_Add(){
+      scene.add( verticalMirror );   
+     }
+     function ReflectionsMirror_Remove(){
+      scene.remove( verticalMirror ); 
+     }                   
     let ReflectionsMirror_C=document.getElementById("ReflectionsMirror_C");   
     ReflectionsMirror_C.addEventListener("change",(e)=>{
         if(e.target.checked){                  

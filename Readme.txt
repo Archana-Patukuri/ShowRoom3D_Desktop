@@ -1,1 +1,1 @@
-This github folder is for "ShowRoom3D" project of VisCommerce
+This github folder is for "Ergonomic Room Designer 3D" project of VisCommerce

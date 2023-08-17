@@ -1,4 +1,3 @@
-import 'use-spinner/assets/use-spinner.css';
 import  hdriLoad  from "../components/hdri_loader/hdri_loader.js";
 import * as THREE from 'three';
 import elementFromHtmlString from '../utils/elementFromHtmlString';

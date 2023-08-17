@@ -48,16 +48,21 @@ const furnitureTypesUI = function (
       loadModel(event.target.value, i, spinnerContainer);        
     });
 
-    let label = document.createElement("label");
-    label.className = "btn px-0 py-0 position-relative border-2";    
-    label.setAttribute("for", assetsList[i].Name);    
+      
 
-    let img = document.createElement("img");
+    let img,label
+    label = document.createElement("label");
+    label.setAttribute("for", assetsList[i].Name);  
+    img = document.createElement("img");
     img.src = assetsList[i].thumbnail;
-    img.className = "img-thumbnail p-0 img-max-width-1 thumbnailsHover";
-    img.alt = "chair_1";
     img.style.background="#ffffff";
-    
+    if(mobile){      
+    label.className = "btn px-0 py-0 position-relative border-2";        
+    img.className = "img-thumbnail p-0 img-max-width-1 thumbnailsHover";        
+    }else{    
+      label.className = "btn px-0 py-0 position-relative border-1"; 
+      img.className = "Objectthumbnail";        
+    }
 
     spinnerContainer.appendChild(spinner);
 
@@ -70,7 +75,7 @@ const furnitureTypesUI = function (
     UIContainer.appendChild(input);
     UIContainer.appendChild(label);
     let container_3d=document.getElementById("3dcontainer"); 
-    
+
     if(mobile){           
     //On Click Show the Toast(animation buttons and material variations)
     const liveToast = document.getElementById(`${UIContainer.id}Toast`); 
@@ -81,8 +86,6 @@ const furnitureTypesUI = function (
              
         container_3d.appendChild(spinnerContainer);                           
     });
-    }else{
-
     }
 
   }

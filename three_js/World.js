@@ -65,11 +65,13 @@ import { CSS2DRenderer, CSS2DObject } from '../measurements-files/CSS2DRenderer.
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
 import { RectAreaLightUniformsLib } from "three/addons/lights/RectAreaLightUniformsLib.js";
-import useSpinner from '../use-spinner';
-import '../use-spinner/assets/use-spinner.css';
+
 import eruda from "eruda";
 
-let container_3d=document.getElementById("3dcontainer");
+let mobile = false;
+if (/Android|iPhone/i.test(navigator.userAgent)) {
+  mobile = true;
+}
 let lineId = 0 
 let measurementDiv
 const measurementLabels = []
@@ -106,11 +108,19 @@ let selectableObjects = [];
 
 let transformControl;
 let box,outlinePass,effectFXAA;
+let chairsUIContainer,tablesUIContainer,blindsUIContainer,lightsUIContainer
+if(mobile){
+ chairsUIContainer = document.getElementById("chairTypesUI");
+ tablesUIContainer = document.getElementById("tableTypesUI");
+ blindsUIContainer = document.getElementById("blindsTypesUI");
+ lightsUIContainer = document.getElementById("lightsTypesUI");
+}else{
+  chairsUIContainer = document.getElementById("Chair_Desktop");
+  tablesUIContainer = document.getElementById("Table_Desktop");
+  blindsUIContainer = document.getElementById("windowBlinds_Desktop");
+  lightsUIContainer = document.getElementById("lightsUIContainer_Desktop");
+}
 
-let chairsUIContainer = document.getElementById("chairTypesUI");
-let tablesUIContainer = document.getElementById("tableTypesUI");
-let blindsUIContainer = document.getElementById("blindsTypesUI");
-let lightsUIContainer = document.getElementById("lightsTypesUI");
 let UIContainer;
 let roomParent;
 let sunLight
@@ -135,10 +145,7 @@ laptopParent=new Group();
 laptopParent.name="selectable";
 let rectAreaLights = [];
 
-let mobile = false;
-if (/Android|iPhone/i.test(navigator.userAgent)) {
-  mobile = true;
-}
+
 let HDRI=document.getElementById("HDRI");
 let Emissive=document.getElementById("Emissive");
 const stateList = {"HDRI":HDRI,
@@ -188,34 +195,12 @@ class World {
              eruda.init();  
              eruda.destroy()            
            }      
-           
-    const console_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {
-        eruda.init();
-        resolve();
-      }, 10));
-    }; 
-    async function console_Fun() {                                      
-      const spinnedFn = useSpinner(console_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-   }          
-      const console_Else_fn = async () => {
-        await new Promise(resolve => setTimeout(() => {              
-         eruda.destroy()                    
-          resolve();
-        }, 10));
-      }; 
-      async function console_Else_Fun() {                                      
-        const spinnedFn = useSpinner(console_Else_fn, {
-         container: container_3d
-       });      
-       // execute with a loading spinner
-       await spinnedFn();
-     }    
-      
+           function console_Fun(){
+            eruda.init();
+           }
+           function console_Else_Fun(){
+            eruda.destroy()                    
+           }                 
       let ConsoleObj=document.getElementById("Console");
       ConsoleObj.addEventListener("change",(e)=>{            
         if(e.target.checked){                                
@@ -613,22 +598,14 @@ async loadLightsGLTF() {
       a=a+1               
     };
    
-    const dayLightSettings_fn = async () => {
+    const dayLightSettings_Fun = async () => {
       const { hdri1 } = await hdriLoad();           
       await new Promise(resolve => setTimeout(() => {
         dayLightSettings(hdri1);
         resolve();
       }, 10));  
     }; 
-    async function dayLightSettings_Fun() {                                      
-      const spinnedFn = useSpinner(dayLightSettings_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner     
-     await spinnedFn(); 
-     console.timeEnd("DayLight Preset time"); 
-   
-   }       
+     
     let lightsPresetsUI = document.querySelectorAll(".lightPreset");
     lightsPresetsUI[0].addEventListener('change',function(){
       if (this.value == "DayLightPreset") {
@@ -636,21 +613,10 @@ async loadLightsGLTF() {
       } 
     })
     
-    const NightLight1_fn = async () => {
-      const {hdri0 } = await hdriLoad();       
-      await new Promise(resolve => setTimeout(() => {
-        nightLightSettings1(hdri0);
-        resolve();
-      }, 10));
-    }; 
-    async function NightLight1_Fun() {                                      
-      const spinnedFn = useSpinner(NightLight1_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();         
-                
-   }       
+    const NightLight1_Fun = async () => {
+      const {hdri0 } = await hdriLoad();             
+        nightLightSettings1(hdri0);        
+    };    
     
     lightsPresetsUI[1].addEventListener('change',function(){
       if (this.value == "NightLight1") {
@@ -685,71 +651,15 @@ async loadLightsGLTF() {
     // renderPass.enabled = false;         
     composer.addPass(renderPass);                       
     let taaRenderPass
-    const TAA_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {
-        delta = clock.getDelta();
-        //TAA pass for Antialiasing
-        taaRenderPass = new TAARenderPass(scene, camera);   
-        taaRenderPass.sampleLevel = 1;  
-        const param = { TAAEnabled: '1', TAASampleLevel: 0 };
-        if ( gui ) gui.destroy();
-        gui = new GUI();         
-        gui.add( param, 'TAAEnabled', {
-					'Disabled': '0',
-					'Enabled': '1'
-				} ).onFinishChange( function () {
-
-					if ( taaRenderPass ) {
-
-						taaRenderPass.enabled = ( param.TAAEnabled === '1' );
-						renderPass.enabled = ( param.TAAEnabled !== '1' );
-
-					}
-
-				} );
-
-				gui.add( param, 'TAASampleLevel', {
-					'Level 0: 1 Sample': 0,
-					'Level 1: 2 Samples': 1,
-					'Level 2: 4 Samples': 2,
-					'Level 3: 8 Samples': 3,
-					'Level 4: 16 Samples': 4,
-					'Level 5: 32 Samples': 5
-				} ).onFinishChange( function () {
-
-					if ( taaRenderPass ) {
-
-						taaRenderPass.sampleLevel = param.TAASampleLevel;
-
-					}          
-				} );
-        gui_ui.checked=true;
-        resolve();
-      }, 10));
-    }; 
-    async function TAA_Fun() {                                      
-      const spinnedFn = useSpinner(TAA_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-     console.log("TAA enabled",delta.toPrecision(3),"seconds");
-   }          
-   const TAA_else_fn = async () => {
-    await new Promise(resolve => setTimeout(() => {
-      delta = clock.getDelta();
-      taaRenderPass.sampleLevel = 0;      
-      resolve();
-    }, 10));
-  }; 
-  async function TAA_else_Fun() {                                      
-    const spinnedFn = useSpinner(TAA_else_fn, {
-     container: container_3d
-   });      
-   // execute with a loading spinner
-   await spinnedFn();
-   console.log("TAA disabled",delta.toPrecision(3),"seconds")
- }             
+    function TAA_Fun(){
+      taaRenderPass = new TAARenderPass(scene, camera);   
+      taaRenderPass.sampleLevel = 1;  
+      composer.addPass(taaRenderPass)      
+    }
+    function TAA_else_Fun(){
+      taaRenderPass.sampleLevel = 0;  
+      composer.removePass(taaRenderPass)
+    }          
     let TAA_C=document.getElementById("TAA_C");
     TAA_C.addEventListener("click",function(e){
       if(e.target.checked){
@@ -759,38 +669,14 @@ async loadLightsGLTF() {
       }
     })   
     let FXAA_C=document.getElementById("FXAA_C");
-    const FXAA_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {
-        delta = clock.getDelta();
-        effectFXAA = new ShaderPass( FXAAShader );
-        effectFXAA.uniforms[ 'resolution' ].value.set( 1 / window.innerWidth, 1 / window.innerHeight );     
-        composer.addPass( effectFXAA );
-        resolve();
-      }, 10));
-    }; 
-    async function FXAA_Fun() {                                      
-      const spinnedFn = useSpinner(FXAA_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-     console.log("FXAA enabled",delta.toPrecision(3),"seconds");
-   }          
-   const FXAA_else_fn = async () => {
-    await new Promise(resolve => setTimeout(() => {
-      delta = clock.getDelta();
+    function FXAA_Fun(){
+      effectFXAA = new ShaderPass( FXAAShader );
+      effectFXAA.uniforms[ 'resolution' ].value.set( 1 / window.innerWidth, 1 / window.innerHeight );     
+      composer.addPass( effectFXAA );
+    }
+    function FXAA_else_Fun(){
       composer.removePass( effectFXAA );      
-      resolve();
-    }, 10));
-  }; 
-  async function FXAA_else_Fun() {                                      
-    const spinnedFn = useSpinner(FXAA_else_fn, {
-     container: container_3d
-   });      
-   // execute with a loading spinner
-   await spinnedFn();
-   console.log("FXAA disabled",delta.toPrecision(3),"seconds");
- }    
+    }          
     FXAA_C.addEventListener("click",function(e){
       if(e.target.checked){
         FXAA_Fun()
@@ -801,68 +687,13 @@ async loadLightsGLTF() {
 
     let ssaaRenderPass;				 
     let SSAA_C=document.getElementById("SSAA_C");
-    const SSAA_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {
-        delta = clock.getDelta();
-        ssaaRenderPass = new SSAARenderPass( scene, camera );
-        composer.addPass( ssaaRenderPass );
-        const params = {
-          sampleLevel: 4,
-          renderToScreen: false,
-          unbiased: true,
-          camera: 'perspective',
-          clearColor: 'black',
-          clearAlpha: 1.0,
-          viewOffsetX: 0,
-          autoRotate: true
-  
-        };
-        if ( gui ) gui.destroy();
-
-				gui = new GUI();
-
-				gui.add( params, 'unbiased' );
-				gui.add( params, 'renderToScreen' );
-				gui.add( params, 'sampleLevel', {
-					'Level 0: 1 Sample': 0,
-					'Level 1: 2 Samples': 1,
-					'Level 2: 4 Samples': 2,
-					'Level 3: 8 Samples': 3,
-					'Level 4: 16 Samples': 4,
-					'Level 5: 32 Samples': 5
-				} );				
-				gui.add( params, 'clearColor', [ 'black', 'white', 'blue', 'green', 'red' ] );
-				gui.add( params, 'clearAlpha', 0, 1 );
-				gui.add( params, 'viewOffsetX', - 100, 100 );
-				gui.add( params, 'autoRotate' );
-        gui_ui.checked=true;
-
-        resolve();
-      }, 10));
-    }; 
-    async function SSAA_Fun() {                                      
-      const spinnedFn = useSpinner(SSAA_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-     console.log("SSAA enabled",delta.toPrecision(3),"seconds")
-   }           
-    const SSAA_Else_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {
-        delta = clock.getDelta();
-        composer.removePass( ssaaRenderPass );        
-        resolve();
-      }, 10));
-    }; 
-    async function SSAA_Else_Fun() {                                      
-      const spinnedFn = useSpinner(SSAA_Else_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-     console.log("SSAA disabled",delta.toPrecision(3),"seconds");
-   }             
+    function SSAA_Fun(){
+      ssaaRenderPass = new SSAARenderPass( scene, camera );
+      composer.addPass( ssaaRenderPass );
+    }
+    function SSAA_Else_Fun(){
+      composer.removePass( ssaaRenderPass );        
+    }       
     SSAA_C.addEventListener("click",function(e){
       if(e.target.checked){
         SSAA_Fun()
@@ -872,103 +703,34 @@ async loadLightsGLTF() {
     })
     let SMAApass;				   
     let start1,millis1
-    let SMAA_C=document.getElementById("SMAA_C");
-    let val=0
-    const SMAA_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {        
-        delta = clock.getDelta();
-        start1 = Date.now();
-         millis1 = Date.now() - start1;        
-        console.log('SMAA loading Start time = ', millis1 ,'ms');
-        //console.log("SMAA Before",delta.toPrecision(3),"seconds") 
-        SMAApass = new SMAAPass( (window.innerWidth*0.1) * renderer.getPixelRatio(), (window.innerHeight*0.1) * renderer.getPixelRatio() );
-        composer.addPass( SMAApass );     
-        val=val+1               
-        resolve();
-      }, 10));
-    }; 
-    async function SMAA_Fun() {                                      
-      const spinnedFn = useSpinner(SMAA_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();    
-    millis1 = Date.now() - start1;     
-     console.log('SMAA loading End time = ', millis1 ,'ms');
-     //console.log("SMAA After",delta.toPrecision(3),"seconds") 
-     if(val==1){
-      prompt.style.display="block";
-      const millis = Date.now() - start;
-      console.log(`total loading time = ${Math.floor(millis / 1000)} seconds`); 
-     
-     }           
-   }        
-    const SMAA_Else_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {
-        delta = clock.getDelta();
-        composer.removePass( SMAApass );
-        resolve();
-      }, 10));
-    }; 
-    async function SMAA_Else_Fun() {                                      
-      const spinnedFn = useSpinner(SMAA_Else_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-     console.log("SMAA disabled",delta.toPrecision(3),"seconds");
-   }            
+    let SMAA_C=document.getElementById("SMAA_C");    
+    function SMAA_Fun(){
+      SMAApass = new SMAAPass( (window.innerWidth*0.1) * renderer.getPixelRatio(), (window.innerHeight*0.1) * renderer.getPixelRatio() );
+      composer.addPass( SMAApass );  
+      prompt.style.display="block"; 
+    }
+    function SMAA_Else_Fun(){
+      composer.removePass( SMAApass );
+    }                 
    SMAA_Fun();
     SMAA_C.addEventListener("click",function(e){
       if(e.target.checked){
-        SMAA_Fun();
-       
+        SMAA_Fun();       
       }else{
         SMAA_Else_Fun()
       }
     })     
     let ssaoPass;
-    let SSAO_C=document.getElementById("SSAO_C");             
-    const Ambient_Occlusion_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {
-        delta = clock.getDelta();
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-        ssaoPass = new SSAOPass( scene, camera, width, height );
-        composer.addPass( ssaoPass );        
-        if ( gui ) gui.destroy();
-        gui = new GUI();         
-        const ssaoPass_folder = gui.addFolder( 'SSAO' );
-        ssaoPass_folder.add( ssaoPass, 'kernelRadius' ).min( 0 ).max( 32 );
-        ssaoPass_folder.add( ssaoPass, 'minDistance' ).min( 0.001 ).max( 0.02 );
-        ssaoPass_folder.add( ssaoPass, 'maxDistance' ).min( 0.01 ).max( 0.3 );
-        gui_ui.checked=true;
-        resolve();
-      }, 10));
-    }; 
-    async function Ambient_Occlusion_Fun() {                                      
-      const spinnedFn = useSpinner(Ambient_Occlusion_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-     console.log("SSAO enabled",delta.toPrecision(3),"seconds");
-   }     
-    const Ambient_Occlusion_Else_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {
-        delta = clock.getDelta();
-        composer.removePass( ssaoPass );                  
-        resolve();
-      }, 10));
-    }; 
-    async function Ambient_Occlusion_Else_Fun() {                                      
-      const spinnedFn = useSpinner(Ambient_Occlusion_Else_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-     console.log("SSAO disabled",delta.toPrecision(3),"seconds");
-   }       
+    let SSAO_C=document.getElementById("SSAO_C");  
+    function Ambient_Occlusion_Fun(){
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      ssaoPass = new SSAOPass( scene, camera, width, height );
+      composer.addPass( ssaoPass );  
+    }           
+    function Ambient_Occlusion_Else_Fun(){
+      composer.removePass( ssaoPass );                  
+    }        
     SSAO_C.addEventListener("click",function(e){
       if(e.target.checked){
         Ambient_Occlusion_Fun()
@@ -979,50 +741,14 @@ async loadLightsGLTF() {
 
     let saoPass
     let SAO_C=document.getElementById("SAO_C");
-    const Ambient_Occlusion_sao_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {  
-        delta = clock.getDelta();    
-        saoPass = new SAOPass( scene, camera, false, true );                  
-        composer.addPass( saoPass ); 
-        if ( gui ) gui.destroy();
-        gui = new GUI();
-        const saoPass_folder = gui.addFolder( 'SAO' );   	
-      saoPass_folder.add( saoPass.params, 'saoBias', - 1, 1 );
-      saoPass_folder.add( saoPass.params, 'saoIntensity', 0, 1 );
-      saoPass_folder.add( saoPass.params, 'saoScale', 0, 10 );
-      saoPass_folder.add( saoPass.params, 'saoKernelRadius', 1, 100 );
-      saoPass_folder.add( saoPass.params, 'saoMinResolution', 0, 1 );
-      saoPass_folder.add( saoPass.params, 'saoBlur' );
-      saoPass_folder.add( saoPass.params, 'saoBlurRadius', 0, 200 );
-      saoPass_folder.add( saoPass.params, 'saoBlurStdDev', 0.5, 150 );
-      saoPass_folder.add( saoPass.params, 'saoBlurDepthCutoff', 0.0, 0.1 );
-      gui_ui.checked=true;
-        resolve();
-      }, 10));
-    }; 
-    async function Ambient_Occlusion_sao_Fun() {                                      
-      const spinnedFn = useSpinner(Ambient_Occlusion_sao_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-     console.log("SAO enabled",delta.toPrecision(3),"seconds")
-   }        
-    const Ambient_Occlusion_sao_Else_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {
-        delta = clock.getDelta();
-        composer.removePass( saoPass );               
-        resolve();
-      }, 10));
-    }; 
-    async function Ambient_Occlusion_sao_Else_Fun() {                                      
-      const spinnedFn = useSpinner(Ambient_Occlusion_sao_Else_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-     console.log("SAO disabled",delta.toPrecision(3),"seconds");
-   }        
+    function Ambient_Occlusion_sao_Fun(){
+      saoPass = new SAOPass( scene, camera, false, true );                  
+      composer.addPass( saoPass ); 
+    }
+    function Ambient_Occlusion_sao_Else_Fun(){
+      composer.removePass( saoPass );               
+    }
+     
     SAO_C.addEventListener("click",function(e){
       if(e.target.checked){
         Ambient_Occlusion_sao_Fun()
@@ -1179,8 +905,7 @@ async loadLightsGLTF() {
   createTransfromCtrls() {
     exportScene(scene);
     reflection(scene,clock,gui);        
-    viewPoints(camera);     
-    // lightControls(scene,renderer,sunLight,ambientLightSun,clock,prompt,stateList,gui,fanLight,tableLamp,tableLampTop,texLoader,subTexture,cylindricalLampSpotLight_1,cylindricalLampSpotLight_2,cylindricalLampSpotLight_3,cylindricalLampSpotLight_4,start);      
+    viewPoints(camera);         
 
   let tranform_Desktop=document.querySelectorAll(".tranform_Desktop");
   tranform_Desktop[0].addEventListener("change", selectToolToggle);
@@ -1340,101 +1065,39 @@ async loadLightsGLTF() {
         .forEach((elem) => {
           elem.previous = elem.checked;
         });        
-       
-        const translate_fn = async () => {
-          await new Promise(resolve => setTimeout(() => {
-            transformControl.showY=true;  
-            transformControl.showX=true;
-            transformControl.showZ=true;            
-            transforms[3].style.backgroundColor="#FF5A50";
-            transforms[3].style.color="#FFFFFF";   
-            resolve();
-          }, 10));
-        }; 
-         async function translate_Fun() {                                      
-          const spinnedFn = useSpinner(translate_fn, {
-           container: container_3d
-         });      
-         // execute with a loading spinner
-         await spinnedFn();
-       }     
-        const translate_Else_fn = async () => {
-          await new Promise(resolve => setTimeout(() => {
-            transforms[3].style.backgroundColor="#FFFFFF";
-            transforms[3].style.color="#000000"; 
-            resolve();
-          }, 10));
-        }; 
-         async function translate_Else_Fun() {                                      
-          const spinnedFn = useSpinner(translate_Else_fn, {
-           container: container_3d
-         });      
-         // execute with a loading spinner
-         await spinnedFn();
-       }             
-        const rotate_fn = async () => {
-          await new Promise(resolve => setTimeout(() => {
-            transformControl.showX=false;
-            transformControl.showY=true;
-            transformControl.showZ=false; 
-            transforms[4].style.backgroundColor="#FF5A50";
-            transforms[4].style.color="#FFFFFF";             
-            resolve();
-          }, 10));
-        }; 
-         async function rotate_Fun() {                                      
-          const spinnedFn = useSpinner(rotate_fn, {
-           container: container_3d
-         });      
-         // execute with a loading spinner
-         await spinnedFn();
-       }               
-        const rotate_Else_fn = async () => {
-          await new Promise(resolve => setTimeout(() => {
-            transforms[4].style.backgroundColor="#FFFFFF";
-            transforms[4].style.color="#000000";
-            resolve();
-          }, 10));
-        }; 
-         async function rotate_Else_Fun() {                                      
-          const spinnedFn = useSpinner(rotate_Else_fn, {
-           container: container_3d
-         });      
-         // execute with a loading spinner
-         await spinnedFn();
-       }                
-        const scale_fn = async () => {
-          await new Promise(resolve => setTimeout(() => {
-            transformControl.showX=true;
+        function translate_Fun(){
+          transformControl.showY=true;  
+          transformControl.showX=true;
+          transformControl.showZ=true;            
+          transforms[3].style.backgroundColor="#FF5A50";
+          transforms[3].style.color="#FFFFFF";  
+        }
+        function translate_Else_Fun(){
+          transforms[3].style.backgroundColor="#FFFFFF";
+          transforms[3].style.color="#000000"; 
+        }       
+        function rotate_Fun(){
+          transformControl.showX=false;
+          transformControl.showY=true;
+          transformControl.showZ=false; 
+          transforms[4].style.backgroundColor="#FF5A50";
+          transforms[4].style.color="#FFFFFF";   
+        }
+        function rotate_Else_Fun(){
+          transforms[4].style.backgroundColor="#FFFFFF";
+          transforms[4].style.color="#000000";
+        }               
+        function scale_Fun(){
+          transformControl.showX=true;
           transformControl.showZ=true; 
           transformControl.showY=true; 
           transforms[5].style.backgroundColor="#FF5A50";
           transforms[5].style.color="#FFFFFF";  
-            resolve();
-          }, 10));
-        }; 
-         async function scale_Fun() {                                      
-          const spinnedFn = useSpinner(scale_fn, {
-           container: container_3d
-         });      
-         // execute with a loading spinner
-         await spinnedFn();
-       }              
-        const scale_Else_fn = async () => {
-          await new Promise(resolve => setTimeout(() => {
-            transforms[5].style.backgroundColor="#FFFFFF";
-            transforms[5].style.color="#000000"  
-            resolve();
-          }, 10));
-        }; 
-         async function scale_Else_Fun() {                                      
-          const spinnedFn = useSpinner(scale_Else_fn, {
-           container: container_3d
-         });      
-         // execute with a loading spinner
-         await spinnedFn();
-       }    
-      
+        }
+        function scale_Else_Fun(){
+          transforms[5].style.backgroundColor="#FFFFFF";
+          transforms[5].style.color="#000000"  
+        }                                           
       
         if(e.target.value=="translate"){      
           translate_Fun()                
@@ -1450,42 +1113,32 @@ async loadLightsGLTF() {
           scale_Fun()     
         }else{
           scale_Else_Fun()      
-        }
-
-       
+        }       
 
       }
-      const Unselect_fn = async () => {
-        await new Promise(resolve => setTimeout(() => {
-          raycaster.layers.set( 1 );
-          outlinePass.selectedObjects = selectedObjects;
-          outlinePass.edgeStrength = 0;
-          outlinePass.edgeThickness=0;
-          outlinePass.edgeGlow=0;            
-    
-          transformControl.reset();
-          transformControl.detach();
-          selectedObjects=[];
 
-          for(let i=0;i<4;i++){
-            if(i!=1){
-            transforms[i].style.backgroundColor="#FFFFFF";
-            transforms[i].style.color="#000000"
-            }else{
-              transforms[1].style.backgroundColor="#FF5A50";
-              transforms[1].style.color="#FFFFFF";  
-            }
+      function Unselect_Fun(){
+        raycaster.layers.set( 1 );
+        outlinePass.selectedObjects = selectedObjects;
+        outlinePass.edgeStrength = 0;
+        outlinePass.edgeThickness=0;
+        outlinePass.edgeGlow=0;            
+  
+        transformControl.reset();
+        transformControl.detach();
+        selectedObjects=[];
+
+        for(let i=0;i<4;i++){
+          if(i!=1){
+          transforms[i].style.backgroundColor="#FFFFFF";
+          transforms[i].style.color="#000000"
+          }else{
+            transforms[1].style.backgroundColor="#FF5A50";
+            transforms[1].style.color="#FFFFFF";  
           }
-          resolve();
-        }, 10));
-      }; 
-       async function Unselect_Fun() {                                      
-        const spinnedFn = useSpinner(Unselect_fn, {
-         container: container_3d
-       });      
-       // execute with a loading spinner
-       await spinnedFn();
-     }       
+        }
+       
+      }     
       let Unselect=document.getElementById("Unselect");      
       Unselect.addEventListener("change", (e) => {
         if (e.target.checked) {
@@ -1497,10 +1150,9 @@ async loadLightsGLTF() {
           Unselect_Fun();
         }
       });
-      const del_fn = async () => {
-        await new Promise(resolve => setTimeout(() => {          
-          if(selectedObjects[0]!=undefined){
-          selectedObjects[0].traverse(function(node){
+      function del_Fun(){
+        if(selectedObjects[0]!=undefined){
+          /* selectedObjects[0].traverse(function(node){
             if(node.isMesh){
               node.material.dispose();
               node.geometry.dispose();
@@ -1508,7 +1160,7 @@ async loadLightsGLTF() {
               node.material.normalMap.dispose();
               }           
             }
-          })             
+          })        */      
           scene.remove(selectedObjects[0]); 
           
         }else{
@@ -1520,30 +1172,12 @@ async loadLightsGLTF() {
           transforms[2].style.backgroundColor="#FF5A50";
           transforms[2].style.color="#FFFFFF"; 
         
-          resolve();
-        }, 10));
-      }; 
-       async function del_Fun() {                                      
-        const spinnedFn = useSpinner(del_fn, {
-         container: container_3d
-       });      
-       // execute with a loading spinner
-       await spinnedFn();
-     }    
-     const del_Else_fn = async () => {
-      await new Promise(resolve => setTimeout(() => {
+      }
+      function del_Else_Fun(){
         transforms[2].style.backgroundColor="#FFFFFF";
-          transforms[2].style.color="#000000";
-        resolve();
-      }, 10));
-    }; 
-     async function del_Else_Fun() {                                      
-      const spinnedFn = useSpinner(del_Else_fn, {
-       container: container_3d
-     });      
-     // execute with a loading spinner
-     await spinnedFn();
-   }      
+        transforms[2].style.color="#000000";
+      }     
+    
       let del=document.getElementById("DeleteT");
       del.addEventListener("change",(e)=>{            
         if(e.target.checked){                                
@@ -1555,52 +1189,24 @@ async loadLightsGLTF() {
       tranform_Desktop[5].addEventListener("change", (e) => {
         if (e.target.checked) {
           del_Fun();
-        }else{
-          del_Else_Fun();
         }
       });
       let helper;
-      const bounding_box_fn = async () => {
-        await new Promise(resolve => setTimeout(() => {
-              /* for(let i=0;i<=selectableObjects.length;i++){
-            if(selectableObjects[i]!=null){
-              helper = new THREE.BoxHelper(selectableObjects[i], 0xff0000);            
-              scene.add(helper);                            	                    
-            }          
-          }     */  
-          scene.traverse(function(node){
-            if(node.isMesh){
-              helper = new THREE.BoxHelper(node, 0xff0000);            
-              scene.add(helper);  
-            }
-          })
-          resolve();
-        }, 10));
-      }; 
-      async function bounding_box_Fun() {                                      
-        const spinnedFn = useSpinner(bounding_box_fn, {
-         container: container_3d
-       });      
-       // execute with a loading spinner
-       await spinnedFn();
-     }       
-      const bounding_box_Else_fn = async () => {
-        await new Promise(resolve => setTimeout(() => {
-          scene.traverse(function(node){            
-            if(node.type=="BoxHelper"){               
-              node.visible=false;
-            }
-          })
-          resolve();
-        }, 10));
-      }; 
-      async function bounding_box_Else_Fun() {                                      
-        const spinnedFn = useSpinner(bounding_box_Else_fn, {
-         container: container_3d
-       });      
-       // execute with a loading spinner
-       await spinnedFn();
-     }          
+      function bounding_box_Fun(){
+        scene.traverse(function(node){
+          if(node.isMesh){
+            helper = new THREE.BoxHelper(node, 0xff0000);            
+            scene.add(helper);  
+          }
+        })
+      }
+      function bounding_box_Else_Fun(){
+        scene.traverse(function(node){            
+          if(node.type=="BoxHelper"){               
+            node.visible=false;
+          }
+        })
+      }                  
       let bounding_box=document.getElementById("bounding_box");
       bounding_box.addEventListener("change",(e)=>{            
         if(e.target.checked){                                
