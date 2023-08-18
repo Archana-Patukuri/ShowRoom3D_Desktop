@@ -40,39 +40,7 @@ function reflection(scene,clock,gui) {
     function Reflections_Floor_Add(){
       scene.add( groundMirror );
       Floor.material.transparent=true;      
-    }
-      let gui_ref=document.getElementById("gui_ref");
-      gui_ref.addEventListener("click",function(e){
-        if(e.target.checked){
-          const params = {                                      
-            opacity:0.7,
-            color:1,
-             width_Height:0.1,
-             samples:4               
-          };  
-          if(gui)gui.destroy()                 
-          gui = new GUI();
-          const shadowFolder = gui.addFolder( 'Floor Reflections' );                 
-          shadowFolder.add( params, 'opacity', 0, 1, 0.01 ).onChange( function () {
-            Floor.material.opacity = params.opacity;            
-          } );  
-          shadowFolder.add( params, 'color', 0, 1, 0.001 ).onChange( function () {
-            Floor.material.color=new Color(params.color,params.color,params.color)          
-          } );  
-          shadowFolder.add( params, 'width_Height', 0, 1, 0.001 ).onChange( function () {
-            groundMirror.getRenderTarget().setSize(
-              window.innerWidth * window.devicePixelRatio*params.width_Height,
-              window.innerHeight * window.devicePixelRatio*params.width_Height
-            );   
-          } );  
-          shadowFolder.add( params, 'samples', 0, 10, 1 ).onChange( function () {
-            groundMirror.getRenderTarget().samples=params.samples;
-          } );     
-                                                                         
-        }else{
-          gui.hide();
-        }
-      })
+    }     
       function Reflections_Floor_Remove(){
         Floor.material.transparent=false;
         scene.remove( groundMirror );

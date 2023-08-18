@@ -77,9 +77,11 @@ async function main() {
       console.log("furniture loading time = ",delta.toPrecision(3),"secs")        
     })
     let load_Lighting_Desktop=document.getElementById("load_Lighting_Desktop");
+    let initialControlsContainer=document.querySelector(".initialControlsContainer")
     load_Lighting_Desktop.addEventListener("click",async function(){
       delta = clock.getDelta();
       Spinner.style.display="block";
+      initialControlsContainer.style.display="block"
       await Promise.all([                                                                      
         await world.loadCylindricalLight(), 
         await world.lightPresets()      

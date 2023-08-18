@@ -159,7 +159,7 @@ const stateList = {"HDRI":HDRI,
 start = Date.now();
 console.log("timer started")
 let preset_val=0, fanLight ;
-
+let lightModes
 class World {
   constructor() {        
     this.container = container;
@@ -380,7 +380,19 @@ class World {
     scene.add(roomParent);  
     selectableObjects.push(fanParent);  
     fanLight = scene.getObjectByName("fanLight"); 
-    fanLight.intensity=30                        
+    fanLight.intensity=30  
+
+   /*  lightModes = document.createElement( 'button' ); 
+    lightModes.classList.add("lightModes")
+    lightModes.textContent = 'DayLight';    
+
+    const lightModesLabel = new CSS2DObject( lightModes );
+    lightModesLabel.position.set( 0.6,2.05,3.73 );    
+    scene.add( lightModesLabel );
+    lightModesLabel.layers.set( 0 );  
+    lightModes.addEventListener("change",function(e){      
+      alert("dayLight button clicked")      
+    }) */
     renderer.render(scene, camera);    
     console.log("room loaded",delta.toPrecision(3),"seconds")    
   }    
@@ -589,24 +601,13 @@ async loadLightsGLTF() {
       cylindricalLampSpotLight_2.intensity = 2;
       cylindricalLampSpotLight_3.intensity = 2;
       cylindricalLampSpotLight_4.intensity = 2;
-      }   
-      /*  if(a==1){
-          shadowLight=3;
-        shadows(scene,shadowLight); 
-      }else{  */
-       /*  shadowLight=1;
-        shadows(scene,shadowLight); */
-      // } 
-           
+      }                   
       a=a+1               
     };
    
     const dayLightSettings_Fun = async () => {
-      const { hdri1 } = await hdriLoad();           
-      await new Promise(resolve => setTimeout(() => {
-        dayLightSettings(hdri1);
-        resolve();
-      }, 10));  
+      const { hdri1 } = await hdriLoad();                 
+        dayLightSettings(hdri1);      
     }; 
      
     let lightsPresetsUI = document.querySelectorAll(".lightPreset");
@@ -615,7 +616,7 @@ async loadLightsGLTF() {
         dayLightSettings_Fun();        
       } 
     })
-    
+   
     const NightLight1_Fun = async () => {
       const {hdri0 } = await hdriLoad();             
         nightLightSettings1(hdri0);        
@@ -629,7 +630,7 @@ async loadLightsGLTF() {
 
     NightLight1_Fun();        
 
-    if(mobile){
+   
       lightControls(
         scene,
         renderer,
@@ -644,7 +645,7 @@ async loadLightsGLTF() {
         fanLight,
         [cylindricalLampSpotLight_1,cylindricalLampSpotLight_2,cylindricalLampSpotLight_3,cylindricalLampSpotLight_4],
       );
-    }
+    
 
   }
   //CreatePostProcess Effects

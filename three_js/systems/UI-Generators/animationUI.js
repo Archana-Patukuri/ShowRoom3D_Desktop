@@ -136,7 +136,7 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
       });
     }
     let animation_label = document.createElement("label");
-    animation_label.innerText="Animations";
+    animation_label.innerText="Dynamics";
     animation_label.className="Animations"
     mainDiv.appendChild(animation_label);
     mainDiv.appendChild(div1);

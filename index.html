@@ -121,13 +121,19 @@
       <div id="desktopUI">
 
         <div class="home_card_container" id="home_card_container_Desktop">
-          <div id="home_card_close" style="margin-left: 95%;">
+          <div class="d-flex">
+          <div style="display: flex;margin-top: 265px;margin-left: -15px;">
+            <img src="./icons/desktopUI/logo.svg" style="width: 30px;height: 30px;"/>                   
+            <img src="./icons/desktopUI/name.svg" style="width: 120px;height: 30px;"/>                               
+          </div>
+          <div id="home_card_close" style="margin-left: 300px;margin-bottom: 20px;margin-top: 20px;">
             <img id="home_card_close_Desktop" src="./icons/close.png" style="width: 15px;height: 15px;margin-top: 250px;"/>                   
         </div>
+      </div>
         <div>
-          <h1 class="home_card_head">Welcome to VisCommerce</h1>
+          <h1 class="home_card_head">Welcome to Showroom3D</h1>
             <ul >
-                <li class="home_card_points">Room3D ...  A Try & Buy 3DCommerce innovation</li>
+                <li class="home_card_points">A Try & Buy 3DCommerce innovation</li>
                 <li class="home_card_points">Leapfrogging Amazon Showroom</li>
                 <li class="home_card_points">Mix, match, customize & layout furniture to your liking</li>
                 <li class="home_card_points">Live lighting and measurements</li>
@@ -184,14 +190,14 @@
         <div id="SampleRoom_Dekstop" class="tabcontent tabcontent_vertical">
           <div class="horizontalTab">
             <div class="d-flex flex-row justify-content-center align-items-center">                   
-              <div id="load_Furniture_Desktop" style="margin: 5px;">
-                <button class="buttonH buttonC"> <img src="./icons/desktopUI/furniture.svg" style="width: 12px;height: 12px;"/> Furniture</button>                                        
+              <div id="load_Furniture_Desktop">
+                <button class="buttonH buttonC d-flex flex-column justify-content-center align-items-center"> <img src="./icons/desktopUI/furniture.svg" style="width: 25px;height: 25px;"/> Furniture</button>                                        
               </div>
               <div id="load_Lighting_Desktop">
-                <button class="buttonH buttonC"><img src="./icons/desktopUI/light.svg" style="width: 13px;height: 13px;"/> Lighting</button>                         
+                <button class="buttonH buttonC d-flex flex-column justify-content-center align-items-center"><img src="./icons/desktopUI/light.svg" style="width: 30px;height: 30px;"/> Lighting</button>                         
               </div>  
-              <div id="load_Accessories_Desktop" style="margin: 5px;justify-content: start;">
-                <button class="buttonH buttonC" style="width: 100px;"> <img src="./icons/desktopUI/accessories.svg" style="width: 12px;height: 12px;margin-right: 2px;"/>Accessories</button>                         
+              <div id="load_Accessories_Desktop">
+                <button class="buttonH buttonC d-flex flex-column justify-content-center align-items-center"> <img src="./icons/desktopUI/accessories.svg" style="width: 25px;height: 25px;"/>Accessories</button>                         
               </div>                  
             </div>                                             
           </div>          
@@ -362,6 +368,135 @@
             </form>
           </div>
         </div>
+        <div id="Advanced_Dekstop" class="tabcontent tabcontent_vertical">
+          <div class="d-flex justify-content-center" style="font-size: 10px;" id="controlsUI">
+            <div>     
+              <h1 style="font-size: 16px;margin-left: 100px;margin-top: 20px;">Advanced Light Controls</h1>                    
+            <div class="controlsContainer" style="width: 50%;">
+              <div class="initialControlsContainer1" style="width: 50%;">                
+                <div style="width: 100%; display: flex;gap: 2px;">
+                  <span style="margin-left: 130px;">Intensity</span>
+                  <span style="margin-left: 22px;">Color</span>
+                  <span style="margin-left: 3px;">Helper</span>
+                  <span style="margin-left: 2px;">Distance</span>
+                  <span>Decay</span>
+                </div>                                                                                 
+              </div>                  
+              <div style="display: none;" id="FloorLamp" >
+                <div class="d-flex">                          
+                  <div class="d-flex flex-row">                         
+                      <input type="checkbox" name="lights" value="floor_lamp" class="lightTypes" id="floor_lamp">
+                      <label for="floor_lamp">Floor Lamp</label>
+                     </div>                        
+                  <div class="slidecontainer1" style="margin-left: 5px;">                          
+                    <input type="range" min="0" max="10" value="5" step="0.1" class="slider Slider_range slider_class" style="width:70px">
+                  </div>
+                  <div class="colorPickerContainer1" style="margin-left: 5px;">                          
+                    <input type="color" class="colorPicker1" name="colorPicker1" value="#FFFFFF" style="border:none;height: 20px;width:30px">                          
+                  </div> 
+                  <input type="checkbox" name="helper" class="helper_FW" style="margin-left:5px;">                            
+
+                  <input type="number" class="distance" value="0" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
+                  <input type="number" class="decay" value="2" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
+                </div> 
+              </div>
+                <div style="display: none;" id="WallLamp">
+                <div class="d-flex">                          
+                  <div class="d-flex flex-row">                         
+                    <input type="checkbox" name="lights" value="wall_lamp" class="lightTypes" id="wall_lamp">
+                    <label for="wall_lamp">Wall Lamp</label>
+                    </div>                      
+                <div class="slidecontainer1" style="margin-left: 16px;">                          
+                  <input type="range" min="0" max="5" value="2" step="0.1" class="slider Slider_range slider_class" style="width:70px">
+                </div>
+                <div class="colorPickerContainer1" style="margin-left: 5px;">                          
+                  <input type="color" class="colorPicker1" name="colorPicker1" value="#FFFFFF" style="border:none;height: 20px;width:30px">                          
+                </div> 
+                <input type="checkbox" name="helper" class="helper_FW" style="margin-left: 5px;">  
+
+                <input type="number" class="distance" value="0" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
+                <input type="number" class="decay" value="2" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
+              </div>  
+            </div>
+            </div>                                              
+               <div id="MoreControls" style="margin-left: 60px;">
+                <div class="d-flex">                          
+                  <div>                                           
+                    <label style="color: #FF5A50;font-family: 'Roboto'; margin-right: 0px; margin-left: 50px;">Tone Mapping Exposure</label>
+                  <div class="d-flex">
+                    <div class="d-flex flex-row pb-1">                           
+                      <input type="checkbox" name="lights" value="HDRI" id="HDRI">
+                      <label for="HDRI">HDRI</label>                             
+                  </div>
+                    <div class="slidecontainer" style="margin-left: 10px;">                          
+                      <input type="range" min="0" max="2" value="0.7" step="0.1" class="slider Slider_range slider_class">
+                    </div>                          
+                  </div>   
+                  <div class="d-flex flex-row pb-1">              
+                    <input type="checkbox" name="Emissive" value="Emissive" checked id="Emissive">
+                    <label for="Emissive">Emissive</label>
+                    </div>
+                    <div class="d-flex flex-row pb-1">   
+                    <input type="checkbox" id="Shadows_SunLight" name="controls" value="Shadows_SunLight">
+                    <label for="Shadows_SunLight">Shadows SunLight</label>                               
+                    </div>
+                    <div class="d-flex flex-row pb-1"> 
+                      <input type="checkbox" id="Shadows_NightLight1" name="controls" value="Shadows_NightLight1">
+                      <label for="Shadows_NightLight1">Shadows NightLight</label>
+                      </div>                                                            
+                      <div class="d-flex flex-row pb-1"> 
+                      <input type="checkbox" id="ReflectionsMirror_C" name="effects" value="ReflectionsMirror_C">
+                      <label for="ReflectionsMirror_C">Mirror Reflections</label>
+                      </div>
+                      <div class="d-flex flex-row pb-1"> 
+                      <input type="checkbox" id="ReflectionsFloor_C" checked name="effects" value="ReflectionsFloor_C">
+                    <label for="ReflectionsFloor_C">Floor Reflections</label>
+                    </div>                                                        
+                        <div class="d-flex flex-row pb-1">                                                                                                             
+                          <input type="checkbox" id="SSAO_C" name="Preferences" value="SSAO_C">
+                          <label for="SSAO_C">SSAO</label> 
+                          </div>
+                          <div class="d-flex flex-row pb-1"> 
+                          <input type="checkbox" id="SAO_C" name="Preferences" value="SAO_C">
+                      <label for="SAO_C">SAO</label> 
+                      </div>                               
+                  </div>
+                  <div style="margin-left: 20px;margin-top: 20px;">                             
+                  <div class="d-flex flex-row pb-1"> 
+                    <input type="checkbox" id="TAA_C" name="Preferences" value="TAA_C">
+                    <label for="TAA_C">TAA</label>
+                    </div>
+                    <div class="d-flex flex-row pb-1"> 
+                    <input type="checkbox" id="FXAA_C" name="Preferences" value="FXAA_C">
+                    <label for="FXAA_C">FXAA</label>
+                    </div>
+                    <div class="d-flex flex-row pb-1"> 
+                    <input type="checkbox" id="SSAA_C" name="Preferences" value="SSAA_C">
+                    <label for="SSAA_C">SSAA</label>
+                    </div>
+                    <div class="d-flex flex-row pb-1"> 
+                    <input type="checkbox" id="SMAA_C" name="Preferences" value="SMAA_C" checked>
+                    <label for="SMAA_C">SMAA</label>
+                    </div>
+                    <div class="d-flex flex-row pb-1"> 
+                      <input type="checkbox" id="Stats" name="Preferences" value="Stats">
+                      <label for="Stats">Stats</label>  
+                          </div> 
+                    <div class="d-flex flex-row pb-1"> 
+                      <input type="checkbox" id="gui_ui" name="Preferences" value="gui_ui">
+                      <label for="gui_ui">GUI</label>
+                      </div>                                                  
+                          <div class="d-flex flex-row pb-1"> 
+                            <input type="checkbox" id="ssr_ui" name="Preferences" value="ssr_ui">
+                            <label for="ssr_ui">SSR</label>
+                            </div>                    
+                  </div>
+                </div>                                                                                                    
+              </div>                                      
+            </div>
+          </div>       
+        </div>
+
       </div>
 
       <div class="sidebarUI_desktop" style="width: 20%;">
@@ -463,12 +598,9 @@
                 </div>
               </div>
             </div>           
-            <!-- <div class="initialControlsContainer" style="width: 100%; margin-right: 20px;">
-              <div style="width: 100%; display: flex; justify-content: end; gap: 20px;">
-                <span style="margin-right: 25px;">Intensity</span>
-                <span style="margin-right: 25px;">Color</span>                          
-              </div>                        
-            </div>   -->
+             <div class="initialControlsContainer" style="display: none;width: 100%; margin-right: 20px;font-size: 10px;">                                                                        
+              <label style="font-size: 12px;font-weight: 500;margin-left: 5px;">Light Controls</label> 
+            </div>   
       </div>
     </div>
 

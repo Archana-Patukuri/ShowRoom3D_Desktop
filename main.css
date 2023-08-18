@@ -82,7 +82,7 @@ background: linear-gradient(135deg, rgba(255, 153, 80, 0.90) 0%, rgba(255, 90, 8
   color: #FFF;
 font-feature-settings: 'clig' off, 'liga' off;
 font-family: Poppins;
-font-size: 38px;
+font-size: 24px;
 font-style: normal;
 font-weight: 700;
 }
@@ -130,7 +130,7 @@ font-weight: 400;
 
 }
 .commerce_logo{
-  width: 200px;height: 150px;margin-left: 100px;margin-bottom: 170px;
+  width: 200px;height: 150px;margin-left: 100px;margin-bottom: 200px;
 }
 #ar-prompt {
   position: absolute;
@@ -193,21 +193,42 @@ height: 100vh;
   text-align: left;    
   font-size: 12px;
 }
-.buttonH{
-  background-color: white;
+.lightModes{
+  background-color: white;  
   height: 30px;
+  width: 70px;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: #303030;
+  font-size: 12px;
+  color: #070707;
+  font-weight: 400;  
+ text-decoration: none;
+ margin: 5px;
+ margin-top: 20px;
+}
+.buttonH{
+  background-color: white;  
+  height: 100px;
   width: 80px;
   border-style: solid;
   border-radius: 10px;
-  border-width: 2px;
-  border-color: #e2e2e2;
+  border-width: 1px;
+  border-color: #303030;
   font-size: 12px;
   color: #161616;
   font-weight: 400;  
  text-decoration: none;
+ margin: 5px;
+ margin-top: 20px;
 }
-.buttonH:hover{
-  background-color: #FF5A50;
+.buttonC:active{
+  background: #FF5A50;
+  color: #FFFFFF;
+}
+.buttonC:hover{
+  background: #FF5A50;
   color: #FFFFFF;
 }
 /* Change background color of buttons on hover */
@@ -321,6 +342,40 @@ height: 100vh;
   font-size: 12px;
   
 }
+.slider {
+  -webkit-appearance: none;
+  width: 90px;
+  height: 4px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #FF5A50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #FF5A50;
+  cursor: pointer;
+}
+
 @media (max-width:992px) {
   #desktopUI{
     display: none;
@@ -481,39 +536,6 @@ font-size: 12px;
   color: #161616;
   font-weight: 400;  
  text-decoration: none;
-}
-.slider {
-  -webkit-appearance: none;
-  width: 90px;
-  height: 4px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #FF5A50;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #FF5A50;
-  cursor: pointer;
 }
 .checkb{
   visibility: hidden;
