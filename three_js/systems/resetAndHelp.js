@@ -50,6 +50,9 @@ function resetAndHelp(camera){
     Help.addEventListener("click",function(){
       Help_Fun()
     })
-       
+    let help3DButton=document.getElementById("help3DButton")
+    help3DButton.addEventListener("click",function(){
+      Help_Fun()
+    })    
 }
 export {resetAndHelp};

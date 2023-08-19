@@ -130,8 +130,6 @@ Shadows_NightLight1.addEventListener("change",(e)=>{
   Shadows_SunLightOn();   
  }else if(shadowLight==1){
   Shadows_NightLight1On();  
- } else if(shadowLight==3){    
-  intial_shadowsOn(); 
  }else{
   
  }

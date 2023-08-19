@@ -29,7 +29,7 @@ import {
   Color,
   DirectionalLight,  
   RectAreaLight,   
-  TextureLoader,  
+  TextureLoader,    
 } from "three";
 import * as THREE from 'three';
 import { createEffectComposer } from "./systems/effectComposer.js";
@@ -71,6 +71,10 @@ import {
   CSS2DObject,
   CSS2DRenderer,
 } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
+import {
+  CSS3DObject,
+  CSS3DRenderer,
+} from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 let mobile = false;
 if (/Android|iPhone/i.test(navigator.userAgent)) {
   mobile = true;
@@ -160,6 +164,7 @@ start = Date.now();
 console.log("timer started")
 let preset_val=0, fanLight ;
 let lightModes
+let renderer2
 class World {
   constructor() {        
     this.container = container;
@@ -307,8 +312,10 @@ class World {
     blindsModels.createUI();
     lightsModels.createUI();
   }  
-  async loadBackground() {           
-      scene.background = new Color(1,1,1);                
+  async loadBackground() {        
+    const { hdri0 } = await hdriLoad();          
+      scene.environment = hdri0; 
+      scene.background=new Color(1,1,1)                
   }
   //LoadRoom
   async loadRoomGLTF() {
@@ -381,18 +388,7 @@ class World {
     selectableObjects.push(fanParent);  
     fanLight = scene.getObjectByName("fanLight"); 
     fanLight.intensity=30  
-
-   /*  lightModes = document.createElement( 'button' ); 
-    lightModes.classList.add("lightModes")
-    lightModes.textContent = 'DayLight';    
-
-    const lightModesLabel = new CSS2DObject( lightModes );
-    lightModesLabel.position.set( 0.6,2.05,3.73 );    
-    scene.add( lightModesLabel );
-    lightModesLabel.layers.set( 0 );  
-    lightModes.addEventListener("change",function(e){      
-      alert("dayLight button clicked")      
-    }) */
+    
     renderer.render(scene, camera);    
     console.log("room loaded",delta.toPrecision(3),"seconds")    
   }    
@@ -544,6 +540,19 @@ async loadLightsGLTF() {
     console.log("frames loaded",delta.toPrecision(3),"seconds");
     
   } 
+  async loadVaseGLTF() {
+     
+    let modelURL = await fetch(assets.Accessories[2].URL);    
+
+    const { gltfData } = await gltfLoad(modelURL.url); 
+    const loadedmodel = gltfData.scene;  
+    // loadedmodel.position.set()      
+    scene.add(loadedmodel);        
+    renderer.render(scene, camera); 
+    delta = clock.getDelta();    
+    console.log("frames loaded",delta.toPrecision(3),"seconds");
+    
+  } 
   async loadWallPlantsGLTF() {
      
     let modelURL = await fetch(assets.Accessories[1].URL);    
@@ -565,25 +574,18 @@ async loadLightsGLTF() {
 
     dayLightSettings = function (hdri1) {            
       console.time("DayLight Preset time"); 
-       scene.background = new Color(0xffffff);   
-       if(tableLamp && fanLight && cylindricalLampSpotLight_1){
+       scene.background = new Color(0xffffff);          
         tableLamp.intensity = 0;
         fanLight.intensity = 0;            
         cylindricalLampSpotLight_1.intensity = 0;
         cylindricalLampSpotLight_2.intensity = 0;
         cylindricalLampSpotLight_3.intensity = 0;
-        cylindricalLampSpotLight_4.intensity = 0;    
-       }       
-                           
-                        
-      sunLight.intensity = 30;          
-    
+        cylindricalLampSpotLight_4.intensity = 0;                                                                    
+      sunLight.intensity = 30;              
       shadowLight=0;        
       shadows(scene,shadowLight);  
       scene.environment = hdri1;  
-      renderer.toneMappingExposure=0.2;  
-      n=n+1 
-      
+      renderer.toneMappingExposure=0.2;              
     };   
             
     nightLightSettings1 = function (hdri0) { 
@@ -592,17 +594,15 @@ async loadLightsGLTF() {
          
       sunLight.intensity = 0;
       ambientLightSun.intensity = 0;   
-      scene.environment = hdri0;      
-      scene.background = new Color(0x000000); 
+       scene.environment = hdri0;      
+      scene.background = new Color(0x000000);  
 
-      fanLight.intensity = 30;
-      if(cylindricalLampSpotLight_1){
+      fanLight.intensity = 30;     
       cylindricalLampSpotLight_1.intensity = 2;
       cylindricalLampSpotLight_2.intensity = 2;
       cylindricalLampSpotLight_3.intensity = 2;
       cylindricalLampSpotLight_4.intensity = 2;
-      }                   
-      a=a+1               
+                                            
     };
    
     const dayLightSettings_Fun = async () => {
@@ -616,7 +616,7 @@ async loadLightsGLTF() {
         dayLightSettings_Fun();        
       } 
     })
-   
+  
     const NightLight1_Fun = async () => {
       const {hdri0 } = await hdriLoad();             
         nightLightSettings1(hdri0);        
@@ -629,7 +629,18 @@ async loadLightsGLTF() {
     })     
 
     NightLight1_Fun();        
-
+    let dayLight_Desktop=document.getElementById("dayLight_Desktop");
+    let nightLight_Desktop=document.getElementById("nightLight_Desktop");
+    dayLight_Desktop.addEventListener("click",function(){
+     dayLightSettings_Fun();   
+     nightLight_Desktop.style.display="block"      
+     dayLight_Desktop.style.display="none"     
+    })
+    nightLight_Desktop.addEventListener("click",function(){
+     NightLight1_Fun();
+     nightLight_Desktop.style.display="none"      
+     dayLight_Desktop.style.display="block"
+    })
    
       lightControls(
         scene,
@@ -1362,7 +1373,7 @@ async loadLightsGLTF() {
       cameraControls.update();
        renderer.info.reset();
        composer.render();
-       
+      //  renderer2.render( scene, camera );
       //renderer.render(scene, camera);
       camera.updateMatrixWorld()       
       const delta = clock.getDelta();  
