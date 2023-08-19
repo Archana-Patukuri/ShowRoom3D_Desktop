@@ -1,10 +1,7 @@
 import { Clock, LoopOnce, Vector3,AmbientLight,Color,DirectionalLightHelper } from "three";
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import tablesHeights from "../../dataBase/tablesHeights.json" assert { type: "json" };
-let mobile = false;
-if (/Android|iPhone/i.test(navigator.userAgent)) {
-  mobile = true;
-}
+
 function animationUI(gltfData, mixer, category, URL,scene,renderer) {  
 
   let animationClips = [];
@@ -18,12 +15,10 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
   let mainDiv = document.createElement("div");
 
   let div1 = document.createElement("div");
-  if(mobile){
-  div1.className = "d-flex gap-2";               
-  }else{
+  
     div1.className="animationsContainer"
     div1.classList.remove("gap-2")
-  }
+  
  //Animations UI
    if (category == "tables") {
     let tweens = [];   
@@ -53,13 +48,10 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
       label.for = tablesHeights[model_name][i];
       label.innerHTML = "Level" + i; 
 
-      if(mobile){
-        input.className = "form-check-input largerCheckbox labelAlignment";
-        label.className = "form-check-label";
-        }else{
+     
           input.className = "form-check-input animationInput";  
           label.className = "form-check-label animationLabel";                  
-        }
+        
 
       input.addEventListener("click", function () {        
         tweens[i].start();              
@@ -91,13 +83,10 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
       label.for = gltfData.animations[0].name+i;
       label.innerHTML = gltfData.animations[i].name;
 
-      if(mobile){
-        input.className = "form-check-input largerCheckbox labelAlignment";
-        label.className = "form-check-label";
-        }else{
+      
           input.className = "form-check-input animationInput";  
           label.className = "form-check-label animationLabel";                  
-        }
+        
 
       form.appendChild(input);
       form.appendChild(label);
@@ -113,15 +102,7 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
      /*  if(animationClips[i]._clip.name=="Half Open"){        
         animationClips[i].play();                
       }   */
-      
-      let lightPreset=document.querySelectorAll(".lightPreset");      
-      lightPreset[0].addEventListener('change',function(){
-      if (this.value == "DayLightPreset") {
-        if(animationClips[i]._clip.name=="Half Open"){        
-          animationClips[i].play();                
-        }  
-      } 
-    })
+          
     
       async function input_anim_Fun(){
         let myPromise = new Promise(function(resolve) {
@@ -144,11 +125,9 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
 
   //Material Variants UI
   let div2 = document.createElement("div");
-  if(mobile){
-  div2.className = "d-flex gap-2 justify-content-center";
-  }else{
+  
     div2.className = "d-flex";    
-  }
+  
   for (let i = 0; i < gltfData.userData.variants.length; i++) {
     input = document.createElement("input");
     input.type = "radio";
@@ -180,11 +159,9 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
       gltfData.userData.variants[i] +
       ".webp";    
     img.alt = "chair_1";       
-    if(mobile){      
-      img.className = "img-thumbnail p-0 img-max-width-3";
-    }else{      
+          
       img.className = "img-thumbnail p-0 img-max-width-1";      
-    }
+    
     label.appendChild(img);
     div2.appendChild(input);
     div2.appendChild(label);

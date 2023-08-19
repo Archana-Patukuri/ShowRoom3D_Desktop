@@ -55,39 +55,7 @@ function viewPoints(camera) {
   }
   
    
-if(mobile){
-    let viewPoints_Mobile=document.querySelectorAll(".viewPoints_Mobile")
-    viewPoints_Mobile[0].addEventListener("change", (e) => {
-      if (e.target.checked) {                                            
-        view1_Fun();
-    }
-    })   
-    viewPoints_Mobile[4].addEventListener("change", (e) => {
-      if (e.target.checked) {                                            
-        view2_Fun();
-    }
-    })   
-    viewPoints_Mobile[5].addEventListener("change", (e) => {
-      if (e.target.checked) {                                            
-        view3_Fun();
-    }
-    })   
-    viewPoints_Mobile[1].addEventListener("change", (e) => {
-      if (e.target.checked) {                                            
-        view4_Fun();
-    }
-    })   
-    viewPoints_Mobile[3].addEventListener("change", (e) => {
-      if (e.target.checked) {                                            
-        view5_Fun();
-    }
-    })   
-    viewPoints_Mobile[2].addEventListener("change", (e) => {
-      if (e.target.checked) {                                            
-        view6_Fun();
-    }
-    })       
-  }else{
+
     let Viewpoints_Desktop=document.querySelectorAll(".Viewpoints_Desktop");
     Viewpoints_Desktop[0].addEventListener("change", (e) => {
       if (e.target.checked) {                                            
@@ -120,7 +88,7 @@ if(mobile){
     }
     })       
 
-  }
+  
     
 }
  

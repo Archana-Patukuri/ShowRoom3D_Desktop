@@ -41,14 +41,7 @@ function basicControls(scene,camera,controls,renderer) {
         navigationOpt[0].style.background="#FFFFFF";
         navigationOpt[0].style.color="#000000";       
     };     
-    let Zoom=document.getElementById("Zoom");
-        Zoom.addEventListener("change", (e) => {
-          if (e.target.checked) {
-            Zoom_Fun()                        
-          }else{
-            Zoom_Else_Fun()
-          }
-        }) ;
+   
         function Rotate_Fun(){          
             console.log("rotate clicked")
             controls.enableRotate=true;  
@@ -61,14 +54,7 @@ function basicControls(scene,camera,controls,renderer) {
             navigationOpt[2].style.background="#FFFFFF";
             navigationOpt[2].style.color="#000000";            
         };           
-    let Rotate=document.getElementById("Rotate1");    
-        Rotate.addEventListener("change", (e) => {
-          if (e.target.checked) {
-            Rotate_Fun()     
-          }else{
-            Rotate_Else_Fun()
-          }
-        })
+   
         function Pan_Fun(){          
             console.log("PAN clicked")
             controls.enablePan=true;   
@@ -81,28 +67,9 @@ function basicControls(scene,camera,controls,renderer) {
             navigationOpt[1].style.background="#FFFFFF";
             navigationOpt[1].style.color="#000000";                    
         };                    
-      let Pan=document.getElementById("Pan");
-          Pan.addEventListener("change", (e) => {
-            if (e.target.checked) { 
-              Pan_Fun()
-            }else{
-              Pan_Else_Fun()
-            }
-          })     
+     
       
-        
-        let zoom_home=document.getElementById("zoom_home");
-        let pan_home=document.getElementById("pan_home");
-        let rotate_home=document.getElementById("rotate_home");
-        zoom_home.addEventListener("click", function(){
-          Zoom_Fun()                    
-        }) 
-        pan_home.addEventListener("click", function(){
-          Pan_Fun()                      
-      }) 
-      rotate_home.addEventListener("click", function(){
-        Rotate_Fun()                     
-    })  
+             
     let navigation_Desktop=document.querySelectorAll(".navigation_Desktop");
     navigation_Desktop[0].addEventListener("click",function(){Zoom_Fun()})
     navigation_Desktop[1].addEventListener("click",function(){Pan_Fun()})

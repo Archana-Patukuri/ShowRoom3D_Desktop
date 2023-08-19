@@ -2,10 +2,7 @@ import { furnitureTypesUI } from "../../systems/UI-Generators/furnitureTypesUI";
 import { gltfLoad } from "../gltf_loader/gltfLoad.js";
 import { animationUI } from "../../systems/UI-Generators/animationUI";
 import { AnimationMixer, Group } from "three";
-let mobile = false;
-if (/Android|iPhone/i.test(navigator.userAgent)) {
-  mobile = true;
-}
+
 class FurnitureContainer {
   constructor(assetsList, furnitureTypesUI, category, initialModelID,scene,renderer) {
     this.assetsList = assetsList;
@@ -23,16 +20,11 @@ class FurnitureContainer {
     //AnimationMixers to store animationMixer for each GLTF model loaded
     this.animationMixers = [];
     console.log(this.furnitureTypesUI.id)
-    if(mobile){
-    //Get the element where we will add the animations UI
-    this.toastbody = document
-      .getElementById(`${this.furnitureTypesUI.id}Toast`)
-      .getElementsByClassName("toast-body")[0];
-    }else{
+   
       this.toastbody = document
       .getElementById(`${this.furnitureTypesUI.id}_AnimationsUI`)
       .getElementsByClassName("animationsUI")[0];
-    }
+    
     this.currentAnimationMixer;
   }  
   async loadModel(URL, i, spinner) {

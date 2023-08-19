@@ -7,26 +7,12 @@ function exportScene(scene) {
         binary: true,
         maxTextureSize: 4096,
     };
-    let renderUI=document.getElementById("renderUI")
-    let renderUI_button=document.getElementById("renderUI_button")
-    let closeRender=document.getElementById("closeRender");
-    closeRender.addEventListener("click",function(){
-        renderUI.style.display="none" 
-    })
-    renderUI_button.addEventListener("click",function(){
-        renderUI.style.display="block" 
-    })
+
     // Define the Flask server URL
     const flaskURL = 'http://viscommerce-cloud.com'; // Replace with your Flask server URL    
-
-    let RenderButton=document.getElementById("RenderButton")
-    // Click event listener for the export button
     const exportButton = document.getElementById("Export_Image");
     const exportButton1 = document.getElementById("Export_Video");
-    RenderButton.addEventListener("click",function(){
-        let email="sccene@gmail.com"
-        exportSceneFn(scene, email); 
-    })
+    
     //Render Image
     exportButton.addEventListener("click", function () {
         const emailInput = document.getElementById("exampleInputEmail1");

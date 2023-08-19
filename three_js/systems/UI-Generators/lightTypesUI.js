@@ -1,7 +1,3 @@
-let mobile = false;
-if (/Android|iPhone/i.test(navigator.userAgent)) {
-  mobile = true;
-}
 const lightTypesUI = function (
   assetsList,
   UIContainer,
@@ -47,13 +43,10 @@ const lightTypesUI = function (
     img.alt = "chair_1";
     img.style.background="#ffffff";
     
-    if(mobile){      
-      label.className = "btn px-0 py-0 position-relative border-2";       
-      img.className = "img-thumbnail p-0 img-max-width-1";       
-      }else{    
+    
         label.className = "btn px-0 py-0 position-relative border-1"; 
         img.className = "Objectthumbnail";        
-      }
+      
     spinnerContainer.appendChild(spinner);
 
     spinnerContainer.style.display = "none";    

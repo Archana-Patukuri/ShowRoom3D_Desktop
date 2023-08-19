@@ -6,9 +6,7 @@ function resetAndHelp(camera){
       });
       await myPromise;  
     }      
-    reset.addEventListener("click",function(){
-      reset_Fun()
-    })
+   
     async function ResetView_Fun(){
       let myPromise = new Promise(function(resolve) {        
         camera.position.set(0.01,1.5,4.7);                  
@@ -23,15 +21,8 @@ function resetAndHelp(camera){
     ResetView.onclick = function() {
       ResetView_Fun()
     }
-    let reload_home=document.getElementById("reload_home");
-    reload_home.addEventListener("click",function(){
-      reset_Fun()
-    })
-    let reset_home=document.getElementById("reset_home");
-    reset_home.addEventListener("click",function(){
-      camera.position.set(0.01,2.165,4.73); 
-      console.log("camera position set to default")
-    })
+   
+  
     document.addEventListener("keydown", onDocumentKeyDown, false);
     async function onDocumentKeyDown(event) {
     var keyCode = event.which;
@@ -46,10 +37,7 @@ function resetAndHelp(camera){
       await myPromise;  
     }      
 
-    let Help=document.getElementById("Help");
-    Help.addEventListener("click",function(){
-      Help_Fun()
-    })
+  
     let help3DButton=document.getElementById("help3DButton")
     help3DButton.addEventListener("click",function(){
       Help_Fun()

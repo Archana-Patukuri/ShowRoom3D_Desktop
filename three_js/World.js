@@ -71,10 +71,6 @@ import {
   CSS2DObject,
   CSS2DRenderer,
 } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
-import {
-  CSS3DObject,
-  CSS3DRenderer,
-} from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 let mobile = false;
 if (/Android|iPhone/i.test(navigator.userAgent)) {
   mobile = true;
@@ -116,17 +112,12 @@ let selectableObjects = [];
 let transformControl;
 let box,outlinePass,effectFXAA;
 let chairsUIContainer,tablesUIContainer,blindsUIContainer,lightsUIContainer
-if(mobile){
- chairsUIContainer = document.getElementById("chairTypesUI");
- tablesUIContainer = document.getElementById("tableTypesUI");
- blindsUIContainer = document.getElementById("blindsTypesUI");
- lightsUIContainer = document.getElementById("lightsTypesUI");
-}else{
+
   chairsUIContainer = document.getElementById("Chair_Desktop");
   tablesUIContainer = document.getElementById("Table_Desktop");
   blindsUIContainer = document.getElementById("windowBlinds_Desktop");
   lightsUIContainer = document.getElementById("lightsUIContainer_Desktop");
-}
+
 
 let UIContainer;
 let roomParent;
@@ -195,28 +186,7 @@ class World {
     grid.position.y = - 0.02;
     grid.material.transparent = true;
     scene.add( grid );   
-    
-    var script = document.createElement('script');  
-    script.src="//cdn.jsdelivr.net/npm/eruda"; 
-        document.body.appendChild(script);            
-           script.onload = function () {            
-             eruda.init();  
-             eruda.destroy()            
-           }      
-           function console_Fun(){
-            eruda.init();
-           }
-           function console_Else_Fun(){
-            eruda.destroy()                    
-           }                 
-      let ConsoleObj=document.getElementById("Console");
-      ConsoleObj.addEventListener("change",(e)=>{            
-        if(e.target.checked){                                
-          console_Fun();
-        }else{          
-          console_Else_Fun();                  
-        }
-      })   
+       
     box = new Box3();        
 
     fanParent=new Group();
@@ -340,22 +310,18 @@ class World {
       input.id = gltfData.userData.variants[i]; 
 
       let label = document.createElement("label");
-      if(mobile){
-        label.className = "mt-1";
-      }else{
+      
         label.className = "themes_Desktop_Label";
-      }
+      
       
       label.setAttribute("for", gltfData.userData.variants[i]);
       label.innerHTML=gltfData.userData.variants[i]
 
       div2.appendChild(input);
       div2.appendChild(label);
-      if(mobile){
-        themesDiv.appendChild(div2); 
-      }else{      
+        
       Themes_Desktop.appendChild(div2)      
-      }
+      
        async function input_var_Fun(){
         let myPromise = new Promise(function(resolve) {                                                                        
           gltfData.functions.selectVariant(gltfData.scene,gltfData.userData.variants[i] );         
@@ -608,26 +574,13 @@ async loadLightsGLTF() {
     const dayLightSettings_Fun = async () => {
       const { hdri1 } = await hdriLoad();                 
         dayLightSettings(hdri1);      
-    }; 
-     
-    let lightsPresetsUI = document.querySelectorAll(".lightPreset");
-    lightsPresetsUI[0].addEventListener('change',function(){
-      if (this.value == "DayLightPreset") {
-        dayLightSettings_Fun();        
-      } 
-    })
+    };       
   
     const NightLight1_Fun = async () => {
       const {hdri0 } = await hdriLoad();             
         nightLightSettings1(hdri0);        
     };    
-    
-    lightsPresetsUI[1].addEventListener('change',function(){
-      if (this.value == "NightLight1") {
-        NightLight1_Fun();
-      } 
-    })     
-
+       
     NightLight1_Fun();        
     let dayLight_Desktop=document.getElementById("dayLight_Desktop");
     let nightLight_Desktop=document.getElementById("nightLight_Desktop");
@@ -923,23 +876,7 @@ async loadLightsGLTF() {
     viewPoints(camera);         
 
   let tranform_Desktop=document.querySelectorAll(".tranform_Desktop");
-  tranform_Desktop[0].addEventListener("change", selectToolToggle);
-
-    let selectToolBtn = document.getElementById("selectTool");
-    selectToolBtn.addEventListener("change", selectToolToggle);
-
-    let measurementsToolBtn = document.getElementById("measurementsTool");
-    measurementsToolBtn.addEventListener("change", (event) => {
-      // console.log(event.target.checked);
-      if (event.target.checked) {
-        selectToolBtn.checked = false;
-        selectToolBtn.dispatchEvent(new Event("change"));
-      }
-    });
-
-    let transformButtons = document.querySelectorAll(
-      "input[name=transformTools]"
-    );
+  tranform_Desktop[0].addEventListener("change", selectToolToggle);    
 
     let transforms=document.querySelectorAll(".transforms");
     transformControl = new TransformControls(camera, renderer.domElement);
@@ -948,35 +885,21 @@ async loadLightsGLTF() {
       raycaster.layers.set( 0 );
       if (mobile) {
         if (event.target.checked) {
-          renderer.domElement.addEventListener("click", onPointerMove);
-          transforms[0].style.backgroundColor="#FF5A50";
-          transforms[0].style.color="#FFFFFF";
-
-          transforms[1].style.backgroundColor="#FFFFFF";
-          transforms[1].style.color="#000000";         
+          renderer.domElement.addEventListener("click", onPointerMove);           
         } else { 
           renderer.domElement.removeEventListener("click", onPointerMove);
           outlinePass.selectedObjects = [];
           selectedObjects = [];
-
-          transforms[0].style.backgroundColor="#FFFFFF";
-          transforms[0].style.color="#000000"
           transformControl.detach();
         }
       } else {
         if (event.target.checked) {
           renderer.domElement.addEventListener("pointerdown", selectEvent);          
-          transforms[0].style.backgroundColor="#FF5A50";
-          transforms[0].style.color="#FFFFFF";
-
-          transforms[1].style.backgroundColor="#FFFFFF";
-          transforms[1].style.color="#000000"
+         
         } else {
           renderer.domElement.removeEventListener("pointerdown", selectEvent);
           outlinePass.selectedObjects = [];
-          selectedObjects = [];
-          transforms[0].style.backgroundColor="#FFFFFF";
-          transforms[0].style.color="#000000";
+          selectedObjects = [];         
           transformControl.detach();
         }
       }
@@ -1044,16 +967,11 @@ async loadLightsGLTF() {
       transformControl.getRaycaster().layers.set(layer);
     }
 
-    if(mobile){
-    //Translate rotate buttons
-    transformButtons.forEach((elem) => {
-      elem.addEventListener("click", allowUncheck);
-    });    
-  }else{
+  
     tranform_Desktop[2].addEventListener("click", allowUncheck);    
     tranform_Desktop[3].addEventListener("click", allowUncheck);    
     tranform_Desktop[4].addEventListener("click", allowUncheck);    
-  }
+  
 
     function allowUncheck(e) {
       transformControl.setMode(e.target.value);      
@@ -1083,53 +1001,31 @@ async loadLightsGLTF() {
         function translate_Fun(){
           transformControl.showY=true;  
           transformControl.showX=true;
-          transformControl.showZ=true;            
-          transforms[3].style.backgroundColor="#FF5A50";
-          transforms[3].style.color="#FFFFFF";  
+          transformControl.showZ=true;                      
         }
-        function translate_Else_Fun(){
-          transforms[3].style.backgroundColor="#FFFFFF";
-          transforms[3].style.color="#000000"; 
-        }       
+           
         function rotate_Fun(){
           transformControl.showX=false;
           transformControl.showY=true;
-          transformControl.showZ=false; 
-          transforms[4].style.backgroundColor="#FF5A50";
-          transforms[4].style.color="#FFFFFF";   
+          transformControl.showZ=false;           
         }
-        function rotate_Else_Fun(){
-          transforms[4].style.backgroundColor="#FFFFFF";
-          transforms[4].style.color="#000000";
-        }               
+                
         function scale_Fun(){
           transformControl.showX=true;
           transformControl.showZ=true; 
-          transformControl.showY=true; 
-          transforms[5].style.backgroundColor="#FF5A50";
-          transforms[5].style.color="#FFFFFF";  
+          transformControl.showY=true;           
         }
-        function scale_Else_Fun(){
-          transforms[5].style.backgroundColor="#FFFFFF";
-          transforms[5].style.color="#000000"  
-        }                                           
+                                            
       
         if(e.target.value=="translate"){      
           translate_Fun()                
-        }else{
-          translate_Else_Fun()    
         }
         if(e.target.value=="rotate"){          
           rotate_Fun()       
-        }else{
-          rotate_Else_Fun()    
         }
         if(e.target.value=="scale"){
           scale_Fun()     
-        }else{
-          scale_Else_Fun()      
-        }       
-
+        }    
       }
 
       function Unselect_Fun(){
@@ -1141,25 +1037,9 @@ async loadLightsGLTF() {
   
         transformControl.reset();
         transformControl.detach();
-        selectedObjects=[];
-
-        for(let i=0;i<4;i++){
-          if(i!=1){
-          transforms[i].style.backgroundColor="#FFFFFF";
-          transforms[i].style.color="#000000"
-          }else{
-            transforms[1].style.backgroundColor="#FF5A50";
-            transforms[1].style.color="#FFFFFF";  
-          }
-        }
+        selectedObjects=[];        
        
-      }     
-      let Unselect=document.getElementById("Unselect");      
-      Unselect.addEventListener("change", (e) => {
-        if (e.target.checked) {
-          Unselect_Fun();
-        }
-      });
+      }         
       tranform_Desktop[1].addEventListener("change", (e) => {
         if (e.target.checked) {
           Unselect_Fun();
@@ -1182,25 +1062,10 @@ async loadLightsGLTF() {
           console.log("select an object to delete")
         }                                                                                  
           transformControl.detach();            
-          //console.log("memory ",renderer.info.memory)
-  
-          transforms[2].style.backgroundColor="#FF5A50";
-          transforms[2].style.color="#FFFFFF"; 
+          //console.log("memory ",renderer.info.memory)   
         
-      }
-      function del_Else_Fun(){
-        transforms[2].style.backgroundColor="#FFFFFF";
-        transforms[2].style.color="#000000";
-      }     
-    
-      let del=document.getElementById("DeleteT");
-      del.addEventListener("change",(e)=>{            
-        if(e.target.checked){                                
-          del_Fun();
-        }else{
-          del_Else_Fun();
-        }
-      })
+      }    
+        
       tranform_Desktop[5].addEventListener("change", (e) => {
         if (e.target.checked) {
           del_Fun();
@@ -1222,21 +1087,12 @@ async loadLightsGLTF() {
           }
         })
       }                  
-      let bounding_box=document.getElementById("bounding_box");
-      bounding_box.addEventListener("change",(e)=>{            
-        if(e.target.checked){                                
-          bounding_box_Fun();
-        }else{          
-          bounding_box_Else_Fun();                  
-        }
-      })      
+   
     transformControl.addEventListener("dragging-changed", function (event) {
       cameraControls.enabled = !event.value;
     });
   }
-  createMeasurements() {
-    let measurementsToolBtn = document.getElementById("measurementsTool");
-    measurementsToolBtn.addEventListener("change", selectToolToggleM);
+  createMeasurements() {   
     let measurements_Desktop=document.getElementById("measurements_Desktop");
     measurements_Desktop.addEventListener("change", selectToolToggleM);
     let measurements=document.querySelector(".Measurements");
