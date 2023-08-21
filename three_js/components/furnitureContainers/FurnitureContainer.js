@@ -2,7 +2,7 @@ import { furnitureTypesUI } from "../../systems/UI-Generators/furnitureTypesUI";
 import { gltfLoad } from "../gltf_loader/gltfLoad.js";
 import { animationUI } from "../../systems/UI-Generators/animationUI";
 import { AnimationMixer, Group } from "three";
-
+import { shadowEnabler } from "../../systems/shadowEnabler";
 class FurnitureContainer {
   constructor(assetsList, furnitureTypesUI, category, initialModelID,scene,renderer) {
     this.assetsList = assetsList;
@@ -42,7 +42,8 @@ class FurnitureContainer {
       this.spinnerDisplay(spinner, "block");
       let modelURL = await fetch(URL); 
       const { gltfData } = await gltfLoad(modelURL.url);      
-      let loadedModel = gltfData.scene;         
+      let loadedModel = gltfData.scene;  
+      shadowEnabler(loadedModel)           
       this.models[i] = loadedModel;
 
       let mixer = new AnimationMixer(this.models[i]);

@@ -16,12 +16,7 @@ function resetAndHelp(camera){
     let reset_Desktop=document.getElementById("reset_Desktop")
     reset_Desktop.onclick = function() {
       ResetView_Fun()
-    }
-    let ResetView=document.getElementById("reset");
-    ResetView.onclick = function() {
-      ResetView_Fun()
-    }
-   
+    }      
   
     document.addEventListener("keydown", onDocumentKeyDown, false);
     async function onDocumentKeyDown(event) {

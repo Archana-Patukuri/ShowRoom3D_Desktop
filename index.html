@@ -8,7 +8,7 @@
   <!-- <script src="https://kit.fontawesome.com/6a15cfc39f.js" crossorigin="anonymous"></script> -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">   
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">       
 
   <link rel="stylesheet" href="./main.css" type="text/css" />  
  
@@ -33,74 +33,47 @@
     crossorigin="anonymous"></script>
   <div class="container-fluid vh-100">
 
-    <!-- NAVIGATION -->
-    <div class="row">    
-  <nav class="navbar w-100 navbar-light bg-light d-md-none fixed-top w-100">
-    <div class="container-fluid">
-      <h1 style="font-size:18px ;color:black;">Room3D    <!-- <sub style="font-weight: 100;font-size: 10px;">-Design your workspace in 3D</sub> --></h1>
-      <div>
-        <button type="reset" aria-label="reset" role="button" id="reset" class="reset-button border-0 bg-transparent"> <svg width="20" height="20"
-            viewBox="0 0 18 19" fill="red" style="background-color:none;" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M12.6375 2.86572C14.943 4.1983 16.5 6.75568 16.5 9.68491C16.5 13.9831 13.1445 17.4823 9 17.4823C4.8555 17.4823 1.5 13.9831 1.5 9.68491C1.5 6.21992 3.6795 3.27551 6.6975 2.26243C7.0905 2.13038 7.3035 1.70086 7.17375 1.30322C7.04325 0.905571 6.61875 0.690052 6.22575 0.822095C2.61825 2.03249 0 5.54301 0 9.68491C0 14.8315 4.038 19 9 19C13.962 19 18 14.8315 18 9.68491C18 6.32236 16.275 3.37568 13.695 1.73805L14.6033 1.49218C15.003 1.38366 15.2408 0.967039 15.1335 0.562563C15.0263 0.158086 14.6152 -0.0824745 14.2155 0.0260435L11.3175 0.811471C10.917 0.919989 10.68 1.33661 10.7873 1.74108L11.5635 4.67335C11.6708 5.07782 12.0825 5.31838 12.4823 5.20987C12.882 5.10135 13.1197 4.68473 13.0125 4.28025L12.6375 2.86572V2.86572Z"
-              fill="#F75146" />
-          </svg></button>
-        <button class="burger-menu" id="burgerMenu" value="off" aria-label="burgerMenu" role="button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="red" class="bi bi-list"
-            viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-          </svg>
-          <div class="border"></div>
-        </button>
-      </div>
-  </nav>
-  <!--nav dailog box-->
-  <div id="myModalnav" class="modal modal-drag movableDialog " style="margin-top:5vh;float: right;">
-    <!-- Modal content -->
-    <div class="modal-dialog" style="display: flex; justify-content: end;">
-      <div class="modal-content" style=" width:220px; height: 350px; border-radius: 15px; border:#FF5A50 solid 1px">
-        <div class=" modal-drag-handle">
-          <button id="closenav" class="backButton">
-            <i class="fa fa-angle-double-right" style="font-size:20px"></i>
-          </button>
-        </div>
-        <div class="modal-body" style="overflow: hidden;">
-
-          <button type="button" class="navButton angle burgerMenuOptBtn">
-            Welcome <i class="fa fa-angle-right" style="font-size:15px;"></i>
-          </button>
-          <button type="button" class="navButton angle burgerMenuOptBtn">
-            Furniture <i class="fa fa-angle-right" style="font-size:15px; color:transperent;"></i>
-          </button>
-          <button type="button" class="navButton angle burgerMenuOptBtn">
-            Lighting <i class="fa fa-angle-right" style="font-size:15px; color:transperent;"></i>
-          </button>
-          <button type="button" class="navButton angle burgerMenuOptBtn">
-            Arrangement <i class="fa fa-angle-right" style="font-size:15px; color:transperent;"></i>
-          </button>
-          <button type="button" class="navButton angle burgerMenuOptBtn">
-            Navigation <i class="fa fa-angle-right" style="font-size:15px; color:transperent;"></i>
-          </button>
-          <button type="button" class="navButton angle burgerMenuOptBtn">
-            Advanced <i class="fa fa-angle-right" style="font-size:15px; color:transperent;"></i>
-          </button>
-          <button type="button" class="navButton angle burgerMenuOptBtn">
-            Setting <i class="fa fa-angle-right" style="font-size:15px; color:transperent;"></i>
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-    </div>
-
     <div class="row ">
+      <div class="home_card_container" id="home_card_container_Desktop">
+        <div class="d-flex">
+        <div style="display: flex;margin-top: 55px;margin-left: -15px;margin-bottom: 25px;">
+          <img src="./icons/desktopUI/logo.svg" style="width: 30px;height: 30px;"/>                   
+          <img src="./icons/desktopUI/name.svg" style="width: 120px;height: 30px;"/>                               
+        </div>
+        <div id="home_card_close" style="margin-left: 300px;margin-bottom: 20px;margin-top: 20px;">
+          <img id="home_card_close_Desktop" src="./icons/close.png" style="width: 15px;height: 15px;"/>                   
+      </div>
+    </div>
+      <div>
+        <h1 class="home_card_head">Welcome to Showroom3D</h1>
+          <ul >
+              <li class="home_card_points">A Try & Buy 3DCommerce innovation</li>
+              <li class="home_card_points">Leapfrogging Amazon Showroom</li>
+              <li class="home_card_points">Mix, match, customize & layout furniture to your liking</li>
+              <li class="home_card_points">Live lighting and measurements</li>
+              <li class="home_card_points">Paints and flooring</li>
+              <li class="home_card_points">Photo-realistic images and video.</li>
+          </ul>    
+          <div class="home_video_tour_container">                                        
+          <div class="d-flex flex-row justify-content-center">
+            <a class="home_video_tour_btn" style="text-decoration: none;" id="Tour" href="https://youtu.be/wYvqHJ7FNAM" target="_blank">
+              Video Tour
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 27 16" fill="none">
+                <path d="M1 7C0.447715 7 -4.82823e-08 7.44772 0 8C4.82823e-08 8.55228 0.447715 9 1 9L1 7ZM26.7071 8.7071C27.0976 8.31658 27.0976 7.68342 26.7071 7.29289L20.3431 0.92893C19.9526 0.538406 19.3195 0.538406 18.9289 0.928931C18.5384 1.31946 18.5384 1.95262 18.9289 2.34314L24.5858 8L18.9289 13.6569C18.5384 14.0474 18.5384 14.6805 18.9289 15.0711C19.3195 15.4616 19.9526 15.4616 20.3431 15.0711L26.7071 8.7071ZM1 9L26 9L26 7L1 7L1 9Z" fill="#FF5A50"/>
+              </svg>                    
+            </a>                                              
+          </div>  
+          <img src="./icons/3DCommerceLogo.png" class="commerce_logo" style="margin-top: -90px;margin-left: 570px;"/>     
+        </div>
+          
+      </div>            
+      </div> 
       <!-- 3D Scene Container -->
       <div class="col-lg-7 m-0 p-0 position-relative links" id="3dcontainer">       
-        
-        <!-- <div id="css"></div> -->
-        <div id="scene-container"></div> 
+
+        <div id="scene-container"></div>        
+
+        <div id="scene_buttons" style="display: none;">
         <div style="display: flex;">
       <button id="help3DButton" class="position-fixed top-50 start-50 button3">
         <svg class="helpImage" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -110,7 +83,7 @@
         </svg>
       </button>
       <div>
-      <button id="dayLight_Desktop" style="display: none;" class="position-fixed top-50 start-50 button3">
+      <button id="nightLight_Desktop" style="display: none;" class="position-fixed top-50 start-50 button3">
         <svg class="LightModesImage" xmlns="http://www.w3.org/2000/svg" width="55" height="30" viewBox="0 0 55 30" fill="none">
         <rect width="54.2308" height="30" rx="15" fill="url(#paint0_linear_767_11661)"/>
         <rect x="4.61523" y="4.61542" width="20.7692" height="20.7692" rx="10.3846" fill="url(#paint1_radial_767_11661)"/>
@@ -129,7 +102,7 @@
         </defs>
       </svg>
     </button>
-    <button id="nightLight_Desktop" class="position-fixed top-50 start-50 button3">
+    <button id="dayLight_Desktop" class="position-fixed top-50 start-50 button3">
       <svg class="LightModesImage1" xmlns="http://www.w3.org/2000/svg" width="55" height="30" viewBox="0 0 55 30" fill="none">
         <rect width="54.2308" height="30" rx="15" fill="url(#paint0_linear_429_945)"/>
         <path d="M42.4457 10.9351C42.2196 9.22407 41.5466 7.6842 40.5647 6.40787C40.3269 6.09917 40.5643 5.64751 40.9515 5.69384C45.4142 6.23208 49.0749 9.89902 49.3014 14.6999C49.5143 19.2316 46.3756 23.368 41.9525 24.3789C38.8835 25.0805 35.8972 24.2298 33.7147 22.4025C33.42 22.1553 33.5796 21.6699 33.9624 21.6356C34.064 21.6269 34.1667 21.6154 34.2692 21.6018C39.4725 20.9145 43.1332 16.1394 42.4457 10.9351Z" fill="white"/>
@@ -148,7 +121,8 @@
       </svg>
     </button>
     </div>
-    </div>
+        </div>
+      </div>
        <div id="loadingSpinner" class="position-absolute top-50 start-50 translate-middle" style="color:#FFFFFF"><strong>Loading...</strong>
           <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>        
         </div> 
@@ -158,50 +132,13 @@
         
         <div id="ar-prompt">
           <img src="prompt/hand.svg">
-        </div>
-      
-
+        </div>      
       </div>
 
       <!-- UI -->
       <div class="col border overflow-auto" id="UI">
 
-      <div id="desktopUI">
-
-        <div class="home_card_container" id="home_card_container_Desktop">
-          <div class="d-flex">
-          <div style="display: flex;margin-top: 55px;margin-left: -15px;margin-bottom: 25px;">
-            <img src="./icons/desktopUI/logo.svg" style="width: 30px;height: 30px;"/>                   
-            <img src="./icons/desktopUI/name.svg" style="width: 120px;height: 30px;"/>                               
-          </div>
-          <div id="home_card_close" style="margin-left: 300px;margin-bottom: 20px;margin-top: 20px;">
-            <img id="home_card_close_Desktop" src="./icons/close.png" style="width: 15px;height: 15px;"/>                   
-        </div>
-      </div>
-        <div>
-          <h1 class="home_card_head">Welcome to Showroom3D</h1>
-            <ul >
-                <li class="home_card_points">A Try & Buy 3DCommerce innovation</li>
-                <li class="home_card_points">Leapfrogging Amazon Showroom</li>
-                <li class="home_card_points">Mix, match, customize & layout furniture to your liking</li>
-                <li class="home_card_points">Live lighting and measurements</li>
-                <li class="home_card_points">Paints and flooring</li>
-                <li class="home_card_points">Photo-realistic images and video.</li>
-            </ul>    
-            <div class="home_video_tour_container">                                        
-            <div class="d-flex flex-row justify-content-center">
-              <a class="home_video_tour_btn" style="text-decoration: none;" id="Tour" href="https://youtu.be/wYvqHJ7FNAM" target="_blank">
-                Video Tour
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 27 16" fill="none">
-                  <path d="M1 7C0.447715 7 -4.82823e-08 7.44772 0 8C4.82823e-08 8.55228 0.447715 9 1 9L1 7ZM26.7071 8.7071C27.0976 8.31658 27.0976 7.68342 26.7071 7.29289L20.3431 0.92893C19.9526 0.538406 19.3195 0.538406 18.9289 0.928931C18.5384 1.31946 18.5384 1.95262 18.9289 2.34314L24.5858 8L18.9289 13.6569C18.5384 14.0474 18.5384 14.6805 18.9289 15.0711C19.3195 15.4616 19.9526 15.4616 20.3431 15.0711L26.7071 8.7071ZM1 9L26 9L26 7L1 7L1 9Z" fill="#FF5A50"/>
-                </svg>                    
-              </a>                                              
-            </div>  
-            <img src="./icons/3DCommerceLogo.png" class="commerce_logo" style="margin-top: -90px;margin-left: 570px;"/>     
-          </div>
-            
-        </div>            
-        </div> 
+      <div id="desktopUI" >
 
         <div id="desktopUIContainer" style="display: none;">
         <div class="d-flex" style="height: 100%;width: 100%;">
@@ -556,7 +493,7 @@
           </div>
           <img id="reset_Desktop" src="./icons/desktopUI/reset.svg" width="15px" height="15px" style="margin-top: 8px;"/>
           </div>
-          <label style="font-size: 12px;font-weight: 500;margin-left: 5px;">Arrangement</label>
+          <label style="font-size: 12px;font-weight: 500;" class="separate_Line">Arrangement</label>
           <div class="d-flex flex-column"> 
             <div>
             <input type="checkbox" class="btn-check tranform_Desktop" id="select_Desktop" autocomplete="off">
@@ -583,7 +520,7 @@
             
           </div>
           </div>
-            <label style="font-size: 12px;font-weight: 500;margin-left: 5px;">Navigation</label>                      
+            <label style="font-size: 12px;font-weight: 500;width: 100%;" class="separate_Line">Navigation</label>                      
             <div>
             <input type="checkbox" class="btn-check navigation_Desktop" id="zoom_Desktop" autocomplete="off">
             <label for="zoom_Desktop">  <img src="./icons/desktopUI/zoom.svg" width="15px" height="15px" style="margin-right: 5px;margin-left: 5px;"/></label>  
@@ -592,7 +529,7 @@
             <input type="checkbox" class="btn-check navigation_Desktop" id="rotateScene_Desktop" autocomplete="off">
             <label for="rotateScene_Desktop"><img src="./icons/desktopUI/rotateScene.svg" width="15px" height="15px"/></label>                                                                           
             </div>
-            <button class="accordion d-flex">Themes <p id="downArrowThemes" style="margin-left: 30px;"><i class="arrow down"></i></p><p id="upArrowThemes" style="display: none;margin-left: 30px;"><i class="arrow up" ></i></p></button>
+            <button class="accordion d-flex" style="margin-top: 5px;">Themes <p id="downArrowThemes" style="margin-left: 30px;"><i class="arrow down"></i></p><p id="upArrowThemes" style="display: none;margin-left: 30px;"><i class="arrow up" ></i></p></button>
             <div class="panel"> 
               <div id="Themes_Desktop">                                        
               </div>

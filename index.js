@@ -22,34 +22,34 @@ async function main() {
  
     let load_Furniture_Desktop=document.getElementById("load_Furniture_Desktop");
     load_Furniture_Desktop.addEventListener("click",async function(){
-      delta = clock.getDelta();
+      // delta = clock.getDelta();
       Spinner.style.display="block";
-      await Promise.all([                 
+      // await Promise.all([                 
         await world.loadTableGLTF(),                              
         await world.loadChairGLTF(),              
-      ]);      
+      // ]);      
       Spinner.style.display="none";
-      delta = clock.getDelta();
-      console.log("furniture loading time = ",delta.toPrecision(3),"secs")        
+      // delta = clock.getDelta();
+      // console.log("furniture loading time = ",delta.toPrecision(3),"secs")        
     })
     let load_Lighting_Desktop=document.getElementById("load_Lighting_Desktop");
     let initialControlsContainer=document.querySelector(".initialControlsContainer")
     load_Lighting_Desktop.addEventListener("click",async function(){
-      delta = clock.getDelta();
+      // delta = clock.getDelta();
       Spinner.style.display="block";
       initialControlsContainer.style.display="block"
-      await Promise.all([                                                                      
+      // await Promise.all([                                                                      
         await world.loadCylindricalLight(), 
         await world.lightPresets()      
-      ]);       
+      // ]);       
       
     Spinner.style.display="none"; 
-    delta = clock.getDelta();
-    console.log("lighting loading time = ",delta.toPrecision(3),"secs") 
+    // delta = clock.getDelta();
+    // console.log("lighting loading time = ",delta.toPrecision(3),"secs") 
     })
     let load_Accessories_Desktop=document.getElementById("load_Accessories_Desktop");
     load_Accessories_Desktop.addEventListener("click",async function(){
-      delta = clock.getDelta();
+      // delta = clock.getDelta();
       Spinner.style.display="block"; 
       await Promise.all([                                   
         // await world.loadPlants(),
@@ -59,8 +59,8 @@ async function main() {
         await world.loadVaseGLTF() 
       ]);                               
       Spinner.style.display="none"; 
-      delta = clock.getDelta();
-      console.log("accessories loading time = ",delta.toPrecision(3),"secs") 
+      // delta = clock.getDelta();
+      // console.log("accessories loading time = ",delta.toPrecision(3),"secs") 
       })  
   }  
 

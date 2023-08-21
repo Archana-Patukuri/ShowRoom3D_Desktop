@@ -66,7 +66,11 @@ const furnitureTypesUI = function (
     
     UIContainer.appendChild(input);
     UIContainer.appendChild(label);       
-
+    let container_3d=document.getElementById("3dcontainer");                
+    
+    input.addEventListener("click", function () {              
+        container_3d.appendChild(spinnerContainer);                           
+    });
   }
 };
 
