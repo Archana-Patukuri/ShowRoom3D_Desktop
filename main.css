@@ -21,7 +21,10 @@
 padding: 0px 10px 3px 10px;
 border-top: 1px solid #E5E5E5;
 }
-
+.separate_Line1{
+  padding-top: 5px;    
+  border-top: 1px solid #E5E5E5;
+  }
 .accordion {    
   cursor: pointer;
   padding: 8px;

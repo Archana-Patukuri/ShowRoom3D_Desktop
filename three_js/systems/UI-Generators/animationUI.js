@@ -170,7 +170,7 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
   }
   let variants_label = document.createElement("label");
   variants_label.innerText="Material Variants";
-  variants_label.className="material_variants"
+  variants_label.className="material_variants separate_Line1"
   mainDiv.appendChild(variants_label);
   mainDiv.appendChild(div2);
 
