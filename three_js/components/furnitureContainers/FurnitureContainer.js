@@ -21,9 +21,11 @@ class FurnitureContainer {
     this.animationMixers = [];
     console.log(this.furnitureTypesUI.id)
    
-      this.toastbody = document
+     /*  this.toastbody = document
       .getElementById(`${this.furnitureTypesUI.id}_AnimationsUI`)
-      .getElementsByClassName("animationsUI")[0];
+      .getElementsByClassName("animationsUI")[0]; */
+      this.toastbody = document.getElementById("animationsUI")
+      
     
     this.currentAnimationMixer;
   }  

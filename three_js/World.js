@@ -393,7 +393,12 @@ async loadLightsGLTF() {
   }
   //LoadChair
   async loadChairGLTF() {  
-      if (window.Worker) {
+        await chairModels.loadModel();    
+        chairModels.parentGroup.position.set(0, 0, -0.5);
+        scene.add(chairModels.parentGroup);    
+        selectableObjects.push(chairModels.parentGroup);    
+        renderer.render(scene, camera);  
+      /* if (window.Worker) {
       const myWorker = new Worker("webworker.js");      
       myWorker.postMessage("Chair");                  
     
@@ -408,7 +413,7 @@ async loadLightsGLTF() {
       }
     } else {
       console.log('Your browser doesn\'t support web workers.');
-    }            
+    }       */      
   }    
   //LoadPlants
   async loadPlants() {     

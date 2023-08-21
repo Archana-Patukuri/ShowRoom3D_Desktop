@@ -60,12 +60,14 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
       form.appendChild(input);
       form.appendChild(label);
       div1.appendChild(form);
-      mainDiv.appendChild(div1);
-
-      
+      mainDiv.appendChild(div1);      
       
     }
-     
+    let animation_label = document.createElement("label");
+    animation_label.innerText="Dynamics";
+    animation_label.className="Animations"
+    mainDiv.appendChild(animation_label);
+    mainDiv.appendChild(div1);
   }else{   
     for (let i = 0; i < gltfData.animations.length; i++) {
       form = document.createElement("div");
