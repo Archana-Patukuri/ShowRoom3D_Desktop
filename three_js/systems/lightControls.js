@@ -4,19 +4,14 @@ import elementFromHtmlString from '../utils/elementFromHtmlString';
 import { Color } from 'three';
 async function lightControls(
   scene,
-  renderer,
-  prompt,
+  renderer, 
   sunLight,
-  ambientLight,
-  camera,
-  clock,
-  stateList,
-  gui,
-  lightState,
+  ambientLight,     
   ceilingLight,
+  desktopLight,
+  stateList,
   wallWasherLightArray
-) {
-  // const lightState = new LightStore();
+) {  
   const { background0,hdri0,hdri1 } = await hdriLoad(); 
 
   const controlsArray = [
@@ -58,7 +53,7 @@ async function lightControls(
       decay: 2,
       color: '#ffffff',
       intensity: 15,
-      light: scene.getObjectByName('Desktop_Lamp_Light002'),
+      light: desktopLight,
     },
     {
       id: 'wallWasherLight',

@@ -108,7 +108,6 @@ let clock;
 let plantsParent, lampsParent,mirrorParent,vaseParent,laptopParent,fanParent;
 let composer;
 let chairModels, tableModels, blindsModels,lightsModels;
-let cylindricalLampSpotLight_1,cylindricalLampSpotLight_2,cylindricalLampSpotLight_3,cylindricalLampSpotLight_4
 let gui;   
 
 let mouse = new Vector2();
@@ -170,8 +169,7 @@ class World {
 
     labelRenderer.setSize(container.clientWidth, container.clientHeight)
 
-    scene = createScene();
-
+    scene = createScene();    
     this.lightState = new LightStore(scene);
     renderer = createRenderer(this.lightState);
 
@@ -191,8 +189,8 @@ class World {
     grid.material.opacity = .5;
     grid.position.y = - 0.02;
     grid.material.transparent = true;
-    scene.add( grid );   
-       
+    scene.add( grid );      
+
     box = new Box3();        
 
     fanParent=new Group();
@@ -278,9 +276,17 @@ class World {
     camera.name="PerspectiveCamera"    
     basicControls(scene,camera,cameraControls,renderer);       
     resetAndHelp(camera);  
-    
+    this.loadHDRI();
   
   } 
+  async loadHDRI() {
+    console.time('Initial_HDRI_Loading');
+    const { background0, hdri0, hdri1 } = await hdriLoad();
+    this.background0 = background0;
+    this.hdri0 = hdri0;
+    this.hdri1 = hdri1;
+    console.time('Initial_HDRI_Loading');
+  }
   createUI() {
     //created FurnitureTypesUI from JSON data
     tableModels.createUI();
@@ -288,9 +294,8 @@ class World {
     blindsModels.createUI();
     lightsModels.createUI();
   }  
-  async loadBackground() {        
-    const { hdri0 } = await hdriLoad();          
-      scene.environment = hdri0; 
+
+  async loadBackground() {          
       scene.background=new Color(1,1,1)                
   }
   //LoadRoom
@@ -298,7 +303,9 @@ class World {
          
     let modelURL = await fetch(assets.Room[0].URL); 
     let { gltfData } = await gltfLoad(modelURL.url);
-    let loadedmodel = gltfData.scene;        
+    let loadedmodel = gltfData.scene;  
+    this.room=loadedmodel      
+    console.log(this)
     roomParent.add(loadedmodel); 
     shadowEnabler(loadedmodel)    
    let Themes_Desktop=document.getElementById("Themes_Desktop");
@@ -357,8 +364,8 @@ class World {
     scene.add(roomParent);  
     selectableObjects.push(fanParent);  
     fanLight = scene.getObjectByName("fanLight"); 
-    fanLight.intensity=30  
-    
+    fanLight.intensity=30      
+
     renderer.render(scene, camera);          
   }    
 async loadTableGLTF() {  
@@ -427,7 +434,7 @@ async loadLightsGLTF() {
       myWorker.onmessage =async function(e) {               
         const { gltfData } = await gltfLoad(e.data);
         const loadedmodel = gltfData.scene;  
-        shadowEnabler(loadedmodel)       
+        // shadowEnabler(loadedmodel)       
         const plant1 = loadedmodel;            
         plantsParent.add(plant1);  
         scene.add(plantsParent);     
@@ -458,6 +465,10 @@ async loadLightsGLTF() {
    cylindricalLampSpotLight4 = scene.getObjectByName(
       "Cylindrical_spot_light_4"
     );
+    cylindricalLampSpotLight1.distance = 1;
+    cylindricalLampSpotLight2.distance = 1;
+    cylindricalLampSpotLight3.distance = 1;
+    cylindricalLampSpotLight4.distance = 1;
     renderer.render(scene, camera)    
   }
   //LoadMirror
@@ -467,7 +478,7 @@ async loadLightsGLTF() {
 
     const { gltfData } = await gltfLoad(modelURL.url); 
     const loadedmodel = gltfData.scene; 
-    shadowEnabler(loadedmodel)    
+    // shadowEnabler(loadedmodel)    
     const mirror = loadedmodel;   
     mirrorParent.add(mirror)   
     scene.add(mirrorParent);    
@@ -481,7 +492,7 @@ async loadLightsGLTF() {
 
     const { gltfData } = await gltfLoad(modelURL.url); 
     const loadedmodel = gltfData.scene; 
-    shadowEnabler(loadedmodel)             
+    // shadowEnabler(loadedmodel)             
     scene.add(loadedmodel);        
     renderer.render(scene, camera); 
     
@@ -492,7 +503,7 @@ async loadLightsGLTF() {
 
     const { gltfData } = await gltfLoad(modelURL.url); 
     const loadedmodel = gltfData.scene;  
-    shadowEnabler(loadedmodel)         
+    // shadowEnabler(loadedmodel)         
     scene.add(loadedmodel);        
     renderer.render(scene, camera); 
     
@@ -503,7 +514,7 @@ async loadLightsGLTF() {
 
     const { gltfData } = await gltfLoad(modelURL.url); 
     const loadedmodel = gltfData.scene;  
-    shadowEnabler(loadedmodel)         
+    // shadowEnabler(loadedmodel)         
     scene.add(loadedmodel);        
     renderer.render(scene, camera); 
     
@@ -513,16 +524,14 @@ async loadLightsGLTF() {
    
   let tableLamp = scene.getObjectByName("Desktop_Lamp_Light002");                               
   let sunLight = scene.getObjectByName("Sun");    
-
-  sunLight.intensity = 30;
-    sunLight.castShadow = true;
+ 
     sunLight.shadow.mapSize.width = 2048;
     sunLight.shadow.mapSize.height = 2048;
     sunLight.shadow.camera.near = 0.1;
     sunLight.shadow.camera.far = 1000;
     sunLight.shadow.autoUpdate = true;
     sunLight.shadow.camera.updateProjectionMatrix();
-
+    console.log(this.hdri0)
     dayLightSettings = function (hdri1) {            
       console.time("DayLight Preset time"); 
        scene.background = new Color(0xffffff);          
@@ -532,12 +541,11 @@ async loadLightsGLTF() {
         cylindricalLampSpotLight2.intensity = 0;
         cylindricalLampSpotLight3.intensity = 0;
         cylindricalLampSpotLight4.intensity = 0;                                                                  
-      sunLight.intensity = 30;  
-      sunLight.castShadow = true;            
-      // shadowLight=0;        
-      // shadows(scene,shadowLight);  
-      scene.environment = hdri1;  
-      renderer.toneMappingExposure=0.2;              
+        sunLight.intensity = 30;                           
+        scene.environment = hdri1;  
+        renderer.toneMappingExposure=0.2;  
+        shadowLight=0;        
+        shadows(scene,shadowLight,sunLight,fanLight,roomParent);             
     };   
             
     nightLightSettings1 = function (hdri0) { 
@@ -546,20 +554,23 @@ async loadLightsGLTF() {
          
       sunLight.intensity = 0;
       ambientLightSun.intensity = 0;   
-       scene.environment = hdri0;      
+      scene.environment = hdri0;      
       scene.background = new Color(0x000000);  
-
-      fanLight.intensity = 30;         
+              
+      fanLight.intensity = 30;                  
+      fanLight.castShadow=true 
       cylindricalLampSpotLight1.intensity = 2;
       cylindricalLampSpotLight2.intensity = 2;
       cylindricalLampSpotLight3.intensity = 2;
       cylindricalLampSpotLight4.intensity = 2;
+     
+      shadowLight=1;        
+      shadows(scene,shadowLight,sunLight,fanLight,roomParent);  
                                      
     };
    
-    const dayLightSettings_fn = async () => {
-      const { hdri1 } = await hdriLoad();                 
-        dayLightSettings(hdri1);        
+    const dayLightSettings_fn = async () => {                      
+        dayLightSettings(this.hdri1);        
     }; 
     async function dayLightSettings_Fun() {                                      
       const spinnedFn = useSpinner(dayLightSettings_fn, {
@@ -570,9 +581,8 @@ async loadLightsGLTF() {
      console.timeEnd("DayLight Preset time");        
    }              
    
-   const NightLight1_fn = async () => {
-    const {hdri0 } = await hdriLoad();           
-      nightLightSettings1(hdri0);     
+   const NightLight1_fn = async () => {               
+      nightLightSettings1(this.hdri0);     
     }; 
   async function NightLight1_Fun() {                                      
     const spinnedFn = useSpinner(NightLight1_fn, {
@@ -599,17 +609,13 @@ async loadLightsGLTF() {
    
       lightControls(
         scene,
-        renderer,
-        prompt,
+        renderer,        
         sunLight,
-        ambientLightSun,
-        camera,
-        clock,
-        stateList,
-        gui,
-        this.lightState,
+        ambientLightSun,               
         fanLight,
-        [cylindricalLampSpotLight_1,cylindricalLampSpotLight_2,cylindricalLampSpotLight_3,cylindricalLampSpotLight_4],
+        tableLamp,
+        stateList,
+        [cylindricalLampSpotLight1,cylindricalLampSpotLight2,cylindricalLampSpotLight3,cylindricalLampSpotLight4],
       );
     
 

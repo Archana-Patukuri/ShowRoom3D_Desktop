@@ -100,11 +100,13 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
       animationClips[i].setLoop(LoopOnce);
       animationClips[i].blendMode = 1;
       animationClips[i].clampWhenFinished = true;                 
-      
-     /*  if(animationClips[i]._clip.name=="Half Open"){        
-        animationClips[i].play();                
-      }   */
           
+        let dayLight_Desktop=document.getElementById("dayLight_Desktop")  
+        dayLight_Desktop.addEventListener("click",function(){
+          if(animationClips[i]._clip.name=="Half Open"){        
+            animationClips[i].play();                
+          }  
+        })
     
       async function input_anim_Fun(){
         let myPromise = new Promise(function(resolve) {
