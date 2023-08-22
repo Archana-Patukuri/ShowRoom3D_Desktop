@@ -67,8 +67,8 @@ import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
 import { RectAreaLightUniformsLib } from "three/addons/lights/RectAreaLightUniformsLib.js";
 
-import useSpinner from '../use-spinner';
-import '../use-spinner/assets/use-spinner.css';
+import useSpinner from 'use-spinner';
+import 'use-spinner/assets/use-spinner.css';
 let container_3d=document.getElementById("3dcontainer");
 
 import {
