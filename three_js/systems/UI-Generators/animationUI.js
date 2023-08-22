@@ -16,8 +16,7 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
 
   let div1 = document.createElement("div");
   
-    div1.className="animationsContainer"
-    div1.classList.remove("gap-2")
+    div1.className="animationsContainer"    
   
  //Animations UI
    if (category == "tables") {
@@ -73,22 +72,17 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
       form = document.createElement("div");
       form.className = "form-check";
 
-      input = document.createElement("input");
-      // input.className = "form-check-input largerCheckbox labelAlignment";
+      input = document.createElement("input");      
       
       input.type = "radio";
       input.name = "animations";
       input.id = gltfData.animations[0].name+i;
-
-      label = document.createElement("label");
-      // label.className = "form-check-label";
+      input.className = "form-check-input animationInput";  
+      
+      label = document.createElement("label");   
+      label.className = "form-check-label animationLabel";    
       label.for = gltfData.animations[0].name+i;
       label.innerHTML = gltfData.animations[i].name;
-
-      
-          input.className = "form-check-input animationInput";  
-          label.className = "form-check-label animationLabel";                  
-        
 
       form.appendChild(input);
       form.appendChild(label);

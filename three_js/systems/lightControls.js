@@ -135,15 +135,7 @@ async function lightControls(
     `
         : ''
 
-    }
-    ${
-      item.decay
-        ? `
-    <input type="number" data-type="${item.id}" class="decay_class" name="decay_class" value="${item.decay}" min="0" max="10"
-      step="0.1" style="width: 25px;height: 20px;">
-      `
-        : ''
-    }      
+    }   
   </div>
 `
 )
@@ -152,23 +144,23 @@ async function lightControls(
   const htmlArray = LightControlsArray.map((item) =>
   elementFromHtmlString(`  
   <div calss="lightSettingContainer" style="width:100%;gap:5px;margin-left:5px">    
-    <div class="d-flex flex-row" style="display:flex; align-items:center; width:100%;" >
+    <div class="d-flex flex-row" >
       <label for="${
         item.id
-      }" style="display:flex; align-items:center;width:150px" >
+      }" style="display:flex; align-items:center;width:150px;margin-left:5px;" class="form-check-label" >
         <input type="radio" data-type="${
           item.id
-        }" name="lights" class="lightActiveCheckbox" />
+        }" name="lights" class="lightActiveCheckbox form-check-input" style="width:13px;height:13px;margin-right:5px;"/>
         ${item.innerText}
       </label>
     </div>
-    <div class="d-flex flex-row" style="gap:5px">
+    <div class="d-flex flex-row">
     ${
       item.intensity
         ? `
         <div classm="slidecontainer">
         <input type="range" data-type="${item.id}" min="0" max="10" value="${item.intensity}" step="0.1"
-        class="slider Slider_range intensity_slider" style="width:60px"/>
+        class="slider Slider_range intensity_slider" style="width:80px;margin-left:10px;margin-right:5px;"/>
         </div>
     `
         : ''

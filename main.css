@@ -1,7 +1,18 @@
 #scene-container {
-  height: 100vh;
+  height: 100vh;  
   background-color: rgb(236, 236, 236);  
 }
+  #UI{
+  margin: 0px;
+  padding: 0px;
+  background-color: #F5F5F5;
+  height: 100vh;
+  width: 50vw;
+  }
+  #desktopUI{
+    height: 100%;
+    width: 100%;
+  }
 .buttons{
   background-color: white;
   height: 30px;
@@ -17,22 +28,26 @@
  text-decoration: none;
 
 }
-.separate_Line{
-padding: 0px 10px 3px 10px;
+.separate_Line{  
+  width: 125px;
+padding: 0px 20px 3px 7px;
 border-top: 1px solid #E5E5E5;
 }
 .separate_Line1{
+  width: 124px;
   padding-top: 5px;    
-  border-top: 1px solid #E5E5E5;
+  border-top: 1px solid #E5E5E5;  
   }
 .accordion {    
   cursor: pointer;
   padding: 8px;
-  width: 100%;
+  width: 126px;
   height: 35px;
   font-weight: 500;
   background-color: #F5F5F5;
-  border: 1px solid #E5E5E5;
+  border-top: 1px solid #E5E5E5;  
+  border-right: none;
+  border-left: none;
   text-align: left;  
   font-size: 12px;
   transition: 0.4s;
@@ -145,24 +160,17 @@ background: #FFF;
 #ar-prompt > img {
   animation: circle 4s linear infinite;
 }
-#UI{
-margin: 0px;
-padding: 0px;
-background-color: #F5F5F5;
-height: 100vh;
-}
-#desktopUI{
-  height: 100%;
-  width: 100%;
-}
+
 
 .tab {  
   float: left;
   border: 1px solid #ccc;  
-  width: 30%;  
+  /* width: 35%;   */
   height: 100%;
 }
-
+.middleTab{
+  width: 70%;
+}
 /* Style the buttons inside the tab */
 .desktop_top_buttons {
   display: block;
@@ -170,7 +178,7 @@ height: 100vh;
   border-radius: 5px;  
   color: #27282D;  
   background-color: #FFFFFF;
-  width: 90%;
+  width: 92%;
   height: 25px;
   margin: 5px;
   border: none;
@@ -244,10 +252,9 @@ height: 100vh;
   width: 20px;height: 20px;padding-right: 5px;
 }
 /* Style the tab content */
-.tabcontent {
-  float: left; 
-  border: 1px solid #ccc;
-  width: 70%;
+.tabcontent {  
+  text-align: center;  
+  border: 1px solid #ccc;  
   border-left: none;
   height: 100%;
 }
@@ -285,8 +292,9 @@ height: 100vh;
 /* Style the tab content */
 .tabcontent_horizontal {
   display: none;  
-  border: 1px solid #ccc;
+  border: 1px solid #ccc;  
   border-top: none;
+  height: 100vh;
 }
 .measurementLabel {
   font-family: monospace;
@@ -326,15 +334,19 @@ height: 100vh;
   font-size: 12px;
   font-weight: 500;
   margin-top: 5px;    
-  margin-left: 2px;  
+  padding-left: 8px;  
 }
 .Animations{
-  margin-left: 2px;  
+  margin-left: 8px;  
   font-size: 12px;
   font-weight: 500;      
 }
+.animationsContainer{
+  margin-left: 5px;
+}
 .animationInput{
   font-size: 14px;
+  
 }
 .animationLabel{
   font-size: 12px;
