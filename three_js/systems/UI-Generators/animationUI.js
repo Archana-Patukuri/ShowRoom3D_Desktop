@@ -64,7 +64,7 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
     }
     let animation_label = document.createElement("label");
     animation_label.innerText="Dynamics";
-    animation_label.className="Animations"
+    animation_label.className="Animations separate_Line1"
     mainDiv.appendChild(animation_label);
     mainDiv.appendChild(div1);
   }else{   
@@ -116,7 +116,7 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
     }
     let animation_label = document.createElement("label");
     animation_label.innerText="Dynamics";
-    animation_label.className="Animations"
+    animation_label.className="Animations separate_Line1"
     mainDiv.appendChild(animation_label);
     mainDiv.appendChild(div1);
   }

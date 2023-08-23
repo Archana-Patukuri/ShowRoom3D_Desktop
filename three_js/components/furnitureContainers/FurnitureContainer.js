@@ -3,6 +3,7 @@ import { gltfLoad } from "../gltf_loader/gltfLoad.js";
 import { animationUI } from "../../systems/UI-Generators/animationUI";
 import { AnimationMixer, Group } from "three";
 import { shadowEnabler } from "../../systems/shadowEnabler";
+import measurements from "../../dataBase/measurements.json" assert { type: "json" };
 class FurnitureContainer {
   constructor(assetsList, furnitureTypesUI, category, initialModelID,scene,renderer) {
     this.assetsList = assetsList;
@@ -45,6 +46,17 @@ class FurnitureContainer {
       let modelURL = await fetch(URL); 
       const { gltfData } = await gltfLoad(modelURL.url);      
       let loadedModel = gltfData.scene;  
+      // console.log(loadedModel.children[0].name)
+      let measurements_Label_SideUI=document.querySelectorAll(".measurements_Label_SideUI")
+      let measurements_Array=measurements.Furniture
+      let measurements_Array_len=measurements.Furniture.length
+      for(let i=0;i<measurements_Array_len;i++){
+        if(loadedModel.children[0].name==measurements_Array[i].name){
+          measurements_Label_SideUI[0].innerHTML=measurements_Array[i].height;
+          measurements_Label_SideUI[1].innerHTML=measurements_Array[i].length;
+          measurements_Label_SideUI[2].innerHTML=measurements_Array[i].width;
+        }
+      }
       shadowEnabler(loadedModel)           
       this.models[i] = loadedModel;
 

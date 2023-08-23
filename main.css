@@ -29,19 +29,19 @@
 
 }
 .separate_Line{  
-  width: 125px;
+  width: 10vw;
 padding: 0px 20px 3px 7px;
 border-top: 1px solid #E5E5E5;
 }
 .separate_Line1{
-  width: 124px;
+  width: 10vw;
   padding-top: 5px;    
   border-top: 1px solid #E5E5E5;  
   }
 .accordion {    
   cursor: pointer;
   padding: 8px;
-  width: 126px;
+  width: 10vw;
   height: 35px;
   font-weight: 500;
   background-color: #F5F5F5;
@@ -163,17 +163,15 @@ background: #FFF;
 
 
 .tab {  
-  float: left;
+  /* float: left; */
   border: 1px solid #ccc;  
   /* width: 35%;   */
   height: 100%;
 }
-.middleTab{
-  width: 70%;
-}
+
 /* Style the buttons inside the tab */
 .desktop_top_buttons {
-  display: block;
+  display: block;  
   background-color: inherit;
   border-radius: 5px;  
   color: #27282D;  
@@ -391,17 +389,26 @@ background: #FFF;
   border: 0px;   
 }
 .helpImage{
-  margin-bottom: 200px;
+  margin-bottom: 40vh;
+  margin-top: -56vh; 
+  margin-left: -2vw;  
+  /* margin-bottom: 200px;
   margin-top: -380px; 
-  margin-left: -30px;     
+  margin-left: -30px;   */   
 }
 .LightModesImage{
-  margin-bottom: 200px;
+  margin-bottom: 40vh;
+  margin-top: -56vh; 
+  margin-left: 1vw; 
+  /* margin-bottom: 200px;
   margin-top: -380px;
-  margin-left: 10px;
+  margin-left: 10px; */
 }
 .LightModesImage1{
-  margin-bottom: 200px;
+  margin-bottom: 40vh;
+  margin-top: -56vh; 
+  margin-left: 1vw; 
+  /* margin-bottom: 200px;
   margin-top: -380px;
-  margin-left: 10px;
+  margin-left: 10px; */
 }

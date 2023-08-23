@@ -154,7 +154,7 @@ async function lightControls(
         ${item.innerText}
       </label>
     </div>
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row justify-content-between">
     ${
       item.intensity
         ? `
