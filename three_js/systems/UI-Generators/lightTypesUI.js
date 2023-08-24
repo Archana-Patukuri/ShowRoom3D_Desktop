@@ -51,11 +51,25 @@ const lightTypesUI = function (
 
     spinnerContainer.style.display = "none";    
     // spinnerContainer.style.display = "block";
-
     label.appendChild(img);
 
+    let div=document.createElement("div");
+    div.className="d-flex flex-column furniture_Style"
+    let div1=document.createElement("div");    
+    let label1 = document.createElement("label");
+    label1.innerText=assetsList[i].Name
+    label1.className="objectName"
+    div1.appendChild(input);
+    div1.appendChild(label);
+    
+    div.appendChild(div1)    
+    div.appendChild(label1); 
+    UIContainer.appendChild(div);
+
+    
+/*
     UIContainer.appendChild(input);
-    UIContainer.appendChild(label);       
+    UIContainer.appendChild(label);       */ 
 
     let container_3d=document.getElementById("3dcontainer");  
     input.addEventListener("click", function () {     

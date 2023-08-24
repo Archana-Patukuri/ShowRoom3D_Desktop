@@ -46,6 +46,10 @@ class FurnitureContainer {
       let modelURL = await fetch(URL); 
       const { gltfData } = await gltfLoad(modelURL.url);      
       let loadedModel = gltfData.scene;  
+
+      if(gltfData.userData.gltfExtensions){
+      console.log(gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements)
+      }
       // console.log(loadedModel.children[0].name)
       let measurements_Label_SideUI=document.querySelectorAll(".measurements_Label_SideUI")
       let measurements_Array=measurements.Furniture

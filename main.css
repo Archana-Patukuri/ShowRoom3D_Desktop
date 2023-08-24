@@ -12,6 +12,8 @@
   #desktopUI{
     height: 100%;
     width: 100%;
+    font-family: 'poppins';
+    
   }
 .buttons{
   background-color: white;
@@ -43,7 +45,7 @@ border-top: 1px solid #E5E5E5;
   padding: 8px;
   width: 10vw;
   height: 35px;
-  font-weight: 500;
+  font-weight: 600;
   background-color: #F5F5F5;
   border-top: 1px solid #E5E5E5;  
   border-right: none;
@@ -109,17 +111,14 @@ background: linear-gradient(135deg, rgba(255, 153, 80, 0.90) 0%, rgba(255, 90, 8
 .home_card_head{
   color: #FFF;
 font-feature-settings: 'clig' off, 'liga' off;
-font-family: Poppins;
 font-size: 24px;
 font-style: normal;
 font-weight: 700;
 }
 .home_card_points{
   color: #FFF;
-font-family: Poppins;
 font-size: 16px;
 font-style: normal;
-font-weight: 500;
 }
 .home_video_tour_container{
   display: flex;
@@ -133,9 +132,7 @@ background: #FFF;
 }
 .home_video_tour_btn{
   color: #FF5A50;
-  text-align: center;
-  font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Poppins;
+  text-align: center;    
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -165,7 +162,7 @@ background: #FFF;
 .tab {  
   /* float: left; */
   border: 1px solid #ccc;  
-  /* width: 35%;   */
+  /* width: 35%;   */  
   height: 100%;
 }
 
@@ -198,6 +195,14 @@ background: #FFF;
   text-align: left;    
   font-size: 12px;
 }
+.objectName{
+  font-size: 6px;
+  padding-top: 5px;
+}
+.furniture_Style{
+  background-color: #FFF; 
+  margin: 2px; 
+}
 .lightModes{
   background-color: white;  
   height: 30px;
@@ -208,7 +213,7 @@ background: #FFF;
   border-color: #303030;
   font-size: 12px;
   color: #070707;
-  font-weight: 400;  
+  font-weight: 600;  
  text-decoration: none;
  margin: 5px;
  margin-top: 20px;
@@ -216,12 +221,12 @@ background: #FFF;
 .buttonH{
   background-color: white;  
   height: 80px;
-  width: 70px;
+  width: 65px;
   border-style: solid;
   border-radius: 10px;
   border-width: 1px;
   border-color: #303030;
-  font-size: 12px;
+  font-size: 10px;
   color: #161616;  
  text-decoration: none;
  margin: 5px;
@@ -330,14 +335,14 @@ background: #FFF;
 }
 .material_variants{
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   margin-top: 5px;    
   padding-left: 8px;  
 }
 .Animations{
   margin-left: 8px;  
   font-size: 12px;
-  font-weight: 500;      
+  font-weight: 600;   
 }
 .animationsContainer{
   margin-left: 5px;
