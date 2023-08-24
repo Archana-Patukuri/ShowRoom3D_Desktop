@@ -46,21 +46,12 @@ class FurnitureContainer {
       let modelURL = await fetch(URL); 
       const { gltfData } = await gltfLoad(modelURL.url);      
       let loadedModel = gltfData.scene;  
-
-      if(gltfData.userData.gltfExtensions){
-      console.log(gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements)
-      }
-      // console.log(loadedModel.children[0].name)
-      let measurements_Label_SideUI=document.querySelectorAll(".measurements_Label_SideUI")
-      let measurements_Array=measurements.Furniture
-      let measurements_Array_len=measurements.Furniture.length
-      for(let i=0;i<measurements_Array_len;i++){
-        if(loadedModel.children[0].name==measurements_Array[i].name){
-          measurements_Label_SideUI[0].innerHTML=measurements_Array[i].height;
-          measurements_Label_SideUI[1].innerHTML=measurements_Array[i].length;
-          measurements_Label_SideUI[2].innerHTML=measurements_Array[i].width;
-        }
-      }
+      
+      let measurements_Label_SideUI=document.querySelectorAll(".measurements_Label_SideUI")        
+          measurements_Label_SideUI[0].innerHTML=gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[0]
+          measurements_Label_SideUI[1].innerHTML=gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[1]
+          measurements_Label_SideUI[2].innerHTML=gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[2]
+       console.log("added measurements in the side UI using xmp")
       shadowEnabler(loadedModel)           
       this.models[i] = loadedModel;
 

@@ -28,17 +28,17 @@
   ],
   "Blinds": [
     {
-      "URL": "https://d1asmhoz5zfmcr.cloudfront.net/compressed_models/Blinds/blind_03/Blinds_03_v01_draco.glb",
+      "URL": "/compressed_models/Blinds/blind_03/Blinds_03_v01_draco.glb",
       "Name": "Horizontal",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/blinds/Blinds_03_v01.webp"
     },
     {
-      "URL": "https://d1asmhoz5zfmcr.cloudfront.net/compressed_models/Blinds/blind_01/Blinds_01_v01_draco.glb",
+      "URL": "/compressed_models/Blinds/blind_01/Blinds_01_v01_draco.glb",
       "Name": "Vertical",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/blinds/Blinds_01_v01.webp"
     },
     {
-      "URL": "https://d1asmhoz5zfmcr.cloudfront.net/compressed_models/Blinds/blind_02/Blinds_02_v01_draco.glb",
+      "URL": "/compressed_models/Blinds/blind_02/Blinds_02_v01_draco.glb",
       "Name": "RollUp",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/blinds/Blinds_02_v01.webp"
     }
@@ -46,24 +46,24 @@
       
   "Tables": [
     {
-      "URL": "https://d1asmhoz5zfmcr.cloudfront.net/compressed_models/Tables/Table_Automatic_01_v01_Draco.glb",
+      "URL": "/compressed_models/Tables/Table_Automatic_01_v01_Draco.glb",
       "Name": "Manual Table",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/tables/Table_Automatic_01_v01.webp"
     },
     {
-      "URL": "https://d1asmhoz5zfmcr.cloudfront.net/compressed_models/Tables/Table_Manual_01_v01_Draco.glb",
+      "URL": "/compressed_models/Tables/Table_Manual_01_v01_Draco.glb",
       "Name": "Motarized Table",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/tables/Table_Manual_01_v01.webp"
     },
     {
-      "URL": "https://d1asmhoz5zfmcr.cloudfront.net/compressed_models/Tables/Table_Small_01_v01_Draco.glb",
+      "URL": "/compressed_models/Tables/Table_Small_01_v01_Draco.glb",
       "Name": "Small Table",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/tables/Table_Small_01_v01.webp"
     }
   ],   
   "Chairs": [
     {
-      "URL": "/compressed_models/Chairs/Chair_01_v01.glb",
+      "URL": "/compressed_models/Chairs/chair_01/Chair_01_v01.glb",
       "Name": "Bucket Seat Chair",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/chairs/Chair_01_v01.webp"
     },
@@ -73,7 +73,7 @@
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/chairs/Chair_02_v01.webp"
     },
     {
-      "URL": "https://d1asmhoz5zfmcr.cloudfront.net/compressed_models/Chairs/Chair_03_v01.glb",
+      "URL": "/compressed_models/Chairs/chair_03/Chair_03_v01.glb",
       "Name": "Advanced Chair",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/chairs/Chair_03_v01.webp"
     }
