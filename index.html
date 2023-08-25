@@ -161,7 +161,7 @@
           <div class="measurementsHC">                 
             <input type="checkbox" class="btn-check" name="setOneBtns" id="measurements_Desktop" autocomplete="off">
             <label class="tablinks_vertical desktop_bottom_buttons Measurements" for="measurements_Desktop" style="padding-left: 5px;padding-top: 4px;"><img src="./icons/desktopUI/measurements.svg" class="icon"/>Measurements</label> 
-             <span class="measurementsHover">click on two different places on the screen to get measurements</span>                              
+             <!-- <span class="measurementsHover">click on two different places on the screen to get measurements</span>                               -->
           </div>         
           <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Render_Dekstop')"><img src="./icons/desktopUI/render.svg" class="icon"/>HD Render</button>
           <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Collaboration_Desktop')"><img src="./icons/desktopUI/collaboration.svg" class="icon"/>Collaboration</button>
@@ -198,7 +198,7 @@
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Sofa_Desktop')">Sofa</button>
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Bed_Desktop')">Bed</button>
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Cabinets_Desktop')">Cabinets</button>
-              <!-- <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Dresser_Desktop')">Dresser</button> -->
+              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Dresser_Desktop')">Dresser</button>
             </div>   
             <div id="Chair_Desktop_Container" class="tabcontent_horizontal p-1 mt-1">
             <div id="Chair_Desktop" class="d-flex">                                                     
@@ -507,8 +507,7 @@
             <img id="reset_Desktop" src="./icons/desktopUI/reset.svg" width="15px" height="15px" style="margin-top: 8px;"/>
             </div>
             <label style="font-size: 12px;font-weight: 600;" class="separate_Line">Arrangement</label>
-            <div class="d-flex flex-column"> 
-              <div>
+            <div style="margin-left: 5px;">               
               <input type="checkbox" class="btn-check tranform_Desktop" id="select_Desktop" autocomplete="off">
               <label for="select_Desktop">  <img src="./icons/desktopUI/Select.svg" width="20px" height="20px" style="margin: 5px;"/></label>  
               <input type="checkbox" class="btn-check tranform_Desktop" id="unselect_Desktop" autocomplete="off">
@@ -516,21 +515,11 @@
               <input type="radio" name="transformTools" value="translate" class="btn-check tranform_Desktop" id="move_Desktop" autocomplete="off">
               <label for="move_Desktop"><img src="./icons/desktopUI/move.svg" width="15px" height="15px" style="margin: 5px;"/></label>  
               <input type="radio" name="transformTools" value="rotate" class="btn-check tranform_Desktop" id="rotate_Desktop" autocomplete="off">
-              <label for="rotate_Desktop"><img src="./icons/desktopUI/rotateObject.svg"  width="15px" height="15px" style="margin: 5px;"/></label>  
-                                  
-            </div>           
-            <div style="margin-left: 5px;">            
+              <label for="rotate_Desktop"><img src="./icons/desktopUI/rotateObject.svg"  width="15px" height="15px" style="margin: 5px;"/></label>                  
               <input type="radio" name="transformTools" value="scale" class="btn-check tranform_Desktop" id="scale_Desktop" autocomplete="off">
-              <label for="scale_Desktop">  <img src="./icons/desktopUI/scale.svg"  width="15px" height="15px" style="margin: 5px;"/></label>  
-              
+              <label for="scale_Desktop">  <img src="./icons/desktopUI/scale.svg"  width="15px" height="15px" style="margin: 5px;"/></label>                
               <input type="checkbox" class="btn-check tranform_Desktop" id="delete_Desktop" autocomplete="off">
-              <label for="delete_Desktop">  <img src="./icons/desktopUI/delete.svg" width="15px" height="15px" style="margin: 5px;"/></label>  
-              
-            
-              
-              
-              
-            </div>
+              <label for="delete_Desktop">  <img src="./icons/desktopUI/delete.svg" width="15px" height="15px" style="margin: 5px;"/></label>              
             </div>
               <label style="font-size: 12px;font-weight: 600;width: 100%;" class="separate_Line">Navigation</label>                      
               <div style="margin-left: 5px;">

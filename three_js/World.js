@@ -530,8 +530,7 @@ async loadLightsGLTF() {
     sunLight.shadow.camera.near = 0.1;
     sunLight.shadow.camera.far = 1000;
     sunLight.shadow.autoUpdate = true;
-    sunLight.shadow.camera.updateProjectionMatrix();
-    console.log(this.hdri0)
+    sunLight.shadow.camera.updateProjectionMatrix();    
     dayLightSettings = function (hdri1) {            
       console.time("DayLight Preset time"); 
        scene.background = new Color(0xffffff);          

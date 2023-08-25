@@ -145,7 +145,7 @@ background: #FFF;
 }
 #ar-prompt {
   position: absolute;
-  left: 100%;
+  left: 80%;
   top:50%;
   animation: elongate 2s infinite ease-in-out alternate;
   display: none; 

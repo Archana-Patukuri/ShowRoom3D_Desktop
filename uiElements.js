@@ -1,6 +1,4 @@
-
-
-  let home_card_close_Desktop=document.getElementById("home_card_close_Desktop");
+ let home_card_close_Desktop=document.getElementById("home_card_close_Desktop");
   let home_card_container_Desktop=document.getElementById("home_card_container_Desktop")
   let desktopUIContainer=document.getElementById("desktopUIContainer")
   let scene_buttons=document.getElementById("scene_buttons");
