@@ -21,8 +21,8 @@
       }
     }
   </script>
-  <script type="module" crossorigin src="/assets/index-e4e5e847.js"></script>
-  <link rel="stylesheet" href="/assets/index-241b8073.css">
+  <script type="module" crossorigin src="/assets/index-7f22b966.js"></script>
+  <link rel="stylesheet" href="/assets/index-ab970601.css">
 </head>
 
 <body>
@@ -50,8 +50,8 @@
       <div>
         <h1 class="home_card_head">Welcome to Showroom3D</h1>
           <ul >
-              <li class="home_card_points">A Try & Buy 3DCommerce innovation</li>
-              <li class="home_card_points">Leapfrogging Amazon Showroom</li>
+           <!--    <li class="home_card_points">A Try & Buy 3DCommerce innovation</li>
+              <li class="home_card_points">Leapfrogging Amazon Showroom</li> -->
               <li class="home_card_points">Mix, match, customize & layout furniture to your liking</li>
               <li class="home_card_points">Live lighting and measurements</li>
               <li class="home_card_points">Paints and flooring</li>
@@ -66,7 +66,7 @@
               </svg>                    
             </a>                                              
           </div>  
-          <img src="./icons/3DCommerceLogo.png" class="commerce_logo" style="margin-top: -95px;margin-left: 570px;"/>     
+          <img src="./icons/3DCommerceLogo.png" class="commerce_logo" style="margin-top: -70px;margin-left: 570px;"/>     
         </div>
           
       </div>            
@@ -164,7 +164,7 @@
           <div class="measurementsHC">                 
             <input type="checkbox" class="btn-check" name="setOneBtns" id="measurements_Desktop" autocomplete="off">
             <label class="tablinks_vertical desktop_bottom_buttons Measurements" for="measurements_Desktop" style="padding-left: 5px;padding-top: 4px;"><img src="./icons/desktopUI/measurements.svg" class="icon"/>Measurements</label> 
-             <span class="measurementsHover">click on two different places on the screen to get measurements</span>                              
+             <!-- <span class="measurementsHover">click on two different places on the screen to get measurements</span>                               -->
           </div>         
           <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Render_Dekstop')"><img src="./icons/desktopUI/render.svg" class="icon"/>HD Render</button>
           <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Collaboration_Desktop')"><img src="./icons/desktopUI/collaboration.svg" class="icon"/>Collaboration</button>
@@ -201,7 +201,7 @@
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Sofa_Desktop')">Sofa</button>
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Bed_Desktop')">Bed</button>
               <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Cabinets_Desktop')">Cabinets</button>
-              <!-- <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Dresser_Desktop')">Dresser</button> -->
+              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Dresser_Desktop')">Dresser</button>
             </div>   
             <div id="Chair_Desktop_Container" class="tabcontent_horizontal p-1 mt-1">
             <div id="Chair_Desktop" class="d-flex">                                                     
@@ -509,47 +509,40 @@
             </div>
             <img id="reset_Desktop" src="./icons/desktopUI/reset.svg" width="15px" height="15px" style="margin-top: 8px;"/>
             </div>
-            <label style="font-size: 12px;font-weight: 600;" class="separate_Line">Arrangement</label>
-            <div class="d-flex flex-column"> 
-              <div>
-              <input type="checkbox" class="btn-check tranform_Desktop" id="select_Desktop" autocomplete="off">
-              <label for="select_Desktop">  <img src="./icons/desktopUI/Select.svg" width="20px" height="20px" style="margin: 5px;"/></label>  
-              <input type="checkbox" class="btn-check tranform_Desktop" id="unselect_Desktop" autocomplete="off">
-              <label for="unselect_Desktop">  <img src="./icons/desktopUI/unselect.svg"  width="15px" height="15px" style="margin: 5px;"/></label>  
-              <input type="radio" name="transformTools" value="translate" class="btn-check tranform_Desktop" id="move_Desktop" autocomplete="off">
-              <label for="move_Desktop"><img src="./icons/desktopUI/move.svg" width="15px" height="15px" style="margin: 5px;"/></label>  
-              <input type="radio" name="transformTools" value="rotate" class="btn-check tranform_Desktop" id="rotate_Desktop" autocomplete="off">
-              <label for="rotate_Desktop"><img src="./icons/desktopUI/rotateObject.svg"  width="15px" height="15px" style="margin: 5px;"/></label>  
-                                  
-            </div>           
-            <div style="margin-left: 5px;">            
-              <input type="radio" name="transformTools" value="scale" class="btn-check tranform_Desktop" id="scale_Desktop" autocomplete="off">
-              <label for="scale_Desktop">  <img src="./icons/desktopUI/scale.svg"  width="15px" height="15px" style="margin: 5px;"/></label>  
-              
-              <input type="checkbox" class="btn-check tranform_Desktop" id="delete_Desktop" autocomplete="off">
-              <label for="delete_Desktop">  <img src="./icons/desktopUI/delete.svg" width="15px" height="15px" style="margin: 5px;"/></label>  
-              
-            
-              
-              
-              
-            </div>
-            </div>
-              <label style="font-size: 12px;font-weight: 600;width: 100%;" class="separate_Line">Navigation</label>                      
-              <div style="margin-left: 5px;">
-              <input type="checkbox" class="btn-check navigation_Desktop" id="zoom_Desktop" autocomplete="off">
-              <label for="zoom_Desktop">  <img src="./icons/desktopUI/zoom.svg" width="15px" height="15px" style="margin-right: 5px;margin-left: 5px;"/></label>  
-              <input type="checkbox" class="btn-check navigation_Desktop" id="pan_Desktop" autocomplete="off">
-              <label for="pan_Desktop">  <img src="./icons/desktopUI/pan.svg"  width="15px" height="15px" style="margin-right: 5px;"/></label>  
-              <input type="checkbox" class="btn-check navigation_Desktop" id="rotateScene_Desktop" autocomplete="off">
-              <label for="rotateScene_Desktop"><img src="./icons/desktopUI/rotateScene.svg" width="15px" height="15px"/></label>                                                                           
+            <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Arrangement <p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
+            <div class="panel"> 
+              <div style="margin-left: 5px;">               
+                <input type="checkbox" class="btn-check tranform_Desktop" id="select_Desktop" autocomplete="off">
+                <label for="select_Desktop">  <img src="./icons/desktopUI/Select.svg" width="20px" height="20px" style="margin: 5px;"/></label>  
+                <input type="checkbox" class="btn-check tranform_Desktop" id="unselect_Desktop" autocomplete="off">
+                <label for="unselect_Desktop">  <img src="./icons/desktopUI/unselect.svg"  width="15px" height="15px" style="margin: 5px;"/></label>  
+                <input type="radio" name="transformTools" value="translate" class="btn-check tranform_Desktop" id="move_Desktop" autocomplete="off">
+                <label for="move_Desktop"><img src="./icons/desktopUI/move.svg" width="15px" height="15px" style="margin: 5px;"/></label>  
+                <input type="radio" name="transformTools" value="rotate" class="btn-check tranform_Desktop" id="rotate_Desktop" autocomplete="off">
+                <label for="rotate_Desktop"><img src="./icons/desktopUI/rotateObject.svg"  width="15px" height="15px" style="margin: 5px;"/></label>                  
+                <input type="radio" name="transformTools" value="scale" class="btn-check tranform_Desktop" id="scale_Desktop" autocomplete="off">
+                <label for="scale_Desktop">  <img src="./icons/desktopUI/scale.svg"  width="15px" height="15px" style="margin: 5px;"/></label>                
+                <input type="checkbox" class="btn-check tranform_Desktop" id="delete_Desktop" autocomplete="off">
+                <label for="delete_Desktop">  <img src="./icons/desktopUI/delete.svg" width="15px" height="15px" style="margin: 5px;"/></label>              
               </div>
-              <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Themes <p id="downArrowThemes"><i class="arrow down"></i></p><p id="upArrowThemes" style="display: none;"><i class="arrow up" ></i></p></button>
+            </div>          
+              <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Navigation <p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
+              <div class="panel"> 
+                <div style="margin-left: 5px;">
+                  <input type="checkbox" class="btn-check navigation_Desktop" id="zoom_Desktop" autocomplete="off">
+                  <label for="zoom_Desktop">  <img src="./icons/desktopUI/zoom.svg" width="15px" height="15px" style="margin-right: 5px;margin-left: 5px;"/></label>  
+                  <input type="checkbox" class="btn-check navigation_Desktop" id="pan_Desktop" autocomplete="off">
+                  <label for="pan_Desktop">  <img src="./icons/desktopUI/pan.svg"  width="15px" height="15px" style="margin-right: 5px;"/></label>  
+                  <input type="checkbox" class="btn-check navigation_Desktop" id="rotateScene_Desktop" autocomplete="off">
+                  <label for="rotateScene_Desktop"><img src="./icons/desktopUI/rotateScene.svg" width="15px" height="15px"/></label>                                                                           
+                  </div>
+              </div>
+              <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Themes <p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
               <div class="panel"> 
                 <div id="Themes_Desktop">                                        
                 </div>
               </div>
-              <button class="accordion d-flex justify-content-between" style="border-bottom: 1px solid #E5E5E5;"><p>Viewpoints</p><p id="downArrow"><i class="arrow down"></i></p><p id="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
+              <button class="accordion d-flex justify-content-between" style="border-bottom: 1px solid #E5E5E5;"><p>Viewpoints</p><p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
               <div class="panel">  
                 <div style="font-size: 12px;">
                   <div class="d-flex flex-row"> 
@@ -578,7 +571,7 @@
                   </div> 
                 </div>
               </div>
-              <div  style="font-size: 12px;">
+              <div  style="font-size: 12px;display: none;" id="measurements_SideUI_Container">
                 <label style="font-size: 12px;font-weight: 600;margin-left: 8px;">Measurements</label> 
                 <div class="d-flex justify-content-between m-1">
                   <label style="margin-left: 5px;">Height</label>
@@ -680,33 +673,47 @@
   var acc = document.getElementsByClassName("accordion");
   var i;
   let panelCSS=document.querySelectorAll(".panel");
-  let upArrow=document.getElementById("upArrow")
-  let downArrow=document.getElementById("downArrow")
-  let downArrowThemes=document.getElementById("downArrowThemes")
-  let upArrowThemes=document.getElementById("upArrowThemes")
+  let upArrow=document.querySelectorAll(".upArrow")
+  let downArrow=document.querySelectorAll(".downArrow")
+
   for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
       this.classList.toggle("active");
       var panel = this.nextElementSibling;      
       if (panel.style.maxHeight) {
         panel.style.maxHeight = null;
-        if(this.innerHTML.slice(0,6)=="Themes"){
-          upArrowThemes.style.display="none"
-          downArrowThemes.style.display="block"
-        }else{
-          upArrow.style.display="none"
-          downArrow.style.display="block"
+        if(this.innerHTML.slice(0,11)=="Arrangement"){
+          upArrow[0].style.display="none"
+          downArrow[0].style.display="block"
+        }else if(this.innerHTML.slice(0,10)=="Navigation"){
+          upArrow[1].style.display="none"
+          downArrow[1].style.display="block"
+        }
+        else if(this.innerHTML.slice(0,6)=="Themes"){
+          upArrow[2].style.display="none"
+          downArrow[2].style.display="block"
+        }
+        else{
+          upArrow[3].style.display="none"
+          downArrow[3].style.display="block"
         }
       } else {
         panel.style.maxHeight = panel.scrollHeight + "px"; 
-        if(this.innerHTML.slice(0,6)=="Themes"){
-          upArrowThemes.style.display="block"
-          downArrowThemes.style.display="none"
-        }else{
-          upArrow.style.display="block"
-          downArrow.style.display="none"
-        }   
-        
+        if(this.innerHTML.slice(0,11)=="Arrangement"){
+          upArrow[0].style.display="block"
+          downArrow[0].style.display="none"
+        }else if(this.innerHTML.slice(0,10)=="Navigation"){
+          upArrow[1].style.display="block"
+          downArrow[1].style.display="none"
+        }
+        else if(this.innerHTML.slice(0,6)=="Themes"){
+          upArrow[2].style.display="block"
+          downArrow[2].style.display="none"
+        }
+        else{
+          upArrow[3].style.display="block"
+          downArrow[3].style.display="none"
+        }               
       }       
     });
   }
