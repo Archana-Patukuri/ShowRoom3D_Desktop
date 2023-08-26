@@ -24,13 +24,9 @@ function exportScene(scene) {
         }   
         
         // Export the scene with the provided email
-        let val=exportSceneFun_Image(scene, email); 
+        exportSceneFun_Image(scene, email); 
         alert("Photo-realistic image rendered in VisCommerce 3DCloud will be delivered to your email-inbox  shortly")
-         
-         if(val){
-            renderUI.style.display="none" 
-         }
-        // email=""     
+                      
         
     });
     //Render Video
@@ -44,62 +40,11 @@ function exportScene(scene) {
       }   
       
       // Export the scene with the provided email
-      let val=exportSceneFun_Video(scene, email); 
+     exportSceneFun_Video(scene, email); 
       alert("Photo-realistic image rendered in VisCommerce 3DCloud will be delivered to your email-inbox  shortly")
-       
-       if(val){
-          renderUI.style.display="none" 
-       }
-      // email=""     
+                  
       
-  });
-    function exportSceneFn(scene, email) {
-        const exporter = new GLTFExporter();
-    const options = {
-      trs: params.trs,
-      binary: params.binary,
-      maxTextureSize: params.maxTextureSize,
-    };
-  
-    // Remove the word after @ from the email address
-    const emailWithoutDomain = email.split("@")[0];
-  
-    exporter.parse(
-      scene,
-      function (result) {
-        if (result instanceof ArrayBuffer) {
-          const fileName = `${emailWithoutDomain}.glb`; // Use email without domain as the file name
-          saveArrayBuffer(result, fileName);
-        } else {
-          const output = JSON.stringify(result, null, 2);
-          const fileName = `${emailWithoutDomain}.gltf`; // Use email without domain as the file name
-          saveString(output, fileName);
-        }
-      },
-      function (error) {
-        console.log("An error happened");
-      },
-      options
-    );
-  
-    const link = document.createElement("a");
-    link.style.display = "none";
-    document.body.appendChild(link);
-  
-    function save(blob, filename) {
-      link.href = URL.createObjectURL(blob);
-      link.download = filename;
-      link.click();
-    }
-  
-    function saveString(text, filename) {
-      save(new Blob([text], { type: "text/plain" }), filename);
-    }
-  
-    function saveArrayBuffer(buffer, filename) {
-      save(new Blob([buffer], { type: "application/octet-stream" }), filename);
-    }
-    }
+  }); 
 
     function exportSceneFun_Image(scene, email) {
         const exporter = new GLTFExporter();
