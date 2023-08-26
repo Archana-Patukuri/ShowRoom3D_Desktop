@@ -1,7 +1,7 @@
 import { Clock, LoopOnce, Vector3,AmbientLight,Color,DirectionalLightHelper } from "three";
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import tablesHeights from "../../dataBase/tablesHeights.json" assert { type: "json" };
-
+let initialLoadingValue=0
 function animationUI(gltfData, mixer, category, URL,scene,renderer) {  
 
   let animationClips = [];
@@ -14,8 +14,7 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
   let form, input, label, img;
   let mainDiv = document.createElement("div");
 
-  let div1 = document.createElement("div");
-  
+  let div1 = document.createElement("div");  
     div1.className="animationsContainer"    
   
  //Animations UI
@@ -122,8 +121,7 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
   }
 
   //Material Variants UI
-  let div2 = document.createElement("div");
-  
+  let div2 = document.createElement("div");  
     div2.className = "d-flex";    
   
   for (let i = 0; i < gltfData.userData.variants.length; i++) {
@@ -169,6 +167,12 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
   variants_label.className="material_variants separate_Line1"
   mainDiv.appendChild(variants_label);
   mainDiv.appendChild(div2);
+if(initialLoadingValue==0){
+  mainDiv.style.display="none"
+}else{
+  mainDiv.style.display="block"
+}
+initialLoadingValue=initialLoadingValue+1
 
   return mainDiv;
 }

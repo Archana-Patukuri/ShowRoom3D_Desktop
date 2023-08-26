@@ -4,7 +4,7 @@ function shadows(scene,shadowLight,sunLight,fanLight,room) {
           sunLight.castShadow=true      
           room.traverse((child) => {
             if (child.isMesh) {
-              child.castShadow = false;
+              child.castShadow = true;
             }
           });              
         }        

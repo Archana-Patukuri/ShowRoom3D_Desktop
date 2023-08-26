@@ -184,7 +184,11 @@ class World {
        
    renderer.domElement.addEventListener( 'pointermove', (e) => {
     prompt.style.display="none";
-  });   
+  }); 
+    let desktopUI=document.getElementById("desktopUI")
+    desktopUI.onclick= function(event) {      
+      prompt.style.display="none";
+    };  
     const grid = new THREE.GridHelper( 10, 20, 0x000000, 0x000000 );
     grid.material.opacity = .5;
     grid.position.y = - 0.02;
@@ -304,8 +308,7 @@ class World {
     let modelURL = await fetch(assets.Room[0].URL); 
     let { gltfData } = await gltfLoad(modelURL.url);
     let loadedmodel = gltfData.scene;  
-    this.room=loadedmodel      
-    console.log(this)
+    this.room=loadedmodel          
     roomParent.add(loadedmodel); 
     shadowEnabler(loadedmodel)    
    let Themes_Desktop=document.getElementById("Themes_Desktop");
@@ -658,13 +661,17 @@ async loadLightsGLTF() {
       }else{
         FXAA_else_Fun()
       }
-    })
-
+    })    
     let ssaaRenderPass;				 
     let SSAA_C=document.getElementById("SSAA_C");
+    let intial_Loading_Val=0  
     function SSAA_Fun(){
       ssaaRenderPass = new SSAARenderPass( scene, camera );
       composer.addPass( ssaaRenderPass );
+      if(intial_Loading_Val==0){
+        prompt.style.display="block"; 
+        }
+        intial_Loading_Val+=1
     }
     function SSAA_Else_Fun(){
       composer.removePass( ssaaRenderPass );        
@@ -676,18 +683,17 @@ async loadLightsGLTF() {
         SSAA_Else_Fun()
       }
     })
-    let SMAApass;				   
-    let start1,millis1
-    let SMAA_C=document.getElementById("SMAA_C");    
+    SSAA_Fun()
+    let SMAApass;				       
+    let SMAA_C=document.getElementById("SMAA_C");      
     function SMAA_Fun(){
       SMAApass = new SMAAPass( (window.innerWidth*0.1) * renderer.getPixelRatio(), (window.innerHeight*0.1) * renderer.getPixelRatio() );
       composer.addPass( SMAApass );  
-      prompt.style.display="block"; 
+     
     }
     function SMAA_Else_Fun(){
       composer.removePass( SMAApass );
-    }                 
-   SMAA_Fun();
+    }                         
     SMAA_C.addEventListener("click",function(e){
       if(e.target.checked){
         SMAA_Fun();       

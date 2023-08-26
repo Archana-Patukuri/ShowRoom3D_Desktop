@@ -10,8 +10,9 @@ async function main() {
   await world.loadLightsGLTF()
 
   world.createTransfromCtrls();
+  world.createMeasurements(); 
   world.createPostProcess();
-  world.createMeasurements();   
+    
   world.start(); 
   
   let Spinner = document.getElementById("Spinner");  

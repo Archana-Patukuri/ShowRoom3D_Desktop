@@ -3,7 +3,7 @@ import { gltfLoad } from "../gltf_loader/gltfLoad.js";
 import { animationUI } from "../../systems/UI-Generators/animationUI";
 import { AnimationMixer, Group } from "three";
 import { shadowEnabler } from "../../systems/shadowEnabler";
-import measurements from "../../dataBase/measurements.json" assert { type: "json" };
+let initialLoadingValue=0
 class FurnitureContainer {
   constructor(assetsList, furnitureTypesUI, category, initialModelID,scene,renderer) {
     this.assetsList = assetsList;
@@ -19,14 +19,13 @@ class FurnitureContainer {
     //AnimationsUIs to store the Animation UI created after loading a GLTF Model
     this.AnimationUIs = [];
     //AnimationMixers to store animationMixer for each GLTF model loaded
-    this.animationMixers = [];
-    console.log(this.furnitureTypesUI.id)
+    this.animationMixers = [];    
    
      /*  this.toastbody = document
       .getElementById(`${this.furnitureTypesUI.id}_AnimationsUI`)
       .getElementsByClassName("animationsUI")[0]; */
       this.toastbody = document.getElementById("animationsUI")
-      
+     
     
     this.currentAnimationMixer;
   }  
@@ -38,20 +37,24 @@ class FurnitureContainer {
     URL ||= this.assetsList[this.initialModelID].URL;
 
     i ||= this.initialModelID;
-
+    
     if (this.models[i] === undefined) {
       //Spinner Display block before loading
 
       this.spinnerDisplay(spinner, "block");
       let modelURL = await fetch(URL); 
       const { gltfData } = await gltfLoad(modelURL.url);      
-      let loadedModel = gltfData.scene;  
-      
-      let measurements_Label_SideUI=document.querySelectorAll(".measurements_Label_SideUI")        
-          measurements_Label_SideUI[0].innerHTML=gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[0]
-          measurements_Label_SideUI[1].innerHTML=gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[1]
-          measurements_Label_SideUI[2].innerHTML=gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[2]
-       console.log("added measurements in the side UI using xmp")
+      let loadedModel = gltfData.scene;        
+      let measurements_Label=document.querySelectorAll(".measurements_Label_SideUI")  
+      let measurements_SideUI_Container=document.getElementById("measurements_SideUI_Container")
+      let measurements_Label_len=measurements_Label.length
+      if(initialLoadingValue>0){
+        measurements_SideUI_Container.style.display="block"
+      for(let j=0;j<measurements_Label_len;j++){        
+        measurements_Label[j].innerHTML=gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[j]        
+      }
+    }
+    initialLoadingValue=initialLoadingValue+1                             
       shadowEnabler(loadedModel)           
       this.models[i] = loadedModel;
 

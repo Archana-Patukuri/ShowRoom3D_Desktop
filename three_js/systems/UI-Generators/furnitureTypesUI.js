@@ -8,15 +8,6 @@ const furnitureTypesUI = function (
   renderer,
   clock
 ) {
-  const UIToggleButtons=document.querySelectorAll(".furnitureToggleButton");
-  const furnitureUI=document.querySelectorAll(".furnitureUIContainer");
-  UIToggleButtons.forEach((button,index)=>{
-    button.addEventListener('click',()=>{
-      furnitureUI.forEach((ui)=>ui.classList.remove('active','show'));
-      UIToggleButtons.forEach((btn)=>btn.classList.remove('active'));
-      furnitureUI[index].classList.add('active','show');
-    });
-  });
   for (let i = 0; i < assetsList.length; i++) {
     let input = document.createElement("input");
     
