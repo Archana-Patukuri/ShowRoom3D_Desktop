@@ -46,7 +46,7 @@ class FurnitureContainer {
       const { gltfData } = await gltfLoad(modelURL.url); 
       this.data.push(gltfData)      
       let loadedModel = gltfData.scene;        
-         console.log(gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements        )
+        //  console.log(gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements        )
       shadowEnabler(loadedModel)           
       this.models[i] = loadedModel;
 

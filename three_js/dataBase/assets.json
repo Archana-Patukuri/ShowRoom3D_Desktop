@@ -13,7 +13,7 @@
   ],
   "Accessories": [
     {
-      "URL": "/compressed_models/Accessories/Frames_Without_Glass.glb",
+      "URL": "/compressed_models/Accessories/Frames_Without_Glass1.glb",
       "Name": "Frame"
     },
     {
@@ -73,7 +73,7 @@
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/chairs/Chair_02_v01.webp"
     },
     {
-      "URL": "/compressed_models/Chairs/chair_03/Chair_03_v01.glb",
+      "URL": "/compressed_models/Chairs/Chair_03_v01.glb",
       "Name": "Advanced Chair",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/chairs/Chair_03_v01.webp"
     }
@@ -111,7 +111,7 @@
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/lights/Floor_Lamp_small.webp"
     },
     {
-      "URL": "https://d1asmhoz5zfmcr.cloudfront.net/compressed_models/lights/Left_Wall_Lamp/Left_Wall_Lamp_draco.glb",
+      "URL": "https://d1asmhoz5zfmcr.cloudfront.net/compressed_models/lights/Left_Wall_Lamp/Left_Wall_Lamp1.glb",
       "Name": "Wall Light",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/lights/WallLamp.webp"
     }],
