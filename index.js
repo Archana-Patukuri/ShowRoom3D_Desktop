@@ -27,16 +27,13 @@ async function main() {
        ]);      
       Spinner.style.display="none";     
     })
-    let load_Lighting_Desktop=document.getElementById("load_Lighting_Desktop");
-    let initialControlsContainer=document.querySelector(".initialControlsContainer")
+    let load_Lighting_Desktop=document.getElementById("load_Lighting_Desktop");    
     load_Lighting_Desktop.addEventListener("click",async function(){      
-      Spinner.style.display="block";
-      
+      Spinner.style.display="block";      
        await Promise.all([                                                                      
         await world.loadCylindricalLight(), 
         await world.lightPresets()      
-       ]);       
-      initialControlsContainer.style.display="block"
+       ]);             
     Spinner.style.display="none";     
     })
     let load_Accessories_Desktop=document.getElementById("load_Accessories_Desktop");
@@ -51,6 +48,11 @@ async function main() {
       ]);                               
       Spinner.style.display="none";      
       })  
+      let initialControlsContainer=document.querySelector(".initialControlsContainer")
+      let lightControls_Button=document.getElementById("lightControls_Button")
+      lightControls_Button.addEventListener("click",function(){
+        initialControlsContainer.style.display="block"
+      })
   }  
 
 

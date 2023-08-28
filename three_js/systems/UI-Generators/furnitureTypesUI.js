@@ -5,8 +5,7 @@ const furnitureTypesUI = function (
   loadModel,
   initialModelID,
   scene,  
-  renderer,
-  clock
+  renderer
 ) {
   for (let i = 0; i < assetsList.length; i++) {
     let input = document.createElement("input");
@@ -23,17 +22,39 @@ const furnitureTypesUI = function (
     if (initialModelID == i) {
       input.checked = true;      
     }
-
+    let data
     input.type = "radio";
     input.value = assetsList[i].URL;
     input.className = "btn-check";
     input.name = category;
     input.id = (assetsList[i].Name);
     input.autocomplete = "off";
-    input.addEventListener("click", function (event) {
-      loadModel(event.target.value, i, spinnerContainer);             
-    });
 
+    let measurements_Label=document.querySelectorAll(".measurements_Label_SideUI")  
+    let measurements_SideUI_Container=document.getElementById("measurements_SideUI_Container")
+    let measurements_Label_len=measurements_Label.length
+    let animationsUIContainer=document.getElementById("animationsUIContainer")
+    input.addEventListener("click", function (event) {
+      let myPromise = new Promise(function(resolve) {
+        // "Producing Code" (May take some time)
+        data= loadModel(event.target.value, i, spinnerContainer);
+        // return data
+          resolve(data);          
+        });
+        myPromise.then(
+          function(value) { 
+            console.log(value[0])
+                   
+        for(let j=0;j<measurements_Label_len;j++){   
+          console.log(value[0].userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[j])       
+          measurements_Label[j].innerHTML=value[0].userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[j]        
+        } 
+        measurements_SideUI_Container.style.display="block"
+        animationsUIContainer.style.display="block"
+          }          
+        );                     
+    });
+    
       
 
     let img,label
@@ -69,7 +90,7 @@ const furnitureTypesUI = function (
     let container_3d=document.getElementById("3dcontainer");                
     
     input.addEventListener("click", function () {              
-        container_3d.appendChild(spinnerContainer);                           
+        container_3d.appendChild(spinnerContainer);                                          
     });
   }
 };

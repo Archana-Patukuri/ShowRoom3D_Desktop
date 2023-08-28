@@ -396,7 +396,7 @@ async loadLightsGLTF() {
 
   //LoadBlinds
   async loadBlindsGLTF() {       
-    await blindsModels.loadModel();
+    await blindsModels.loadModel();   
     scene.add(blindsModels.parentGroup);
     selectableObjects.push(blindsModels.parentGroup);   
     renderer.render(scene, camera);        
@@ -957,7 +957,9 @@ async loadLightsGLTF() {
             outlinePass.edgeThickness = Number(0.1);    
             outlinePass.visibleEdgeColor.set('#161ef8');
             outlinePass.hiddenEdgeColor.set( '#161ef8' );
-                                       
+                
+            console.log(i.children[0].children[0].userData.gltfExtensions.KHR_xmp_json_ld)
+            console.log(i.children[0].children[0])
              if (transformControl.enabled) {
               transformControl.attach(i);               
               box.setFromObject(i);
@@ -966,6 +968,7 @@ async loadLightsGLTF() {
               transformControl.position.copy(boxCenter);               
             } 
 
+            console
           }
         }
       }
@@ -991,8 +994,7 @@ async loadLightsGLTF() {
       raycaster.layers.set( 0 );
 
       transformControl.enabled = true;
-      scene.add(transformControl);
-      
+      scene.add(transformControl);      
       if (selectedObjects.length != 0) {
         transformControl.attach(selectedObjects[0]);            
          box.setFromObject(selectedObjects[0]);        

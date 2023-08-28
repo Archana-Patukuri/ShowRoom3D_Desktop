@@ -3,7 +3,7 @@ import { gltfLoad } from "../gltf_loader/gltfLoad.js";
 import { animationUI } from "../../systems/UI-Generators/animationUI";
 import { AnimationMixer, Group } from "three";
 import { shadowEnabler } from "../../systems/shadowEnabler";
-let initialLoadingValue=0
+
 class FurnitureContainer {
   constructor(assetsList, furnitureTypesUI, category, initialModelID,scene,renderer) {
     this.assetsList = assetsList;
@@ -25,7 +25,7 @@ class FurnitureContainer {
       .getElementById(`${this.furnitureTypesUI.id}_AnimationsUI`)
       .getElementsByClassName("animationsUI")[0]; */
       this.toastbody = document.getElementById("animationsUI")
-     
+     this.data=[]
     
     this.currentAnimationMixer;
   }  
@@ -43,18 +43,10 @@ class FurnitureContainer {
 
       this.spinnerDisplay(spinner, "block");
       let modelURL = await fetch(URL); 
-      const { gltfData } = await gltfLoad(modelURL.url);      
+      const { gltfData } = await gltfLoad(modelURL.url); 
+      this.data.push(gltfData)      
       let loadedModel = gltfData.scene;        
-      let measurements_Label=document.querySelectorAll(".measurements_Label_SideUI")  
-      let measurements_SideUI_Container=document.getElementById("measurements_SideUI_Container")
-      let measurements_Label_len=measurements_Label.length
-      if(initialLoadingValue>0){
-        measurements_SideUI_Container.style.display="block"
-      for(let j=0;j<measurements_Label_len;j++){        
-        measurements_Label[j].innerHTML=gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[j]        
-      }
-    }
-    initialLoadingValue=initialLoadingValue+1                             
+         console.log(gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements        )
       shadowEnabler(loadedModel)           
       this.models[i] = loadedModel;
 
@@ -81,8 +73,8 @@ class FurnitureContainer {
     this.toastbody.appendChild(this.AnimationUIs[i]);
    
     this.model = this.models[i];
-    this.parentGroup.add(this.model);
-   
+    this.parentGroup.add(this.model);    
+        return this.data   
   }
 
   spinnerDisplay(spinnerElement, displayStatus) {
@@ -107,8 +99,8 @@ class FurnitureContainer {
       this.loadModel.bind(this),
       this.initialModelID,  
       this.scene, 
-      this.renderer        
-    );
+      this.renderer,                  
+    );    
   }
 }
 
