@@ -35,18 +35,14 @@ const furnitureTypesUI = function (
     let measurements_Label_len=measurements_Label.length
     let animationsUIContainer=document.getElementById("animationsUIContainer")
     input.addEventListener("click", function (event) {
-      let myPromise = new Promise(function(resolve) {
-        // "Producing Code" (May take some time)
-        data= loadModel(event.target.value, i, spinnerContainer);
-        // return data
+      let myPromise = new Promise(function(resolve) {        
+        data= loadModel(event.target.value, i, spinnerContainer);        
           resolve(data);          
         });
         myPromise.then(
-          function(value) { 
-            console.log(value[0])
-                   
+          function(value) {                                
         for(let j=0;j<measurements_Label_len;j++){   
-          console.log(value[0].userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[j])       
+          // console.log(value[0].userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[j])       
           measurements_Label[j].innerHTML=value[0].userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements[j]        
         } 
         measurements_SideUI_Container.style.display="block"
@@ -64,7 +60,7 @@ const furnitureTypesUI = function (
     img.src = assetsList[i].thumbnail;
     img.style.background="#ffffff";
     
-      label.className = "btn px-0 py-0 position-relative border-1"; 
+      label.className = "btn px-0 py-0 position-relative furnitureThumbnail"; 
       img.className = "Objectthumbnail";        
     
 
@@ -76,7 +72,7 @@ const furnitureTypesUI = function (
     label.appendChild(img);
     let div=document.createElement("div");
     div.className="d-flex flex-column furniture_Style"
-    let div1=document.createElement("div");    
+    let div1=document.createElement("div");      
     let label1 = document.createElement("label");
     label1.innerText=assetsList[i].Name
     label1.className="objectName"
@@ -90,7 +86,7 @@ const furnitureTypesUI = function (
     let container_3d=document.getElementById("3dcontainer");                
     
     input.addEventListener("click", function () {              
-        container_3d.appendChild(spinnerContainer);                                          
+        container_3d.appendChild(spinnerContainer);                                                  
     });
   }
 };

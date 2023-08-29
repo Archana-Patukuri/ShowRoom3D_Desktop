@@ -74,6 +74,7 @@ class FurnitureContainer {
    
     this.model = this.models[i];
     this.parentGroup.add(this.model);    
+    this.scene.add(this.parentGroup)   
         return this.data   
   }
 

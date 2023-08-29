@@ -47,11 +47,11 @@ async function main() {
         await world.loadVaseGLTF() 
       ]);                               
       Spinner.style.display="none";      
-      })  
-      let initialControlsContainer=document.querySelector(".initialControlsContainer")
+      })        
       let lightControls_Button=document.getElementById("lightControls_Button")
-      lightControls_Button.addEventListener("click",function(){
-        initialControlsContainer.style.display="block"
+      let LightsContainer=document.getElementById("LightsContainer")
+      lightControls_Button.addEventListener("click",function(){        
+        LightsContainer.style.display="block"
       })
   }  
 

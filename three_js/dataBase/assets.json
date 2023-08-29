@@ -111,7 +111,7 @@
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/lights/Floor_Lamp_small.webp"
     },
     {
-      "URL": "https://d1asmhoz5zfmcr.cloudfront.net/compressed_models/lights/Left_Wall_Lamp/Left_Wall_Lamp1.glb",
+      "URL": "/compressed_models/lights/Left_Wall_Lamp/Left_Wall_Lamp1.glb",
       "Name": "Wall Light",
       "thumbnail": "https://d1asmhoz5zfmcr.cloudfront.net/thumbnails/lights/WallLamp.webp"
     }],

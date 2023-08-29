@@ -65,11 +65,7 @@ class LightContainer {
     }
     if(this.models[i].children[0].name.slice(0,5)=="Lamp2"){ 
       WallLamp.style.display="block";                                  
-      model1_wall= this.models[i].clone();      
-      this.model.position.set(0.6, 0, 2.5)
-      model1_wall.position.set(0.6, 0, 0.2) 
-      model1_wall.rotation.set(0,-1.5,0)
-      this.model.rotation.set(0,-1.5,0)          
+      model1_wall= this.models[i].clone();           
       this.parentGroup2.add(model1_wall); 
       this.parentGroup2.add(this.model);               
     }                                    

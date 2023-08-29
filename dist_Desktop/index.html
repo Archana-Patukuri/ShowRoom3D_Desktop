@@ -21,8 +21,8 @@
       }
     }
   </script>
-  <script type="module" crossorigin src="/assets/index-59567d76.js"></script>
-  <link rel="stylesheet" href="/assets/index-1fb02bee.css">
+  <script type="module" crossorigin src="/assets/index-e31486e5.js"></script>
+  <link rel="stylesheet" href="/assets/index-e3bc61d1.css">
 </head>
 
 <body>
@@ -543,7 +543,7 @@
                 <div id="Themes_Desktop">                                        
                 </div>
               </div>
-              <button class="accordion d-flex justify-content-between" style="border-bottom: 1px solid #E5E5E5;"><p>Viewpoints</p><p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
+              <button class="accordion d-flex justify-content-between" style="border-bottom: none"><p>Viewpoints</p><p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
               <div class="panel">  
                 <div style="font-size: 12px;">
                   <div class="d-flex flex-row"> 
@@ -571,9 +571,10 @@
                   <label>Back</label>                                         
                   </div> 
                 </div>
-              </div>
-              <div  style="font-size: 12px;display: none;" id="measurements_SideUI_Container">
-                <label style="font-size: 12px;font-weight: 600;margin-left: 8px;">Measurements</label> 
+              </div>              
+              <div  style="font-size: 12px;display: none;" id="measurements_SideUI_Container">               
+                <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Measurements<p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
+              <div class="panel"> 
                 <div class="d-flex justify-content-between m-1">
                   <label style="margin-left: 5px;">Height</label>
                   <label class="measurements_Label_SideUI"></label>
@@ -587,11 +588,13 @@
                   <label class="measurements_Label_SideUI"></label>
                 </div>
               </div>
+
+               
+              </div>
               <!-- ANIMATIONS & VARIANTS -->
               <div id="animationsUIContainer" style="display: none;">
                 <div class="d-flex justify-content-start">
                   <div class="animationsUI" id="animationsUI" style="width: 100%;">
-
                   </div>                
                 </div>
               <!--  <div class="d-flex justify-content-start gap-2" id="Table_Desktop_AnimationsUI">                
@@ -604,10 +607,16 @@
 
                   </div>
                 </div> -->
-              </div>           
-              <div class="initialControlsContainer" style="display: none;width: 100%;font-size: 12px;">                                                                        
-                <label style="font-weight: 600;margin-left: 8px;">Light Controls</label> 
               </div>   
+              <div style="display: none;" id="LightsContainer">
+              <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Light Controls <p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
+              <div class="panel"> 
+                <div class="initialControlsContainer" style="width: 100%;font-size: 12px;">                                                                                         
+                  
+                </div>   
+              </div>      
+            </div>  
+
         </div>
 
         </div>
@@ -693,6 +702,12 @@
         else if(this.innerHTML.slice(0,6)=="Themes"){
           upArrow[2].style.display="none"
           downArrow[2].style.display="block"
+        }else if(this.innerHTML.slice(0,12)=="Measurements"){
+          upArrow[4].style.display="none"
+          downArrow[4].style.display="block"
+        }else if(this.innerHTML.slice(0,5)=="Light"){
+          upArrow[5].style.display="none"
+          downArrow[5].style.display="block"
         }
         else{
           upArrow[3].style.display="none"
@@ -710,6 +725,12 @@
         else if(this.innerHTML.slice(0,6)=="Themes"){
           upArrow[2].style.display="block"
           downArrow[2].style.display="none"
+        }else if(this.innerHTML.slice(0,12)=="Measurements"){
+          upArrow[4].style.display="block"
+          downArrow[4].style.display="none"
+        }else if(this.innerHTML.slice(0,5)=="Light"){
+          upArrow[5].style.display="block"
+          downArrow[5].style.display="none"
         }
         else{
           upArrow[3].style.display="block"

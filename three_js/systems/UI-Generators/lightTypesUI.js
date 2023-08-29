@@ -44,7 +44,7 @@ const lightTypesUI = function (
     img.style.background="#ffffff";
     
     
-        label.className = "btn px-0 py-0 position-relative border-1"; 
+        label.className = "btn px-0 py-0 position-relative furnitureThumbnail"; 
         img.className = "Objectthumbnail";        
       
     spinnerContainer.appendChild(spinner);
@@ -58,7 +58,7 @@ const lightTypesUI = function (
     let div1=document.createElement("div");    
     let label1 = document.createElement("label");
     label1.innerText=assetsList[i].Name
-    label1.className="objectName"
+    label1.className="objectName1"
     div1.appendChild(input);
     div1.appendChild(label);
     

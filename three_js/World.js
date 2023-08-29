@@ -303,8 +303,7 @@ class World {
       scene.background=new Color(1,1,1)                
   }
   //LoadRoom
-  async loadRoomGLTF() {    
-         
+  async loadRoomGLTF() {       
     let modelURL = await fetch(assets.Room[0].URL); 
     let { gltfData } = await gltfLoad(modelURL.url);
     let loadedmodel = gltfData.scene;  
