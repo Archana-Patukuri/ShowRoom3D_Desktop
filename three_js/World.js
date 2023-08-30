@@ -9,7 +9,7 @@ import { viewPoints } from "./systems/viewpoints.js";
 import { basicControls } from "./systems/basicControls.js";
 import { resetAndHelp } from "./systems/resetAndHelp.js";
 import {shadows} from "./systems/shadows.js";
-import {shadowEnabler} from "./systems/shadowEnabler.js"
+// import {shadowEnabler} from "./systems/shadowEnabler.js"
 
 import  hdriLoad  from "./components/hdri_loader/hdri_loader.js";
 import { Debug } from "./systems/Debug.js";
@@ -309,7 +309,7 @@ class World {
     let loadedmodel = gltfData.scene;  
     this.room=loadedmodel          
     roomParent.add(loadedmodel); 
-    shadowEnabler(loadedmodel)    
+    // shadowEnabler(loadedmodel)    
    let Themes_Desktop=document.getElementById("Themes_Desktop");
 
     for (let i = 0; i < gltfData.userData.variants.length; i++) {
@@ -527,12 +527,12 @@ async loadLightsGLTF() {
   let tableLamp = scene.getObjectByName("Desktop_Lamp_Light002");                               
   let sunLight = scene.getObjectByName("Sun");    
  
-    sunLight.shadow.mapSize.width = 2048;
+    /* sunLight.shadow.mapSize.width = 2048;
     sunLight.shadow.mapSize.height = 2048;
     sunLight.shadow.camera.near = 0.1;
     sunLight.shadow.camera.far = 1000;
-    sunLight.shadow.autoUpdate = true;
-    sunLight.shadow.camera.updateProjectionMatrix();    
+    sunLight.shadow.autoUpdate = true; 
+    sunLight.shadow.camera.updateProjectionMatrix(); */   
     dayLightSettings = function (hdri1) {            
       console.time("DayLight Preset time"); 
        scene.background = new Color(0xffffff);          
@@ -548,7 +548,7 @@ async loadLightsGLTF() {
         shadowLight=0;        
         shadows(scene,shadowLight,sunLight,fanLight,roomParent);             
     };   
-            
+         let flag=0   
     nightLightSettings1 = function (hdri0) { 
       console.time("NightLight Preset time");                
       renderer.toneMappingExposure = 1;                                     
@@ -564,10 +564,14 @@ async loadLightsGLTF() {
       cylindricalLampSpotLight2.intensity = 2;
       cylindricalLampSpotLight3.intensity = 2;
       cylindricalLampSpotLight4.intensity = 2;
-     
+      if(flag==0){
+      shadowLight=3;        
+      shadows(scene,shadowLight,sunLight,fanLight,roomParent);  
+     }else{
       shadowLight=1;        
       shadows(scene,shadowLight,sunLight,fanLight,roomParent);  
-                                     
+     } 
+       flag+=1                              
     };
    
     const dayLightSettings_fn = async () => {                      

@@ -21,8 +21,8 @@
       }
     }
   </script>
-  <script type="module" crossorigin src="/assets/index-e31486e5.js"></script>
-  <link rel="stylesheet" href="/assets/index-e3bc61d1.css">
+  <script type="module" crossorigin src="/assets/index-c6a9d4f5.js"></script>
+  <link rel="stylesheet" href="/assets/index-3aa8d442.css">
 </head>
 
 <body>
@@ -445,7 +445,11 @@
                         <div class="d-flex flex-row pb-1"> 
                           <input type="checkbox" id="Shadows_NightLight1" name="controls" value="Shadows_NightLight1">
                           <label for="Shadows_NightLight1">Shadows NightLight</label>
-                          </div>                                                            
+                          </div>   
+                          <div class="d-flex flex-row pb-1"> 
+                            <input type="checkbox" id="Shadows_Initial" name="controls" value="Shadows_Initial" checked>
+                            <label for="Shadows_Initial">Initial Shadows</label>
+                            </div>                                                            
                           <div class="d-flex flex-row pb-1"> 
                           <input type="checkbox" id="ReflectionsMirror_C" name="effects" value="ReflectionsMirror_C">
                           <label for="ReflectionsMirror_C">Mirror Reflections</label>
@@ -473,11 +477,11 @@
                         <label for="FXAA_C">FXAA</label>
                         </div>
                         <div class="d-flex flex-row pb-1"> 
-                        <input type="checkbox" id="SSAA_C" name="Preferences" value="SSAA_C">
+                        <input type="checkbox" id="SSAA_C" name="Preferences" value="SSAA_C" checked>
                         <label for="SSAA_C">SSAA</label>
                         </div>
                         <div class="d-flex flex-row pb-1"> 
-                        <input type="checkbox" id="SMAA_C" name="Preferences" value="SMAA_C" checked>
+                        <input type="checkbox" id="SMAA_C" name="Preferences" value="SMAA_C">
                         <label for="SMAA_C">SMAA</label>
                         </div>
                         <div class="d-flex flex-row pb-1"> 
@@ -510,112 +514,158 @@
             </div>
             <img id="reset_Desktop" src="./icons/desktopUI/reset.svg" width="15px" height="15px" style="margin-top: 8px;"/>
             </div>
-            <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Arrangement <p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
-            <div class="panel"> 
-              <div style="margin-left: 5px;">               
-                <input type="checkbox" class="btn-check tranform_Desktop" id="select_Desktop" autocomplete="off">
-                <label for="select_Desktop">  <img src="./icons/desktopUI/Select.svg" width="20px" height="20px" style="margin: 5px;"/></label>  
-                <input type="checkbox" class="btn-check tranform_Desktop" id="unselect_Desktop" autocomplete="off">
-                <label for="unselect_Desktop">  <img src="./icons/desktopUI/unselect.svg"  width="15px" height="15px" style="margin: 5px;"/></label>  
-                <input type="radio" name="transformTools" value="translate" class="btn-check tranform_Desktop" id="move_Desktop" autocomplete="off">
-                <label for="move_Desktop"><img src="./icons/desktopUI/move.svg" width="15px" height="15px" style="margin: 5px;"/></label>  
-                <input type="radio" name="transformTools" value="rotate" class="btn-check tranform_Desktop" id="rotate_Desktop" autocomplete="off">
-                <label for="rotate_Desktop"><img src="./icons/desktopUI/rotateObject.svg"  width="15px" height="15px" style="margin: 5px;"/></label>                  
-                <input type="radio" name="transformTools" value="scale" class="btn-check tranform_Desktop" id="scale_Desktop" autocomplete="off">
-                <label for="scale_Desktop">  <img src="./icons/desktopUI/scale.svg"  width="15px" height="15px" style="margin: 5px;"/></label>                
-                <input type="checkbox" class="btn-check tranform_Desktop" id="delete_Desktop" autocomplete="off">
-                <label for="delete_Desktop">  <img src="./icons/desktopUI/delete.svg" width="15px" height="15px" style="margin: 5px;"/></label>              
-              </div>
-            </div>          
-              <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Navigation <p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
-              <div class="panel"> 
-                <div style="margin-left: 5px;">
-                  <input type="checkbox" class="btn-check navigation_Desktop" id="zoom_Desktop" autocomplete="off">
-                  <label for="zoom_Desktop">  <img src="./icons/desktopUI/zoom.svg" width="15px" height="15px" style="margin-right: 5px;margin-left: 5px;"/></label>  
-                  <input type="checkbox" class="btn-check navigation_Desktop" id="pan_Desktop" autocomplete="off">
-                  <label for="pan_Desktop">  <img src="./icons/desktopUI/pan.svg"  width="15px" height="15px" style="margin-right: 5px;"/></label>  
-                  <input type="checkbox" class="btn-check navigation_Desktop" id="rotateScene_Desktop" autocomplete="off">
-                  <label for="rotateScene_Desktop"><img src="./icons/desktopUI/rotateScene.svg" width="15px" height="15px"/></label>                                                                           
-                  </div>
-              </div>
-              <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Themes <p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
-              <div class="panel"> 
-                <div id="Themes_Desktop">                                        
-                </div>
-              </div>
-              <button class="accordion d-flex justify-content-between" style="border-bottom: none"><p>Viewpoints</p><p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
-              <div class="panel">  
-                <div style="font-size: 12px;">
-                  <div class="d-flex flex-row"> 
-                  <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop"  name="viewPoints" value="0">
-                  <label >Main</label>
-                  </div>
-                  <div class="d-flex flex-row"> 
-                  <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="3">
-                  <label >Table</label>
-                  </div>
-                  <div class="d-flex flex-row"> 
-                  <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop"  name="viewPoints" value="5">
-                  <label >Chair</label>
-                  </div>
-                  <div class="d-flex flex-row"> 
-                  <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="4">
-                  <label >Blinds</label>
-                  </div>
-                  <div class="d-flex flex-row"> 
-                  <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="1">
-                  <label >Ceiling</label>
-                  </div>
-                  <div class="d-flex flex-row"> 
-                  <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="2">
-                  <label>Back</label>                                         
-                  </div> 
-                </div>
-              </div>              
-              <div  style="font-size: 12px;display: none;" id="measurements_SideUI_Container">               
-                <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Measurements<p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
-              <div class="panel"> 
-                <div class="d-flex justify-content-between m-1">
-                  <label style="margin-left: 5px;">Height</label>
-                  <label class="measurements_Label_SideUI"></label>
-                </div>
-                <div class="d-flex justify-content-between m-1">
-                  <label style="margin-left: 5px;">Width</label>
-                  <label class="measurements_Label_SideUI"></label>
-                </div>
-                <div class="d-flex justify-content-between m-1">
-                  <label style="margin-left: 5px;">Length</label>
-                  <label class="measurements_Label_SideUI"></label>
-                </div>
-              </div>
 
-               
+            <div class="accordion" id="accordionFlushExample">
+
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Arrangement
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <div>               
+                      <input type="checkbox" class="btn-check tranform_Desktop" id="select_Desktop" autocomplete="off">
+                      <label for="select_Desktop">  <img src="./icons/desktopUI/Select.svg" width="20px" height="20px" style="margin: 5px;"/></label>  
+                      <input type="checkbox" class="btn-check tranform_Desktop" id="unselect_Desktop" autocomplete="off">
+                      <label for="unselect_Desktop">  <img src="./icons/desktopUI/unselect.svg"  width="15px" height="15px" style="margin: 5px;"/></label>  
+                      <input type="radio" name="transformTools" value="translate" class="btn-check tranform_Desktop" id="move_Desktop" autocomplete="off">
+                      <label for="move_Desktop"><img src="./icons/desktopUI/move.svg" width="15px" height="15px" style="margin: 5px;"/></label>  
+                      <input type="radio" name="transformTools" value="rotate" class="btn-check tranform_Desktop" id="rotate_Desktop" autocomplete="off">
+                      <label for="rotate_Desktop"><img src="./icons/desktopUI/rotateObject.svg"  width="15px" height="15px" style="margin: 5px;"/></label>                  
+                      <input type="radio" name="transformTools" value="scale" class="btn-check tranform_Desktop" id="scale_Desktop" autocomplete="off">
+                      <label for="scale_Desktop">  <img src="./icons/desktopUI/scale.svg"  width="15px" height="15px" style="margin: 5px;"/></label>                
+                      <input type="checkbox" class="btn-check tranform_Desktop" id="delete_Desktop" autocomplete="off">
+                      <label for="delete_Desktop">  <img src="./icons/desktopUI/delete.svg" width="15px" height="15px" style="margin: 5px;"/></label>              
+                    </div>
+                  </div>
+                </div>
               </div>
-              <!-- ANIMATIONS & VARIANTS -->
-              <div id="animationsUIContainer" style="display: none;">
-                <div class="d-flex justify-content-start">
-                  <div class="animationsUI" id="animationsUI" style="width: 100%;">
-                  </div>                
-                </div>
-              <!--  <div class="d-flex justify-content-start gap-2" id="Table_Desktop_AnimationsUI">                
-                  <div class="animationsUI">
-
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Navigation
+                  </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <div style="margin-left: 5px;">
+                      <input type="checkbox" class="btn-check navigation_Desktop" id="zoom_Desktop" autocomplete="off">
+                      <label for="zoom_Desktop">  <img src="./icons/desktopUI/zoom.svg" width="15px" height="15px" style="margin-right: 5px;margin-left: 5px;"/></label>  
+                      <input type="checkbox" class="btn-check navigation_Desktop" id="pan_Desktop" autocomplete="off">
+                      <label for="pan_Desktop">  <img src="./icons/desktopUI/pan.svg"  width="15px" height="15px" style="margin-right: 5px;"/></label>  
+                      <input type="checkbox" class="btn-check navigation_Desktop" id="rotateScene_Desktop" autocomplete="off">
+                      <label for="rotateScene_Desktop"><img src="./icons/desktopUI/rotateScene.svg" width="15px" height="15px"/></label>                                                                           
+                      </div>
                   </div>
                 </div>
-                <div class="d-flex justify-content-start gap-2" id="windowBlinds_Desktop_AnimationsUI">                
-                  <div class="animationsUI">
-
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Themes
+                  </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <div id="Themes_Desktop">                                        
+                    </div>
                   </div>
-                </div> -->
-              </div>   
-              <div style="display: none;" id="LightsContainer">
-              <button class="accordion d-flex justify-content-between" style="margin-top: 5px;border-bottom: none;">Light Controls <p class="downArrow"><i class="arrow down"></i></p><p class="upArrow" style="display: none;"><i class="arrow up" ></i></p></button>
-              <div class="panel"> 
-                <div class="initialControlsContainer" style="width: 100%;font-size: 12px;">                                                                                         
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    Viewpoints
+                  </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <div style="font-size: 12px;">
+                      <div class="d-flex flex-row"> 
+                      <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop"  name="viewPoints" value="0">
+                      <label >Main</label>
+                      </div>
+                      <div class="d-flex flex-row"> 
+                      <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="3">
+                      <label >Table</label>
+                      </div>
+                      <div class="d-flex flex-row"> 
+                      <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop"  name="viewPoints" value="5">
+                      <label >Chair</label>
+                      </div>
+                      <div class="d-flex flex-row"> 
+                      <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="4">
+                      <label >Blinds</label>
+                      </div>
+                      <div class="d-flex flex-row"> 
+                      <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="1">
+                      <label >Ceiling</label>
+                      </div>
+                      <div class="d-flex flex-row"> 
+                      <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop" name="viewPoints" value="2">
+                      <label>Back</label>                                         
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item" style="display: none;" id="MeasurementsUIParent">
+                <h2 class="accordion-header" id="flush-headingFive">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                    Measurements
+                  </button>
+                </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <div class="d-flex justify-content-between m-1">
+                      <label style="margin-left: 5px;">Height</label>
+                      <label class="measurements_Label_SideUI"></label>
+                    </div>
+                    <div class="d-flex justify-content-between m-1">
+                      <label style="margin-left: 5px;">Width</label>
+                      <label class="measurements_Label_SideUI"></label>
+                    </div>
+                    <div class="d-flex justify-content-between m-1">
+                      <label style="margin-left: 5px;">Length</label>
+                      <label class="measurements_Label_SideUI"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item" style="display: none;" id="animationsUIParent">
+                <h2 class="accordion-header" id="flush-headingSix">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                    Furniture UI
+                  </button>
+                </h2>
+                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <div id="animationsUIContainer">
+                      <div class="d-flex justify-content-start">
+                        <div class="animationsUI" id="animationsUI" style="width: 100%;">
+                        </div>                
+                      </div>            
+                    </div>   
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item" style="display: none;" id="LightsContainer">
+                <h2 class="accordion-header" id="flush-headingSix">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                    Light Controls
+                  </button>
+                </h2>
+                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <div class="initialControlsContainer" style="width: 100%;font-size: 12px;">                                                                                         
                   
-                </div>   
-              </div>      
-            </div>  
+                    </div>  
+                  </div>
+                </div>
+              </div>
+            </div>                                         
 
         </div>
 
@@ -680,13 +730,13 @@
   document.getElementById("defaultVerticalOpen").click();
   document.getElementById("defaultHorizontalOpen").click();
 
-  var acc = document.getElementsByClassName("accordion");
+/*   var acc = document.getElementsByClassName("accordion");
   var i;
   let panelCSS=document.querySelectorAll(".panel");
   let upArrow=document.querySelectorAll(".upArrow")
   let downArrow=document.querySelectorAll(".downArrow")
-
-  for (i = 0; i < acc.length; i++) {
+ */
+ /*  for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
       this.classList.toggle("active");
       var panel = this.nextElementSibling;      
@@ -739,7 +789,8 @@
       }       
     });
   }
-  </script>
+  */
+ </script>
     
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

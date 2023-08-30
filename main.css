@@ -40,7 +40,18 @@ border-top: 1px solid #E5E5E5;
   padding-top: 5px;    
   border-top: 1px solid #E5E5E5;  
   }
-.accordion {    
+  .accordion{
+    font-size: 12px;    
+  }
+  .accordion-item{
+    background-color: #F5F5F5;
+  }
+  .accordion-button{
+    background-color: #F5F5F5;
+    font-size: 12px;    
+    padding: 5px;
+  } 
+/* .accordion {    
   cursor: pointer;
   padding: 8px;
   width: 10vw;
@@ -53,7 +64,7 @@ border-top: 1px solid #E5E5E5;
   text-align: left;  
   font-size: 12px;
   transition: 0.4s;
-}
+} */
 .Objectthumbnail{
   width: 70px;
   height: 70px;

@@ -1,7 +1,7 @@
 import { Clock, LoopOnce, Vector3,AmbientLight,Color,DirectionalLightHelper } from "three";
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min.js";
 import tablesHeights from "../../dataBase/tablesHeights.json" assert { type: "json" };
-let initialLoadingValue=0
+
 function animationUI(gltfData, mixer, category, URL,scene,renderer) {  
 
   let animationClips = [];
@@ -14,8 +14,9 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
   let form, input, label, img;
   let mainDiv = document.createElement("div");
 
-  let div1 = document.createElement("div");  
-    div1.className="animationsContainer d-none"    
+  let div1 = document.createElement("div");
+  
+    div1.className="animationsContainer"    
   
  //Animations UI
    if (category == "tables") {
@@ -61,44 +62,11 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
       mainDiv.appendChild(div1);      
       
     }
-   
-    let animation_label = document.createElement("button");
+    let animation_label = document.createElement("label");
     animation_label.innerText="Dynamics";
-    animation_label.className="accordion d-flex justify-content-between furnitureArrow"
-
-    let downArrow = document.createElement("p");
-    downArrow.className="downArrow"
-    let iconDn=document.createElement("i");
-    iconDn.className="arrow down"
-    downArrow.appendChild(iconDn)
-
-    let upArrow = document.createElement("p");
-    upArrow.className="upArrow d-none"
-    let iconUp=document.createElement("i");
-    iconUp.className="arrow up"
-    upArrow.appendChild(iconUp)
-
-    animation_label.appendChild(downArrow)
-    animation_label.appendChild(upArrow)       
+    animation_label.className="Animations separate_Line1"
     mainDiv.appendChild(animation_label);
     mainDiv.appendChild(div1);
-    
-    animation_label.addEventListener("click",function(){       
-      if(downArrow.className=="downArrow" || downArrow.className=="downArrow d-block"){           
-      downArrow.classList.add("d-none")
-      upArrow.classList.remove("d-none")
-      upArrow.classList.add("d-block")
-      div1.classList.remove("d-none")
-      div1.classList.add("d-block")
-      }else{
-        downArrow.classList.remove("d-none")
-        downArrow.classList.add("d-block")
-        upArrow.classList.remove("d-block")
-        upArrow.classList.add("d-none")
-        div1.classList.remove("d-block")
-        div1.classList.add("d-none")
-      }
-    }) 
   }else{   
     for (let i = 0; i < gltfData.animations.length; i++) {
       form = document.createElement("div");
@@ -146,51 +114,16 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
         input_anim_Fun();           
       });
     }
- 
-    let animation_label = document.createElement("button");
+    let animation_label = document.createElement("label");
     animation_label.innerText="Dynamics";
-    animation_label.className="accordion d-flex justify-content-between furnitureArrow"
-
-    let downArrow = document.createElement("p");
-    downArrow.className="downArrow"
-    let iconDn=document.createElement("i");
-    iconDn.className="arrow down"
-    downArrow.appendChild(iconDn)
-
-    let upArrow = document.createElement("p");
-    upArrow.className="upArrow d-none"
-    let iconUp=document.createElement("i");
-    iconUp.className="arrow up"
-    upArrow.appendChild(iconUp)
-
-    animation_label.appendChild(downArrow)
-    animation_label.appendChild(upArrow)       
+    animation_label.className="Animations separate_Line1"
     mainDiv.appendChild(animation_label);
     mainDiv.appendChild(div1);
-    
-    animation_label.addEventListener("click",function(){       
-      if(downArrow.className=="downArrow" || downArrow.className=="downArrow d-block"){           
-      downArrow.classList.add("d-none")
-      upArrow.classList.remove("d-none")
-      upArrow.classList.add("d-block")
-      div1.classList.remove("d-none")
-      div1.classList.add("d-block")
-      }else{
-        downArrow.classList.remove("d-none")
-        downArrow.classList.add("d-block")
-        upArrow.classList.remove("d-block")
-        upArrow.classList.add("d-none")
-        div1.classList.remove("d-block")
-        div1.classList.add("d-none")
-      }
-    })
-    
   }
 
   //Material Variants UI
-  let div2_Container = document.createElement("div");  
-  div2_Container.className = "d-none";    
-  let div2 = document.createElement("div");  
+  let div2 = document.createElement("div");
+  
     div2.className = "d-flex";    
   
   for (let i = 0; i < gltfData.userData.variants.length; i++) {
@@ -231,56 +164,11 @@ function animationUI(gltfData, mixer, category, URL,scene,renderer) {
     div2.appendChild(input);
     div2.appendChild(label);
   }
-
-
-  
-  let variants_label = document.createElement("button");
+  let variants_label = document.createElement("label");
   variants_label.innerText="Material Variants";
-  variants_label.className="accordion d-flex justify-content-between furnitureArrow"
-
-  let downArrow = document.createElement("p");
-  downArrow.className="downArrow"
-  let iconDn=document.createElement("i");
-  iconDn.className="arrow down"
-  downArrow.appendChild(iconDn)
-
-  let upArrow = document.createElement("p");
-  upArrow.className="upArrow d-none"
-  let iconUp=document.createElement("i");
-  iconUp.className="arrow up"
-  upArrow.appendChild(iconUp)
-
-  variants_label.appendChild(downArrow)
-  variants_label.appendChild(upArrow) 
-  div2_Container.appendChild(div2)      
+  variants_label.className="material_variants separate_Line1"
   mainDiv.appendChild(variants_label);
-  mainDiv.appendChild(div2_Container);
-  
-  variants_label.addEventListener("click",function(){       
-    if(downArrow.className=="downArrow" || downArrow.className=="downArrow d-block"){           
-    downArrow.classList.add("d-none")
-    upArrow.classList.remove("d-none")
-    upArrow.classList.add("d-block")
-    div2_Container.classList.remove("d-none")
-    div2_Container.classList.add("d-block")
-    }else{
-      downArrow.classList.remove("d-none")
-      downArrow.classList.add("d-block")
-      upArrow.classList.remove("d-block")
-      upArrow.classList.add("d-none")
-      div2_Container.classList.remove("d-block")
-      div2_Container.classList.add("d-none")
-    }
-  })
-
-
-
-if(initialLoadingValue==0){
-  mainDiv.style.display="none"
-}else{
-  mainDiv.style.display="block"
-}
-initialLoadingValue=initialLoadingValue+1
+  mainDiv.appendChild(div2);
 
   return mainDiv;
 }

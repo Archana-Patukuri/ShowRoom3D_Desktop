@@ -31,9 +31,9 @@ const furnitureTypesUI = function (
     input.autocomplete = "off";
 
     let measurements_Label=document.querySelectorAll(".measurements_Label_SideUI")  
-    let measurements_SideUI_Container=document.getElementById("measurements_SideUI_Container")
+    let measurements_SideUI_Container=document.getElementById("MeasurementsUIParent")
     let measurements_Label_len=measurements_Label.length
-    let animationsUIContainer=document.getElementById("animationsUIContainer")
+    let animationsUIContainer=document.getElementById("animationsUIParent")
     input.addEventListener("click", function (event) {
       let myPromise = new Promise(function(resolve) {        
         data= loadModel(event.target.value, i, spinnerContainer);        

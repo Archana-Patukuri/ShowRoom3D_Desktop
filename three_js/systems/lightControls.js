@@ -143,11 +143,11 @@ async function lightControls(
   );
   const htmlArray = LightControlsArray.map((item) =>
   elementFromHtmlString(`  
-  <div calss="lightSettingContainer" style="width:100%;gap:5px;margin-left:5px">    
+  <div calss="lightSettingContainer" style="width:100%;gap:5px;">    
     <div class="d-flex flex-row" >
       <label for="${
         item.id
-      }" style="display:flex; align-items:center;width:150px;margin-left:5px;" class="form-check-label" >
+      }" style="display:flex; align-items:center;width:150px;" class="form-check-label" >
         <input type="radio" data-type="${
           item.id
         }" name="lights" class="lightActiveCheckbox form-check-input" style="width:13px;height:13px;margin-right:5px;"/>
