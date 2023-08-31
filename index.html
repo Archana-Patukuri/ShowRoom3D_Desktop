@@ -4,13 +4,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">  
-  <title>Showroom3D</title>
-  <!-- <script src="https://kit.fontawesome.com/6a15cfc39f.js" crossorigin="anonymous"></script> -->
+  <title>Showroom3D</title>  
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">       
+  
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
   <link rel="stylesheet" href="./main.css" type="text/css" />  
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  
 </head>
 
@@ -28,10 +31,10 @@
     }
   </script>
      
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-  <div class="container-fluid vh-100">
+  --> <div class="container-fluid vh-100">
 
     <div class="row ">
       <div class="home_card_container" id="home_card_container_Desktop">
@@ -143,366 +146,380 @@
         <div id="desktopUIContainer" style="display: none;">
         <div class="d-flex" style="height: 100vh;width: 40vw;">        
 
-        <div class="tab" style="width: 11vw;">
-        <div class="d-flex flex-column">
-        <div>
-          <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'SampleRoom_Dekstop')" id="defaultVerticalOpen"><img src="./icons/desktopUI/room.svg" style="width: 12px;height: 12px;margin-right: 5px;"/>Sample Room</button>
-          <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Furniture_Dekstop')"><img src="./icons/desktopUI/furniture.svg" class="icon"/>Furniture</button>
-          <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Lighting_Desktop')"><img src="./icons/desktopUI/light.svg" class="icon"/>Lighting</button>
-          <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Paints_Desktop')"><img src="./icons/desktopUI/paint.svg" class="icon"/>Paints</button>
-          <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Tiles_Desktop')"><img src="./icons/desktopUI/tiles.svg" class="icon"/>Tiles</button>
-          <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Carpets_Desktop')"><img src="./icons/desktopUI/carpet.svg" class="icon"/>Carpets</button>
-          <button class="d-flex tablinks_vertical desktop_top_buttons" style="padding-top: 5px;" onclick="openVerticalTab(event, 'DoorsWindows_Desktop')"><img src="./icons/desktopUI/door.svg" style="margin-right: 5px;width: 15px;height: 15px;"/>Doors/Windows</button>
-          <button class="tablinks_vertical desktop_top_buttons" onclick="openVerticalTab(event, 'Accessories_Desktop')"><img src="./icons/desktopUI/accessories.svg" class="icon"/>Accessories</button>
-        </div>
-        <div style="margin-top: 20vh">
-          <!-- bottom buttons comes here -->
-          <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Spin_Dekstop')"><img src="./icons/desktopUI/spin.svg" class="icon"/>360Spins</button>
-          <div class="measurementsHC">                 
-            <input type="checkbox" class="btn-check" name="setOneBtns" id="measurements_Desktop" autocomplete="off">
-            <label class="tablinks_vertical desktop_bottom_buttons Measurements" for="measurements_Desktop" style="padding-left: 5px;padding-top: 4px;"><img src="./icons/desktopUI/measurements.svg" class="icon"/>Measurements</label> 
-             <!-- <span class="measurementsHover">click on two different places on the screen to get measurements</span>                               -->
-          </div>         
-          <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Render_Dekstop')"><img src="./icons/desktopUI/render.svg" class="icon"/>HD Render</button>
-          <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Collaboration_Desktop')"><img src="./icons/desktopUI/collaboration.svg" class="icon"/>Collaboration</button>
-          <button class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'Advanced_Dekstop')"><img src="./icons/desktopUI/Advanced.svg" class="icon"/>Advanced</button>
-          <button style="background: linear-gradient(133deg, #FFC1BD 0%, #FFDEBF 100%);" class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'OpenProject_Dekstop')"><img src="./icons/desktopUI/open_Project.svg" class="icon"/>Open project</button>
-          <button style="background: linear-gradient(133deg, #FFC1BD 0%, #FFDEBF 100%);" class="tablinks_vertical desktop_bottom_buttons" onclick="openVerticalTab(event, 'SaveProject_Dekstop')"><img src="./icons/desktopUI/save_Project.svg" class="icon"/>Save project</button>
-        </div>
-      </div>
+        <div class="tab" style="width: 30vw;">
+          <div class="d-flex justify-content-between">
+            <div style="font-size: 12px;width: 10vw;" class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link active desktop_top_buttons" id="v-pills-Sample-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Sample" type="button" role="tab" aria-controls="v-pills-Sample" aria-selected="true"><img src="./icons/desktopUI/room.svg" style="width: 12px;height: 12px;margin-right: 5px;"/>Sample Room</button>
+              <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Furniture-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Furniture" type="button" role="tab" aria-controls="v-pills-Furniture" aria-selected="false"><img src="./icons/desktopUI/furniture.svg" class="icon"/>Furniture</button>
+              <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Lighting-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Lighting" type="button" role="tab" aria-controls="v-pills-Lighting" aria-selected="false"><img src="./icons/desktopUI/light.svg" class="icon"/>Lighting</button>
+              <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Paints-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Paints" type="button" role="tab" aria-controls="v-pills-Paints" aria-selected="false"><img src="./icons/desktopUI/paint.svg" class="icon"/>Paints</button>
+              <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Tiles-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Tiles" type="button" role="tab" aria-controls="v-pills-Tiles" aria-selected="false"><img src="./icons/desktopUI/tiles.svg" class="icon"/>Tiles</button>
+              <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Carpets-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Carpets" type="button" role="tab" aria-controls="v-pills-Carpets" aria-selected="false"><img src="./icons/desktopUI/carpet.svg" class="icon"/>Carpets</button>
+              <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Doors-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Doors" type="button" role="tab" aria-controls="v-pills-Doors" aria-selected="false"><img src="./icons/desktopUI/door.svg" style="margin-right: 5px;width: 15px;height: 15px;"/>Doors/Windows</button>
+              <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Accessories-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Accessories" type="button" role="tab" aria-controls="v-pills-Accessories" aria-selected="false"><img src="./icons/desktopUI/accessories.svg" class="icon"/>Accessories</button>
+            
 
-        
-        </div>
+              <button style="background-color: #e5e5e5;color: black;margin-top: 100%;padding: 2%;text-align: start;float: inline-end;" class="nav-link" id="v-pills-spin-tab" data-bs-toggle="pill" data-bs-target="#v-pills-spin" type="button" role="tab" aria-controls="v-pills-spin" aria-selected="false"><img src="./icons/desktopUI/spin.svg" class="icon"/>360Spins</button>
+              <button style="background-color: #e5e5e5;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="measurements_Desktop" data-bs-toggle="pill" data-bs-target="#v-pills-measurements_Desktop" type="button" role="tab" aria-controls="v-pills-measurements_Desktop" aria-selected="false"><img src="./icons/desktopUI/measurements.svg" class="icon"/>Measurements</button>
+              <button style="background-color: #e5e5e5;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Render-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Render" type="button" role="tab" aria-controls="v-pills-Render" aria-selected="false"><img src="./icons/desktopUI/render.svg" class="icon"/>HD Render</button>
+              <button style="background-color: #e5e5e5;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Collaboration-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Collaboration" type="button" role="tab" aria-controls="v-pills-Collaboration" aria-selected="false"><img src="./icons/desktopUI/collaboration.svg" class="icon"/>Collaboration</button>
+              <button style="background-color: #e5e5e5;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Advanced-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Advanced" type="button" role="tab" aria-controls="v-pills-Advanced" aria-selected="false"><img src="./icons/desktopUI/Advanced.svg" class="icon"/>Advanced</button>
+              <button style="background: linear-gradient(133deg, #FFC1BD 0%, #FFDEBF 100%);color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Open-project-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Open-project" type="button" role="tab" aria-controls="v-pills-Open-project" aria-selected="false"><img src="./icons/desktopUI/open_Project.svg" class="icon"/>Open project</button>
+              <button style="background: linear-gradient(133deg, #FFC1BD 0%, #FFDEBF 100%);color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link" id="v-pills-Save-project-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Save-project" type="button" role="tab" aria-controls="v-pills-Save-project" aria-selected="false"><img src="./icons/desktopUI/save_Project.svg" class="icon"/>Save project</button>
+            
 
-        <div class="middleTab" style="width: 20vw;">
-        <div id="SampleRoom_Dekstop" class="tabcontent tabcontent_vertical">
-          <div class="horizontalTab">
-            <div class="d-flex flex-row justify-content-center align-items-center">                   
-              <div id="load_Furniture_Desktop">
-                <button class="buttonH buttonC d-flex flex-column justify-content-center align-items-center"> <img src="./icons/desktopUI/furniture.svg" style="width: 25px;height: 25px;"/> Furniture</button>                                        
-              </div>
-              <div id="load_Lighting_Desktop">
-                <button class="buttonH buttonC d-flex flex-column justify-content-center align-items-center"><img src="./icons/desktopUI/light.svg" style="width: 30px;height: 30px;"/> Lighting</button>                         
-              </div>  
-              <div id="load_Accessories_Desktop">
-                <button class="buttonH buttonC d-flex flex-column justify-content-center align-items-center"> <img src="./icons/desktopUI/accessories.svg" style="width: 25px;height: 25px;"/>Accessories</button>                         
-              </div>                  
-            </div>                                             
-          </div>          
-        </div>             
-        <div id="Furniture_Dekstop" class="tabcontent tabcontent_vertical">
-          <div class="horizontalTab">
-            <div class="tabH">
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Chair_Desktop_Container')" id="defaultHorizontalOpen">Chair</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Table_Desktop_Container')">Table</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Sofa_Desktop')">Sofa</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Bed_Desktop')">Bed</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Cabinets_Desktop')">Cabinets</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Dresser_Desktop')">Dresser</button>
-            </div>   
-            <div id="Chair_Desktop_Container" class="tabcontent_horizontal p-1 mt-1">
-            <div id="Chair_Desktop" class="d-flex">                                                     
-            </div>   
-          </div>  
-          <div id="Table_Desktop_Container" class="tabcontent_horizontal p-1 mt-1 ">
-            <div id="Table_Desktop" class="d-flex">                          
-            </div>   
-          </div>          
-            <div id="Sofa_Desktop" class="tabcontent_horizontal">
-              <p>Sofa Coming Soon</p>
-            </div>  
-            <div id="Bed_Desktop" class="tabcontent_horizontal">
-              <p>Bed Coming Soon</p>
-            </div>  
-            <div id="Cabinets_Desktop" class="tabcontent_horizontal">
-              <p>Cabinets Coming Soon</p>
-            </div>  
-            <!-- <div id="Dresser_Desktop" class="tabcontent_horizontal">
-              <p>Dresser Coming Soon</p>
-            </div>   -->        
-          </div>
-        </div>        
-        <div id="Lighting_Desktop" class="tabcontent tabcontent_vertical">
-          <div class="horizontalTab">
-            <div class="tabH">
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Floor_Desktop')" id="LightdefaultHorizontalOpen">Floor</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'TableLighting_Desktop')">Table</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Chandelier_Desktop')">Chandelier</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Wall_Desktop')">Wall</button>
-            </div>        
-            <div id="Floor_Desktop" class="tabcontent_horizontal">
-              <button id="lightControls_Button">Light Controls</button>
-              <div class="d-flex justify-content-center p-1 m-1" id="lightsUIContainer_Desktop">                 
-              </div>                         
-            </div>        
-            <div id="TableLighting_Desktop" class="tabcontent_horizontal">
-              <p>Table Lamp Coming Soon</p>              
-            </div>        
-            <div id="Chandelier_Desktop" class="tabcontent_horizontal">
-              <p>Chandelier Coming Soon</p>
-            </div>  
-            <div id="Wall_Desktop" class="tabcontent_horizontal">
-              <p>Wall Lamp Coming Soon</p>
-            </div>                       
-          </div>         
-        </div>        
-        <div id="Paints_Desktop" class="tabcontent tabcontent_vertical">
-          <div class="horizontalTab">
-            <div class="tabH">
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Colors_Desktop')" id="PaintsdefaultHorizontalOpen">Colors</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Textures_Desktop')">Textures</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Stencils_Desktop')">Stencils</button>              
-            </div>        
-            <div id="Colors_Desktop" class="tabcontent_horizontal">
-              <p>Colors Coming Soon</p>                           
-            </div>        
-            <div id="Textures_Desktop" class="tabcontent_horizontal">
-              <p>Textures Coming Soon</p>              
-            </div>        
-            <div id="Stencils_Desktop" class="tabcontent_horizontal">
-              <p>Stencils Coming Soon</p>
-            </div>                                  
-          </div>          
-        </div>
-        <div id="Tiles_Desktop" class="tabcontent tabcontent_vertical">
-          <div class="horizontalTab">
-            <div class="tabH">
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Wood_Desktop')" id="TilesdefaultHorizontalOpen">Wood</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Marble_Desktop')">Marble</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Granite_Desktop')">Granite</button>              
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Vitrified_Desktop')">Vitrified</button> 
-            </div>        
-            <div id="Wood_Desktop" class="tabcontent_horizontal">
-              <p>Wood Coming Soon</p>                           
-            </div>        
-            <div id="Marble_Desktop" class="tabcontent_horizontal">
-              <p>Marble Coming Soon</p>              
-            </div>        
-            <div id="Granite_Desktop" class="tabcontent_horizontal">
-              <p>Granite Coming Soon</p>
-            </div>  
-            <div id="Vitrified_Desktop" class="tabcontent_horizontal">
-              <p>Vitrified Coming Soon</p>
-            </div>                                  
-          </div>          
-        </div>
-        <div id="Carpets_Desktop" class="tabcontent tabcontent_vertical">
-          <div class="horizontalTab">
-            <div class="tabH">
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'WallToWall_Desktop')" id="CarpetsdefaultHorizontalOpen">Wall to wall</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'AreaRugs_Desktop')">Area rugs</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'RunnerRugs_Desktop')">Runner rugs</button>              
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'KidsRugs_Desktop')">Kid's rugs</button> 
-            </div>        
-            <div id="WallToWall_Desktop" class="tabcontent_horizontal">
-              <p>Wall to wall Coming Soon</p>                           
-            </div>        
-            <div id="AreaRugs_Desktop" class="tabcontent_horizontal">
-              <p>Area Rugs Coming Soon</p>              
-            </div>        
-            <div id="RunnerRugs_Desktop" class="tabcontent_horizontal">
-              <p>Runner Rugs Coming Soon</p>
-            </div>  
-            <div id="KidsRugs_Desktop" class="tabcontent_horizontal">
-              <p>Kids Rugs Coming Soon</p>
-            </div>                                  
-          </div>          
-        </div>
-        <div id="DoorsWindows_Desktop" class="tabcontent tabcontent_vertical">
-          <div class="horizontalTab">
-            <div class="tabH">
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'windowBlinds_Desktop_Container')" id="DoorsdefaultHorizontalOpen">Window Blinds</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Window_Desktop')">Window</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Doors_Desktop')">Doors</button>              
-            </div>        
-            <div id="windowBlinds_Desktop_Container" class="tabcontent_horizontal p-1 mt-1">
-              <div id="windowBlinds_Desktop" class="d-flex">                                       
-              </div>  
-          </div>      
-            <div id="Window_Desktop" class="tabcontent_horizontal">
-              <p>Window Coming Soon</p>              
-            </div>        
-            <div id="Doors_Desktop" class="tabcontent_horizontal">
-              <p>Doors Coming Soon</p>
-            </div>                                  
-          </div>          
-        </div>
-        <div id="Accessories_Desktop" class="tabcontent tabcontent_vertical">
-          <div class="horizontalTab">
-            <div class="tabH">
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'WallPaper_Desktop')" id="AccessoriesdefaultHorizontalOpen">Wall Paper</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Sculpture_Desktop')">Sculpture</button>
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Curtains_Desktop')">Curtains</button>              
-              <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Plants_Desktop')">Plants</button>              
-            </div>        
-            <div id="WallPaper_Desktop" class="tabcontent_horizontal">
-              <p>Wall Papers Coming Soon</p>                           
-            </div>        
-            <div id="Sculpture_Desktop" class="tabcontent_horizontal">
-              <p>Sculpture Coming Soon</p>              
-            </div>        
-            <div id="Curtains_Desktop" class="tabcontent_horizontal">
-              <p>Curtains Coming Soon</p>
-            </div>   
-            <div id="Plants_Desktop" class="tabcontent_horizontal">
-              <p>Plants Coming Soon</p>
-            </div>                                  
-          </div>          
-        </div>
-        <div id="Render_Dekstop" class="tabcontent tabcontent_vertical">
-          <div>                                
-            <form name = "passdata">
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label" style="margin-left: 5px;font-size: 14px;">Email address</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" style="width: fit-content;margin-left: 5px;" aria-describedby="emailHelp">
-              </div> 
-              <div class="d-flex">
-               <p  class="buttons" style="background-color: #FF5A50;color: #FFFFFF;padding: 4px;margin: 5px;" id="Export_Image">Image Render</p> 
-               <p  class="buttons" style="background-color: #FF5A50;color: #FFFFFF;padding: 4px;margin: 5px;" id="Export_Video">Video Render</p> 
-              </div>
-            </form>
-          </div>
-        </div>
-        <div id="Advanced_Dekstop" class="tabcontent tabcontent_vertical">          
-            <div class="horizontalTab">
-              <div class="tabH">
-                <button class="tablinks_horizontal" onclick="openHorizontalTab(event, 'Advanced_LightControls_Desktop')" id="AdvanceddefaultHorizontalOpen">Light Controls</button>
-              </div>        
-              <div id="Advanced_LightControls_Desktop" class="tabcontent_horizontal">
-                <div class="d-flex justify-content-center" style="font-size: 10px;" id="controlsUI">
-                  <div>
-                <div class="controlsContainer" style="width: 50%;">
-                  <div class="initialControlsContainer1" style="width: 50%;">                
-                    <div style="width: 100%; display: flex;gap: 2px;">
-                      <span style="margin-left: 110px;">Intensity</span>
-                      <span style="margin-left: 22px;">Color</span>
-                      <span style="margin-left: 3px;">Helper</span>
-                      <span style="margin-left: 2px;">Distance</span>
-                      <!-- <span>Decay</span> -->
-                    </div>                                                                                 
-                  </div>                  
-                  <div style="display: none;" id="FloorLamp" >
-                    <div class="d-flex">                          
-                      <div class="d-flex flex-row">                         
-                          <input type="checkbox" name="lights" value="floor_lamp" class="lightTypes" id="floor_lamp">
-                          <label for="floor_lamp">Floor Lamp</label>
-                         </div>                        
-                      <div class="slidecontainer1" style="margin-left: 5px;">                          
-                        <input type="range" min="0" max="10" value="5" step="0.1" class="slider Slider_range slider_class" style="width:70px">
-                      </div>
-                      <div class="colorPickerContainer1" style="margin-left: 5px;">                          
-                        <input type="color" class="colorPicker1" name="colorPicker1" value="#FFFFFF" style="border:none;height: 20px;width:30px">                          
-                      </div> 
-                      <input type="checkbox" name="helper" class="helper_FW" style="margin-left:5px;">                            
-    
-                      <input type="number" class="distance" value="0" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
-                      <input type="number" class="decay" value="2" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
-                    </div> 
+
+            </div>
+            <div class="tab-content" style="width: 20vw;" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-Sample" role="tabpanel" aria-labelledby="v-pills-Sample-tab">
+                <div class="d-flex flex-row justify-content-center align-items-center">                   
+                  <div id="load_Furniture_Desktop">
+                    <button class="buttonH buttonC d-flex flex-column justify-content-center align-items-center"> <img src="./icons/desktopUI/furniture.svg" style="width: 25px;height: 25px;"/> Furniture</button>                                        
                   </div>
-                    <div style="display: none;" id="WallLamp">
-                    <div class="d-flex">                          
-                      <div class="d-flex flex-row">                         
-                        <input type="checkbox" name="lights" value="wall_lamp" class="lightTypes" id="wall_lamp">
-                        <label for="wall_lamp">Wall Lamp</label>
-                        </div>                      
-                    <div class="slidecontainer1" style="margin-left: 16px;">                          
-                      <input type="range" min="0" max="5" value="2" step="0.1" class="slider Slider_range slider_class" style="width:70px">
-                    </div>
-                    <div class="colorPickerContainer1" style="margin-left: 5px;">                          
-                      <input type="color" class="colorPicker1" name="colorPicker1" value="#FFFFFF" style="border:none;height: 20px;width:30px">                          
-                    </div> 
-                    <input type="checkbox" name="helper" class="helper_FW" style="margin-left: 5px;">  
-    
-                    <input type="number" class="distance" value="0" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
-                    <input type="number" class="decay" value="2" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
+                  <div id="load_Lighting_Desktop">
+                    <button class="buttonH buttonC d-flex flex-column justify-content-center align-items-center"><img src="./icons/desktopUI/light.svg" style="width: 30px;height: 30px;"/> Lighting</button>                         
                   </div>  
-                </div>
-                </div>                                              
-                   <div id="MoreControls" style="margin-left: 60px;">
-                    <div class="d-flex">                          
-                      <div>                                           
-                        <label style="color: #FF5A50;font-family: 'Roboto'; margin-right: 0px; margin-left: 50px;">Tone Mapping Exposure</label>
-                      <div class="d-flex">
-                        <div class="d-flex flex-row pb-1">                           
-                          <input type="checkbox" name="lights" value="HDRI" id="HDRI">
-                          <label for="HDRI">HDRI</label>                             
+                  <div id="load_Accessories_Desktop">
+                    <button class="buttonH buttonC d-flex flex-column justify-content-center align-items-center"> <img src="./icons/desktopUI/accessories.svg" style="width: 25px;height: 25px;"/>Accessories</button>                         
+                  </div>                  
+                </div>   
+                 </div>
+              <div class="tab-pane fade" id="v-pills-Furniture" role="tabpanel" aria-labelledby="v-pills-Furniture-tab">
+                <div id="Furniture_Dekstop">
+                  <nav style="font-size: 12px;">
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <button style="margin: 0;padding: 2%;" class="nav-link active" id="Chair-tab" data-bs-toggle="tab" data-bs-target="#Chair" type="button" role="tab" aria-controls="Chair" aria-selected="true">Chair</button>
+                      <button style="margin: 0;padding: 2%;" class="nav-link" id="Table-tab" data-bs-toggle="tab" data-bs-target="#Table" type="button" role="tab" aria-controls="Table" aria-selected="false">Table</button>
+                      <button style="margin: 0;padding: 2%;" class="nav-link" id="Sofa-tab" data-bs-toggle="tab" data-bs-target="#Sofa" type="button" role="tab" aria-controls="Sofa" aria-selected="false">Sofa</button>
+                      <button style="margin: 0;padding: 2%;" class="nav-link" id="Bed-tab" data-bs-toggle="tab" data-bs-target="#Bed" type="button" role="tab" aria-controls="Bed" aria-selected="false">Bed</button>
+                      <button style="margin: 0;padding: 2%;" class="nav-link" id="Cabinets-tab" data-bs-toggle="tab" data-bs-target="#Cabinets" type="button" role="tab" aria-controls="Cabinets" aria-selected="false">Cabinets</button>
+                    </div>
+                  </nav>          
+                  <div class="tab-content p-1" id="myTabContent">
+                    <div class="tab-pane fade show active" id="Chair" role="tabpanel" aria-labelledby="Chair-tab">
+                      <div id="Chair_Desktop" class="d-flex">                                                     
+                      </div> 
+                    </div>
+                    <div class="tab-pane fade" id="Table" role="tabpanel" aria-labelledby="Table-tab">
+                      <div id="Table_Desktop" class="d-flex">                          
                       </div>
-                        <div class="slidecontainer" style="margin-left: 10px;">                          
-                          <input type="range" min="0" max="2" value="0.7" step="0.1" class="slider Slider_range slider_class">
-                        </div>                          
-                      </div>   
-                      <div class="d-flex flex-row pb-1">              
-                        <input type="checkbox" name="Emissive" value="Emissive" checked id="Emissive">
-                        <label for="Emissive">Emissive</label>
-                        </div>
-                        <div class="d-flex flex-row pb-1">   
-                        <input type="checkbox" id="Shadows_SunLight" name="controls" value="Shadows_SunLight">
-                        <label for="Shadows_SunLight">Shadows SunLight</label>                               
-                        </div>
-                        <div class="d-flex flex-row pb-1"> 
-                          <input type="checkbox" id="Shadows_NightLight1" name="controls" value="Shadows_NightLight1">
-                          <label for="Shadows_NightLight1">Shadows NightLight</label>
-                          </div>   
-                          <div class="d-flex flex-row pb-1"> 
-                            <input type="checkbox" id="Shadows_Initial" name="controls" value="Shadows_Initial" checked>
-                            <label for="Shadows_Initial">Initial Shadows</label>
-                            </div>                                                            
-                          <div class="d-flex flex-row pb-1"> 
-                          <input type="checkbox" id="ReflectionsMirror_C" name="effects" value="ReflectionsMirror_C">
-                          <label for="ReflectionsMirror_C">Mirror Reflections</label>
+                    </div>
+                    <div class="tab-pane fade" id="Sofa" role="tabpanel" aria-labelledby="Sofa-tab">
+                      <p>Sofa Coming Soon</p>
+                    </div>
+                    <div class="tab-pane fade" id="Bed" role="tabpanel" aria-labelledby="Bed-tab">
+                      <p>Bed Coming Soon</p>
+                    </div>
+                    <div class="tab-pane fade" id="Cabinets" role="tabpanel" aria-labelledby="Cabinets-tab">
+                      <p>Cabinets Coming Soon</p>
+                    </div>
+                  </div>                              
+               </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-Lighting" role="tabpanel" aria-labelledby="v-pills-Lighting-tab">
+                <nav style="font-size: 12px;">
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button style="margin: 0;padding: 2%;" class="nav-link active" id="Floor-tab" data-bs-toggle="tab" data-bs-target="#Floor" type="button" role="tab" aria-controls="Floor" aria-selected="true">Floor</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="TableLight-tab" data-bs-toggle="tab" data-bs-target="#TableLight" type="button" role="tab" aria-controls="TableLight" aria-selected="false">Table</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Chandelier-tab" data-bs-toggle="tab" data-bs-target="#Chandelier" type="button" role="tab" aria-controls="Chandelier" aria-selected="false">Chandelier</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="WallLight-tab" data-bs-toggle="tab" data-bs-target="#WallLight" type="button" role="tab" aria-controls="WallLight" aria-selected="false">Wall</button>                    
+                  </div>
+                </nav>          
+                <div class="tab-content p-1" id="myTabContent">
+                  <div class="tab-pane fade show active" id="Floor" role="tabpanel" aria-labelledby="Floor-tab">
+                    <button id="lightControls_Button">Light Controls</button>
+                    <div class="d-flex justify-content-center p-1 m-1" id="lightsUIContainer_Desktop">                 
+                    </div>  
+                  </div>
+                  <div class="tab-pane fade" id="TableLight" role="tabpanel" aria-labelledby="TableLight-tab">
+                    <p>TableLight Coming Soon</p>
+                  </div>
+                  <div class="tab-pane fade" id="Chandelier" role="tabpanel" aria-labelledby="Chandelier-tab">
+                    <p>Chandelier Coming Soon</p>
+                  </div>
+                  <div class="tab-pane fade" id="WallLight" role="tabpanel" aria-labelledby="WallLight-tab">
+                    <p>WallLight Coming Soon</p>
+                  </div>
+                  </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-Paints" role="tabpanel" aria-labelledby="v-pills-Paints-tab">
+                <nav style="font-size: 12px;">
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button style="margin: 0;padding: 2%;" class="nav-link active" id="Colors-tab" data-bs-toggle="tab" data-bs-target="#Colors" type="button" role="tab" aria-controls="Colors" aria-selected="true">Colors</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Textures-tab" data-bs-toggle="tab" data-bs-target="#Textures" type="button" role="tab" aria-controls="Textures" aria-selected="false">Textures</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Stencils-tab" data-bs-toggle="tab" data-bs-target="#Stencils" type="button" role="tab" aria-controls="Stencils" aria-selected="false">Stencils</button>
+                   </div>
+                </nav>          
+                <div class="tab-content p-1" id="myTabContent">
+                  <div class="tab-pane fade show active" id="Colors" role="tabpanel" aria-labelledby="Colors-tab">
+                    <p>Colors Coming Soon</p>
+                  </div>                  
+                  <div class="tab-pane fade" id="Textures" role="tabpanel" aria-labelledby="Textures-tab">
+                    <p>Textures Coming Soon</p>
+                  </div>
+                  <div class="tab-pane fade" id="Stencils" role="tabpanel" aria-labelledby="Stencils-tab">
+                    <p>Stencils Coming Soon</p>
+                  </div>                  
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-Tiles" role="tabpanel" aria-labelledby="v-pills-Tiles-tab">
+                <nav style="font-size: 12px;">
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button style="margin: 0;padding: 2%;" class="nav-link active" id="Wood-tab" data-bs-toggle="tab" data-bs-target="#Wood" type="button" role="tab" aria-controls="Wood" aria-selected="true">Wood</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Marble-tab" data-bs-toggle="tab" data-bs-target="#Marble" type="button" role="tab" aria-controls="Marble" aria-selected="false">Marble</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Granite-tab" data-bs-toggle="tab" data-bs-target="#Granite" type="button" role="tab" aria-controls="Granite" aria-selected="false">Granite</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Vitrified-tab" data-bs-toggle="tab" data-bs-target="#Vitrified" type="button" role="tab" aria-controls="Vitrified" aria-selected="false">Vitrified</button>
+                   </div>
+                </nav>          
+                <div class="tab-content p-1" id="myTabContent">
+                  <div class="tab-pane fade show active" id="Wood" role="tabpanel" aria-labelledby="Wood-tab">
+                    <p>Wood Coming Soon</p>
+                  </div>                  
+                  <div class="tab-pane fade" id="Marble" role="tabpanel" aria-labelledby="Marble-tab">
+                    <p>Marble Coming Soon</p>
+                  </div>
+                  <div class="tab-pane fade" id="Granite" role="tabpanel" aria-labelledby="Granite-tab">
+                    <p>Granite Coming Soon</p>
+                  </div>   
+                  <div class="tab-pane fade" id="Vitrified" role="tabpanel" aria-labelledby="Vitrified-tab">
+                    <p>Vitrified Coming Soon</p>
+                  </div>                  
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-Carpets" role="tabpanel" aria-labelledby="v-pills-Carpets-tab">
+                <nav style="font-size: 12px;">
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button style="margin: 0;padding: 2%;" class="nav-link active" id="WallToWall-tab" data-bs-toggle="tab" data-bs-target="#WallToWall" type="button" role="tab" aria-controls="WallToWall" aria-selected="true">Wall to wall</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="AreaRugs-tab" data-bs-toggle="tab" data-bs-target="#AreaRugs" type="button" role="tab" aria-controls="AreaRugs" aria-selected="false">Area Rugs</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Granite-tab" data-bs-toggle="tab" data-bs-target="#RunnerRugs" type="button" role="tab" aria-controls="RunnerRugs" aria-selected="false">Runner rugs</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="KidsRugs-tab" data-bs-toggle="tab" data-bs-target="#KidsRugs" type="button" role="tab" aria-controls="KidsRugs" aria-selected="false">Kid's rugs</button>
+                   </div>
+                </nav>          
+                <div class="tab-content p-1" id="myTabContent">
+                  <div class="tab-pane fade show active" id="WallToWall" role="tabpanel" aria-labelledby="WallToWall-tab">
+                    <p>Wall to wall Coming Soon</p>
+                  </div>                  
+                  <div class="tab-pane fade" id="AreaRugs" role="tabpanel" aria-labelledby="AreaRugs-tab">
+                    <p>Area Rugs Coming Soon</p>
+                  </div>
+                  <div class="tab-pane fade" id="RunnerRugs" role="tabpanel" aria-labelledby="RunnerRugs-tab">
+                    <p>Runner rugs Coming Soon</p>
+                  </div>   
+                  <div class="tab-pane fade" id="KidsRugs" role="tabpanel" aria-labelledby="KidsRugs-tab">
+                    <p>Kid's rugs Coming Soon</p>
+                  </div>                  
+                </div>
+              </div>             
+              <div class="tab-pane fade" id="v-pills-Doors" role="tabpanel" aria-labelledby="v-pills-Doors-tab">
+                <nav style="font-size: 12px;">
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button style="margin: 0;padding: 2%;" class="nav-link active" id="Window_Blinds-tab" data-bs-toggle="tab" data-bs-target="#Window_Blinds" type="button" role="tab" aria-controls="Window_Blinds" aria-selected="true">Window Blinds</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Window-tab" data-bs-toggle="tab" data-bs-target="#Window" type="button" role="tab" aria-controls="Window" aria-selected="false">Window</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Doors-tab" data-bs-toggle="tab" data-bs-target="#Doors" type="button" role="tab" aria-controls="Doors" aria-selected="false">Doors</button>
+                   </div>
+                </nav>          
+                <div class="tab-content p-1" id="myTabContent">
+                  <div class="tab-pane fade show active" id="Window_Blinds" role="tabpanel" aria-labelledby="Window_Blinds-tab">
+                    <div id="windowBlinds_Desktop" class="d-flex">                                       
+                    </div> 
+                  </div>                  
+                  <div class="tab-pane fade" id="Window" role="tabpanel" aria-labelledby="Window-tab">
+                    <p>Window Coming Soon</p>
+                  </div>
+                  <div class="tab-pane fade" id="Doors" role="tabpanel" aria-labelledby="Doors-tab">
+                    <p>Doors Coming Soon</p>
+                  </div>                  
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-Accessories" role="tabpanel" aria-labelledby="v-pills-Accessories-tab">
+                <nav style="font-size: 12px;">
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button style="margin: 0;padding: 2%;" class="nav-link active" id="WallPaper-tab" data-bs-toggle="tab" data-bs-target="#WallPaper" type="button" role="tab" aria-controls="WallPaper" aria-selected="true">Wall Papers</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Sculpture-tab" data-bs-toggle="tab" data-bs-target="#Sculpture" type="button" role="tab" aria-controls="Sculpture" aria-selected="false">Sculpture</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Curtains-tab" data-bs-toggle="tab" data-bs-target="#Curtains" type="button" role="tab" aria-controls="Curtains" aria-selected="false">Curtainss</button>
+                    <button style="margin: 0;padding: 2%;" class="nav-link" id="Plants-tab" data-bs-toggle="tab" data-bs-target="#Plants" type="button" role="tab" aria-controls="Plants" aria-selected="false">Plants</button>
+                   </div>
+                </nav>          
+                <div class="tab-content p-1" id="myTabContent">
+                  <div class="tab-pane fade show active" id="WallPaper" role="tabpanel" aria-labelledby="WallPaper-tab">
+                    <p>Wall Papers Coming Soon</p>
+                  </div>                  
+                  <div class="tab-pane fade" id="Sculpture" role="tabpanel" aria-labelledby="Sculpture-tab">
+                    <p>Sculpture Coming Soon</p>
+                  </div>
+                  <div class="tab-pane fade" id="Curtains" role="tabpanel" aria-labelledby="Curtains-tab">
+                    <p>Curtains Coming Soon</p>
+                  </div>   
+                  <div class="tab-pane fade" id="Plants" role="tabpanel" aria-labelledby="Plants-tab">
+                    <p>Plants Coming Soon</p>
+                  </div>                  
+                </div> 
+              </div>
+              <div class="tab-pane fade" id="v-pills-Render" role="tabpanel" aria-labelledby="v-pills-Render-tab">
+                <nav style="font-size: 12px;">
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button style="margin: 0;padding: 2%;" class="nav-link active" id="WallPaper-tab" data-bs-toggle="tab" data-bs-target="#WallPaper" type="button" role="tab" aria-controls="WallPaper" aria-selected="true">HD Render</button>
+                   </div>
+                </nav>          
+                <div class="tab-content p-1" id="myTabContent">
+                  <div class="tab-pane fade show active" id="WallPaper" role="tabpanel" aria-labelledby="WallPaper-tab">
+                    <form name = "passdata">
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label" style="margin-left: 5px;font-size: 14px;">Email address</label>
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" style="width: fit-content;margin-left: 5px;" aria-describedby="emailHelp">
+                      </div>  
+                      <div class="d-flex">
+                       <p  class="buttons" style="background-color: #FF5A50;color: #FFFFFF;padding: 4px;margin: 5px;" id="Export_Image">Image Render</p> 
+                       <p  class="buttons" style="background-color: #FF5A50;color: #FFFFFF;padding: 4px;margin: 5px;" id="Export_Video">Video Render</p> 
+                      </div>
+                    </form>
+                  </div>                                                 
+                </div> 
+              </div>
+              <div class="tab-pane fade" id="v-pills-Advanced" role="tabpanel" aria-labelledby="v-pills-Advanced-tab">
+                <nav style="font-size: 12px;">
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button style="margin: 0;padding: 2%;" class="nav-link active" id="WallPaper-tab" data-bs-toggle="tab" data-bs-target="#WallPaper" type="button" role="tab" aria-controls="WallPaper" aria-selected="true">Advanced Light Controls</button>
+                   </div>
+                </nav>          
+                <div class="tab-content p-1" id="myTabContent">
+                  <div class="tab-pane fade show active" id="WallPaper" role="tabpanel" aria-labelledby="WallPaper-tab">                    
+                    <div class="d-flex justify-content-center" style="font-size: 10px;" id="controlsUI">
+                      <div>
+                    <div class="controlsContainer" style="width: 50%;">
+                      <div class="initialControlsContainer1" style="width: 50%;">                
+                        <div style="width: 100%; display: flex;gap: 2px;">
+                          <span style="margin-left: 80px;">Intensity</span>
+                          <span style="margin-left: 22px;">Color</span>
+                          <span style="margin-left: 3px;">Helper</span>
+                          <span style="margin-left: 2px;">Distance</span>
+                          <!-- <span>Decay</span> -->
+                        </div>                                                                                 
+                      </div>                  
+                      <div style="display: none;" id="FloorLamp" >
+                        <div class="d-flex">                          
+                          <div class="d-flex flex-row">                         
+                              <input type="checkbox" name="lights" value="floor_lamp" class="lightTypes" id="floor_lamp">
+                              <label for="floor_lamp">Floor Lamp</label>
+                             </div>                        
+                          <div class="slidecontainer1" style="margin-left: 5px;">                          
+                            <input type="range" min="0" max="10" value="5" step="0.1" class="slider Slider_range slider_class" style="width:70px">
                           </div>
-                          <div class="d-flex flex-row pb-1"> 
-                          <input type="checkbox" id="ReflectionsFloor_C" checked name="effects" value="ReflectionsFloor_C">
-                        <label for="ReflectionsFloor_C">Floor Reflections</label>
-                        </div>                                                        
-                            <div class="d-flex flex-row pb-1">                                                                                                             
-                              <input type="checkbox" id="SSAO_C" name="Preferences" value="SSAO_C">
-                              <label for="SSAO_C">SSAO</label> 
+                          <div class="colorPickerContainer1" style="margin-left: 5px;">                          
+                            <input type="color" class="colorPicker1" name="colorPicker1" value="#FFFFFF" style="border:none;height: 20px;width:30px">                          
+                          </div> 
+                          <input type="checkbox" name="helper" class="helper_FW" style="margin-left:5px;">                            
+        
+                          <input type="number" class="distance" value="0" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
+                          <input type="number" class="decay" value="2" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
+                        </div> 
+                      </div>
+                        <div style="display: none;" id="WallLamp">
+                        <div class="d-flex">                          
+                          <div class="d-flex flex-row">                         
+                            <input type="checkbox" name="lights" value="wall_lamp" class="lightTypes" id="wall_lamp">
+                            <label for="wall_lamp">Wall Lamp</label>
+                            </div>                      
+                        <div class="slidecontainer1" style="margin-left: 16px;">                          
+                          <input type="range" min="0" max="5" value="2" step="0.1" class="slider Slider_range slider_class" style="width:70px">
+                        </div>
+                        <div class="colorPickerContainer1" style="margin-left: 5px;">                          
+                          <input type="color" class="colorPicker1" name="colorPicker1" value="#FFFFFF" style="border:none;height: 20px;width:30px">                          
+                        </div> 
+                        <input type="checkbox" name="helper" class="helper_FW" style="margin-left: 5px;">  
+        
+                        <input type="number" class="distance" value="0" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
+                        <input type="number" class="decay" value="2" min="0" max="10" step="0.1" style="margin-left: 5px;width: 30px;height: 20px;">
+                      </div>  
+                    </div>
+                    </div>                                              
+                       <div id="MoreControls" style="margin-left: 15%;">
+                        <div class="d-flex">                          
+                          <div>                                           
+                            <label style="color: #FF5A50;font-family: 'Roboto'; margin-right: 0px; margin-left: 50px;">Tone Mapping Exposure</label>
+                          <div class="d-flex">
+                            <div class="d-flex flex-row pb-1">                           
+                              <input type="checkbox" name="lights" value="HDRI" id="HDRI">
+                              <label for="HDRI">HDRI</label>                             
+                          </div>
+                            <div class="slidecontainer" style="margin-left: 10px;">                          
+                              <input type="range" min="0" max="2" value="0.7" step="0.1" class="slider Slider_range slider_class">
+                            </div>                          
+                          </div>   
+                          <div class="d-flex flex-row pb-1">              
+                            <input type="checkbox" name="Emissive" value="Emissive" checked id="Emissive">
+                            <label for="Emissive">Emissive</label>
+                            </div>
+                            <div class="d-flex flex-row pb-1">   
+                            <input type="checkbox" id="Shadows_SunLight" name="controls" value="Shadows_SunLight">
+                            <label for="Shadows_SunLight">Shadows SunLight</label>                               
+                            </div>
+                            <div class="d-flex flex-row pb-1"> 
+                              <input type="checkbox" id="Shadows_NightLight1" name="controls" value="Shadows_NightLight1">
+                              <label for="Shadows_NightLight1">Shadows NightLight</label>
+                              </div>   
+                              <div class="d-flex flex-row pb-1"> 
+                                <input type="checkbox" id="Shadows_Initial" name="controls" value="Shadows_Initial" checked>
+                                <label for="Shadows_Initial">Initial Shadows</label>
+                                </div>                                                            
+                              <div class="d-flex flex-row pb-1"> 
+                              <input type="checkbox" id="ReflectionsMirror_C" name="effects" value="ReflectionsMirror_C">
+                              <label for="ReflectionsMirror_C">Mirror Reflections</label>
                               </div>
                               <div class="d-flex flex-row pb-1"> 
-                              <input type="checkbox" id="SAO_C" name="Preferences" value="SAO_C">
-                          <label for="SAO_C">SAO</label> 
-                          </div>                               
-                      </div>
-                      <div style="margin-left: 20px;margin-top: 20px;">                             
-                      <div class="d-flex flex-row pb-1"> 
-                        <input type="checkbox" id="TAA_C" name="Preferences" value="TAA_C">
-                        <label for="TAA_C">TAA</label>
-                        </div>
-                        <div class="d-flex flex-row pb-1"> 
-                        <input type="checkbox" id="FXAA_C" name="Preferences" value="FXAA_C">
-                        <label for="FXAA_C">FXAA</label>
-                        </div>
-                        <div class="d-flex flex-row pb-1"> 
-                        <input type="checkbox" id="SSAA_C" name="Preferences" value="SSAA_C" checked>
-                        <label for="SSAA_C">SSAA</label>
-                        </div>
-                        <div class="d-flex flex-row pb-1"> 
-                        <input type="checkbox" id="SMAA_C" name="Preferences" value="SMAA_C">
-                        <label for="SMAA_C">SMAA</label>
-                        </div>
-                        <div class="d-flex flex-row pb-1"> 
-                          <input type="checkbox" id="Stats" name="Preferences" value="Stats">
-                          <label for="Stats">Stats</label>  
-                              </div> 
-                        <div class="d-flex flex-row pb-1"> 
-                          <input type="checkbox" id="gui_ui" name="Preferences" value="gui_ui">
-                          <label for="gui_ui">GUI</label>
-                          </div>                                                  
-                              <div class="d-flex flex-row pb-1"> 
-                                <input type="checkbox" id="ssr_ui" name="Preferences" value="ssr_ui">
-                                <label for="ssr_ui">SSR</label>
-                                </div>                    
-                      </div>
-                    </div>                                                                                                    
-                  </div>   
-                </div>                         
-              </div>                                       
+                              <input type="checkbox" id="ReflectionsFloor_C" checked name="effects" value="ReflectionsFloor_C">
+                            <label for="ReflectionsFloor_C">Floor Reflections</label>
+                            </div>                                                        
+                                <div class="d-flex flex-row pb-1">                                                                                                             
+                                  <input type="checkbox" id="SSAO_C" name="Preferences" value="SSAO_C">
+                                  <label for="SSAO_C">SSAO</label> 
+                                  </div>
+                                  <div class="d-flex flex-row pb-1"> 
+                                  <input type="checkbox" id="SAO_C" name="Preferences" value="SAO_C">
+                              <label for="SAO_C">SAO</label> 
+                              </div>                               
+                          </div>
+                          <div style="margin-left: 20px;margin-top: 20px;">                             
+                          <div class="d-flex flex-row pb-1"> 
+                            <input type="checkbox" id="TAA_C" name="Preferences" value="TAA_C">
+                            <label for="TAA_C">TAA</label>
+                            </div>
+                            <div class="d-flex flex-row pb-1"> 
+                            <input type="checkbox" id="FXAA_C" name="Preferences" value="FXAA_C" checked>
+                            <label for="FXAA_C">FXAA</label>
+                            </div>
+                            <div class="d-flex flex-row pb-1"> 
+                            <input type="checkbox" id="SSAA_C" name="Preferences" value="SSAA_C" >
+                            <label for="SSAA_C">SSAA</label>
+                            </div>
+                            <div class="d-flex flex-row pb-1"> 
+                            <input type="checkbox" id="SMAA_C" name="Preferences" value="SMAA_C">
+                            <label for="SMAA_C">SMAA</label>
+                            </div>
+                            <div class="d-flex flex-row pb-1"> 
+                              <input type="checkbox" id="Stats" name="Preferences" value="Stats">
+                              <label for="Stats">Stats</label>  
+                                  </div> 
+                            <div class="d-flex flex-row pb-1"> 
+                              <input type="checkbox" id="gui_ui" name="Preferences" value="gui_ui">
+                              <label for="gui_ui">GUI</label>
+                              </div>                                                  
+                                  <div class="d-flex flex-row pb-1"> 
+                                    <input type="checkbox" id="ssr_ui" name="Preferences" value="ssr_ui">
+                                    <label for="ssr_ui">SSR</label>
+                                    </div>                    
+                          </div>
+                        </div>                                                                                                    
+                      </div>   
+                    </div>                         
+                  </div>                                           
+
+                  </div>                                                 
+                </div> 
+              </div>
             </div>            
-          </div>       
-        </div>
-        </div> 
-      
+          </div>                        
+        </div>              
         <div class="sidebarUI_desktop" style="width: 10vw;">
             <div class="d-flex justify-content-between p-1">
               <div>
@@ -521,7 +538,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
+                  <div class="accordion-body" style="margin: 0;padding: 5px;">
                     <div>               
                       <input type="checkbox" class="btn-check tranform_Desktop" id="select_Desktop" autocomplete="off">
                       <label for="select_Desktop">  <img src="./icons/desktopUI/Select.svg" width="20px" height="20px" style="margin: 5px;"/></label>  
@@ -546,7 +563,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
+                  <div class="accordion-body" style="margin: 0;padding: 5px;">
                     <div style="margin-left: 5px;">
                       <input type="checkbox" class="btn-check navigation_Desktop" id="zoom_Desktop" autocomplete="off">
                       <label for="zoom_Desktop">  <img src="./icons/desktopUI/zoom.svg" width="15px" height="15px" style="margin-right: 5px;margin-left: 5px;"/></label>  
@@ -565,7 +582,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
+                  <div class="accordion-body" style="margin: 0;padding: 5px;">
                     <div id="Themes_Desktop">                                        
                     </div>
                   </div>
@@ -578,7 +595,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
+                  <div class="accordion-body" style="margin: 0;padding: 5px;">
                     <div style="font-size: 12px;">
                       <div class="d-flex flex-row"> 
                       <input type="radio" class="form-check-input largerCheckbox Viewpoints_Desktop"  name="viewPoints" value="0">
@@ -615,7 +632,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
+                  <div class="accordion-body" style="margin: 0;padding: 5px;">
                     <div class="d-flex justify-content-between m-1">
                       <label style="margin-left: 5px;">Height</label>
                       <label class="measurements_Label_SideUI"></label>
@@ -638,7 +655,7 @@
                   </button>
                 </h2>
                 <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
+                  <div class="accordion-body" style="margin: 0;padding: 5px;">
                     <div id="animationsUIContainer">
                       <div class="d-flex justify-content-start">
                         <div class="animationsUI" id="animationsUI" style="width: 100%;">
@@ -649,13 +666,13 @@
                 </div>
               </div>
               <div class="accordion-item" style="display: none;" id="LightsContainer">
-                <h2 class="accordion-header" id="flush-headingSix">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                <h2 class="accordion-header" id="flush-headingSeven">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
                     Light Controls
                   </button>
                 </h2>
-                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
+                <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body" style="margin: 0;padding: 5px;">
                     <div class="initialControlsContainer" style="width: 100%;font-size: 12px;">                                                                                         
                   
                     </div>  
@@ -675,119 +692,7 @@
       </div>
     </div>
 
-  </div>
-
-  <script>
-    function openVerticalTab(evt, verticalTabName) {
-    let i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent_vertical");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks_vertical");
-    for (i = 0; i < tablinks.length; i++) {
-       tablinks[i].className = tablinks[i].className.replace(" active", "");      
-    }
-    document.getElementById(verticalTabName).style.display = "block";
-    evt.currentTarget.className += " active";
-    
-    if(verticalTabName=="Lighting_Desktop"){
-      document.getElementById("LightdefaultHorizontalOpen").click();
-    }else if(verticalTabName=="Paints_Desktop"){
-      document.getElementById("PaintsdefaultHorizontalOpen").click();
-    }else if(verticalTabName=="Tiles_Desktop"){
-      document.getElementById("TilesdefaultHorizontalOpen").click();
-    }else if(verticalTabName=="Carpets_Desktop"){
-      document.getElementById("CarpetsdefaultHorizontalOpen").click();
-    }else if(verticalTabName=="DoorsWindows_Desktop"){
-      document.getElementById("DoorsdefaultHorizontalOpen").click();
-    }else if(verticalTabName=="Accessories_Desktop"){
-      document.getElementById("AccessoriesdefaultHorizontalOpen").click();
-    }else if(verticalTabName=="Advanced_Dekstop"){
-      document.getElementById("AdvanceddefaultHorizontalOpen").click();
-    }else{
-      document.getElementById("defaultHorizontalOpen").click();
-    }
-  }
-  function openHorizontalTab(evt, horizontalTabName) {
-    let i, tabcontentH, tablinksH;
-    tabcontentH = document.getElementsByClassName("tabcontent_horizontal");
-    for (i = 0; i < tabcontentH.length; i++) {
-      tabcontentH[i].style.display = "none";
-    }
-    tablinksH = document.getElementsByClassName("tablinks_horizontal");
-    for (i = 0; i < tablinksH.length; i++) {
-      tablinksH[i].className = tablinksH[i].className.replace(" active", "");
-    }
-    document.getElementById(horizontalTabName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-
-  
-  document.getElementById("defaultVerticalOpen").click();
-  document.getElementById("defaultHorizontalOpen").click();
-
-/*   var acc = document.getElementsByClassName("accordion");
-  var i;
-  let panelCSS=document.querySelectorAll(".panel");
-  let upArrow=document.querySelectorAll(".upArrow")
-  let downArrow=document.querySelectorAll(".downArrow")
- */
- /*  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;      
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-        if(this.innerHTML.slice(0,11)=="Arrangement"){
-          upArrow[0].style.display="none"
-          downArrow[0].style.display="block"
-        }else if(this.innerHTML.slice(0,10)=="Navigation"){
-          upArrow[1].style.display="none"
-          downArrow[1].style.display="block"
-        }
-        else if(this.innerHTML.slice(0,6)=="Themes"){
-          upArrow[2].style.display="none"
-          downArrow[2].style.display="block"
-        }else if(this.innerHTML.slice(0,12)=="Measurements"){
-          upArrow[4].style.display="none"
-          downArrow[4].style.display="block"
-        }else if(this.innerHTML.slice(0,5)=="Light"){
-          upArrow[5].style.display="none"
-          downArrow[5].style.display="block"
-        }
-        else{
-          upArrow[3].style.display="none"
-          downArrow[3].style.display="block"
-        }
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px"; 
-        if(this.innerHTML.slice(0,11)=="Arrangement"){
-          upArrow[0].style.display="block"
-          downArrow[0].style.display="none"
-        }else if(this.innerHTML.slice(0,10)=="Navigation"){
-          upArrow[1].style.display="block"
-          downArrow[1].style.display="none"
-        }
-        else if(this.innerHTML.slice(0,6)=="Themes"){
-          upArrow[2].style.display="block"
-          downArrow[2].style.display="none"
-        }else if(this.innerHTML.slice(0,12)=="Measurements"){
-          upArrow[4].style.display="block"
-          downArrow[4].style.display="none"
-        }else if(this.innerHTML.slice(0,5)=="Light"){
-          upArrow[5].style.display="block"
-          downArrow[5].style.display="none"
-        }
-        else{
-          upArrow[3].style.display="block"
-          downArrow[3].style.display="none"
-        }               
-      }       
-    });
-  }
-  */
- </script>
+  </div> 
     
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

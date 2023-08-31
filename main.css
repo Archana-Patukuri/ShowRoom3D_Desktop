@@ -192,6 +192,10 @@ background: #FFF;
   text-align: left;    
   font-size: 12px;
 }
+button:hover{
+  color: #F5F5F5;
+  background-color: #FF5A50;
+}
 .desktop_bottom_buttons{
   display: block;
   background-color: inherit;

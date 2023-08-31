@@ -89,7 +89,7 @@ async function lightControls(
 
   const htmlArray1 = LightControlsArray.map((item) =>
    elementFromHtmlString(`
-  <div calss="d-flex lightSettingContainer" style="display:flex; align-items:center; width:100%;gap:5px;margin-left:60px">
+  <div calss="d-flex lightSettingContainer" style="display:flex; align-items:center; width:100%;gap:5px;margin-left:50%">
     <div class="d-flex flex-row" style="display:flex; align-items:center; width:100%;" >
       <label for="${
         item.id

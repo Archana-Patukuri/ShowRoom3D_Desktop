@@ -657,7 +657,8 @@ async loadLightsGLTF() {
     }
     function FXAA_else_Fun(){
       composer.removePass( effectFXAA );      
-    }          
+    }         
+    FXAA_Fun() 
     FXAA_C.addEventListener("click",function(e){
       if(e.target.checked){
         FXAA_Fun()
@@ -685,8 +686,7 @@ async loadLightsGLTF() {
       }else{
         SSAA_Else_Fun()
       }
-    })
-    SSAA_Fun()
+    })    
     let SMAApass;				       
     let SMAA_C=document.getElementById("SMAA_C");      
     function SMAA_Fun(){
