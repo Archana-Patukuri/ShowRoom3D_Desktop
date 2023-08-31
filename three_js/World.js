@@ -1128,7 +1128,7 @@ async loadLightsGLTF() {
         } else {
           renderer.domElement.removeEventListener("click", onPointerMove);
           camera.layers.disable(1);
-          measurements.style.backgroundColor="#FFFFFF";
+          measurements.style.backgroundColor="#e5e5e5";
           measurements.style.color="#000000";                   
           container.removeChild(labelRenderer.domElement);          
           scene.remove(measurementLabels[lineId]); 
@@ -1147,7 +1147,7 @@ async loadLightsGLTF() {
         } else {
           renderer.domElement.removeEventListener("pointerdown", selectEvent);
           camera.layers.disable(1);
-          measurements.style.backgroundColor="#FFFFFF";
+          measurements.style.backgroundColor="#e5e5e5";
           measurements.style.color="#000000";           
           container.removeChild(labelRenderer.domElement);          
           scene.remove(measurementLabels[lineId]); 
