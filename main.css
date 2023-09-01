@@ -442,26 +442,27 @@ button:hover{
   background: transparent;
   border: 0px;   
 }
+
 .helpImage{
-  margin-bottom: 40vh;
-  margin-top: -56vh; 
-  margin-left: -2vw;  
+  margin-bottom: 100vh;
+  margin-top: -95vh; 
+  margin-left: 18vw;  
   /* margin-bottom: 200px;
   margin-top: -380px; 
   margin-left: -30px;   */   
 }
 .LightModesImage{
-  margin-bottom: 40vh;
-  margin-top: -56vh; 
-  margin-left: 1vw; 
+  margin-bottom: 100vh;
+  margin-top: -100vh; 
+  margin-left: 18vw;
   /* margin-bottom: 200px;
   margin-top: -380px;
   margin-left: 10px; */
 }
 .LightModesImage1{
-  margin-bottom: 40vh;
-  margin-top: -56vh; 
-  margin-left: 1vw; 
+  margin-bottom: 100vh;
+  margin-top: -100vh; 
+  margin-left: 18vw; 
   /* margin-bottom: 200px;
   margin-top: -380px;
   margin-left: 10px; */

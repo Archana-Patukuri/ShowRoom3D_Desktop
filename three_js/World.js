@@ -159,7 +159,7 @@ const stateList = {"HDRI":HDRI,
 start = Date.now();
 console.log("timer started")
 let preset_val=0, fanLight ;
-
+let intialLoad=true
 class World {
   constructor() {        
     this.container = container;
@@ -289,7 +289,7 @@ class World {
     this.background0 = background0;
     this.hdri0 = hdri0;
     this.hdri1 = hdri1;
-    console.time('Initial_HDRI_Loading');
+    console.timeEnd('Initial_HDRI_Loading');
   }
   createUI() {
     //created FurnitureTypesUI from JSON data
@@ -363,19 +363,22 @@ class World {
     }    
     roomParent.add(fanParent)     
     scene.add(fanParent)    
-    scene.add(roomParent);  
+    scene.add(roomParent);      
     selectableObjects.push(fanParent);  
     fanLight = scene.getObjectByName("fanLight"); 
     fanLight.intensity=30      
 
-    renderer.render(scene, camera);          
+    renderer.render(scene, camera);   
+    console.log("room drawcalls ",renderer.info.render.calls)         
   }    
 async loadTableGLTF() {  
   await tableModels.loadModel();  
   tableModels.parentGroup.position.set(0, 0, 0.5);  
   selectableObjects.push(tableModels.parentGroup);
   scene.add(tableModels.parentGroup) 
-  renderer.render(scene, camera);
+  renderer.info.reset();
+  renderer.render(scene, camera);       
+  console.log("table drawcalls",renderer.info.render.calls)         
 }
 //LoadLights
 async loadLightsGLTF() {    
@@ -390,7 +393,8 @@ async loadLightsGLTF() {
     selectableObjects.push(lightsModels.parentGroup2);      
   } 
 
-  renderer.render(scene, camera);   
+  renderer.render(scene, camera);  
+  // console.log(renderer.info.render.calls)          
 }            
 
   //LoadBlinds
@@ -398,15 +402,19 @@ async loadLightsGLTF() {
     await blindsModels.loadModel();   
     scene.add(blindsModels.parentGroup);
     selectableObjects.push(blindsModels.parentGroup);   
-    renderer.render(scene, camera);        
+    renderer.info.reset();       
+    renderer.render(scene, camera);     
+    console.log("blinds drawcalls",renderer.info.render.calls)                
   }
   //LoadChair
   async loadChairGLTF() {  
         await chairModels.loadModel();    
         chairModels.parentGroup.position.set(0, 0, -0.5);
         scene.add(chairModels.parentGroup);    
-        selectableObjects.push(chairModels.parentGroup);    
-        renderer.render(scene, camera);  
+        selectableObjects.push(chairModels.parentGroup); 
+        renderer.info.reset();   
+        renderer.render(scene, camera); 
+        console.log("chair drawcalls",renderer.info.render.calls)          
       /* if (window.Worker) {
       const myWorker = new Worker("webworker.js");      
       myWorker.postMessage("Chair");                  
@@ -422,7 +430,7 @@ async loadLightsGLTF() {
       }
     } else {
       console.log('Your browser doesn\'t support web workers.');
-    }       */      
+    }       */          
   }    
   //LoadPlants
   async loadPlants() {     
@@ -440,8 +448,10 @@ async loadLightsGLTF() {
         const plant1 = loadedmodel;            
         plantsParent.add(plant1);  
         scene.add(plantsParent);     
-        selectableObjects.push(plantsParent);   
+        selectableObjects.push(plantsParent);  
+        renderer.info.reset(); 
         renderer.render(scene, camera);
+        console.log("plants drawcalls",renderer.info.render.calls)         
        }
     } else {
       console.log('Your browser doesn\'t support web workers.');
@@ -471,7 +481,9 @@ async loadLightsGLTF() {
     cylindricalLampSpotLight2.distance = 1;
     cylindricalLampSpotLight3.distance = 1;
     cylindricalLampSpotLight4.distance = 1;
-    renderer.render(scene, camera)    
+    renderer.info.reset();
+    renderer.render(scene, camera)  
+    console.log("wall lights drawcalls ",renderer.info.render.calls)           
   }
   //LoadMirror
   async loadMirrorGLTF() {
@@ -484,9 +496,10 @@ async loadLightsGLTF() {
     const mirror = loadedmodel;   
     mirrorParent.add(mirror)   
     scene.add(mirrorParent);    
-    selectableObjects.push(mirrorParent);           
+    selectableObjects.push(mirrorParent); 
+    renderer.info.reset();          
     renderer.render(scene, camera);   
-    
+    console.log("mirror",renderer.info.render.calls)         
   } 
   async loadAccessoriesGLTF() {
      
@@ -496,8 +509,9 @@ async loadLightsGLTF() {
     const loadedmodel = gltfData.scene; 
     // shadowEnabler(loadedmodel)             
     scene.add(loadedmodel);        
+    renderer.info.reset();
     renderer.render(scene, camera); 
-    
+    console.log("frames drawcalls",renderer.info.render.calls)         
   } 
   async loadVaseGLTF() {
      
@@ -506,9 +520,10 @@ async loadLightsGLTF() {
     const { gltfData } = await gltfLoad(modelURL.url); 
     const loadedmodel = gltfData.scene;  
     // shadowEnabler(loadedmodel)         
-    scene.add(loadedmodel);        
+    scene.add(loadedmodel);  
+    renderer.info.reset();      
     renderer.render(scene, camera); 
-    
+    console.log("vase drawcalls",renderer.info.render.calls)         
   } 
   async loadWallPlantsGLTF() {
      
@@ -517,16 +532,16 @@ async loadLightsGLTF() {
     const { gltfData } = await gltfLoad(modelURL.url); 
     const loadedmodel = gltfData.scene;  
     // shadowEnabler(loadedmodel)         
-    scene.add(loadedmodel);        
+    scene.add(loadedmodel); 
+    renderer.info.reset();       
     renderer.render(scene, camera); 
-    
+    console.log("wallplants drawcalls",renderer.info.render.calls)         
   }    
   async lightPresets() {      
 
    
   let tableLamp = scene.getObjectByName("Desktop_Lamp_Light002");                               
-  let sunLight = scene.getObjectByName("Sun");    
- 
+  let sunLight = scene.getObjectByName("Sun");     
     /* sunLight.shadow.mapSize.width = 2048;
     sunLight.shadow.mapSize.height = 2048;
     sunLight.shadow.camera.near = 0.1;
@@ -611,7 +626,7 @@ async loadLightsGLTF() {
      nightLight_Desktop.style.display="none"      
      dayLight_Desktop.style.display="block"
     })
-   
+   if(intialLoad){
       lightControls(
         scene,
         renderer,        
@@ -622,7 +637,8 @@ async loadLightsGLTF() {
         stateList,
         [cylindricalLampSpotLight1,cylindricalLampSpotLight2,cylindricalLampSpotLight3,cylindricalLampSpotLight4],
       );
-    
+      intialLoad=false
+    }
 
   }
   //CreatePostProcess Effects
@@ -649,11 +665,16 @@ async loadLightsGLTF() {
         TAA_else_Fun()
       }
     })   
+    let intial_Loading_Val=0 
     let FXAA_C=document.getElementById("FXAA_C");
     function FXAA_Fun(){
       effectFXAA = new ShaderPass( FXAAShader );
       effectFXAA.uniforms[ 'resolution' ].value.set( 1 / window.innerWidth, 1 / window.innerHeight );     
-      composer.addPass( effectFXAA );
+      composer.addPass( effectFXAA );      
+      if(intial_Loading_Val==0){
+        prompt.style.display="block"; 
+        intial_Loading_Val+=1
+        } 
     }
     function FXAA_else_Fun(){
       composer.removePass( effectFXAA );      
@@ -668,14 +689,10 @@ async loadLightsGLTF() {
     })    
     let ssaaRenderPass;				 
     let SSAA_C=document.getElementById("SSAA_C");
-    let intial_Loading_Val=0  
+   
     function SSAA_Fun(){
       ssaaRenderPass = new SSAARenderPass( scene, camera );
-      composer.addPass( ssaaRenderPass );
-      if(intial_Loading_Val==0){
-        prompt.style.display="block"; 
-        }
-        intial_Loading_Val+=1
+      composer.addPass( ssaaRenderPass );              
     }
     function SSAA_Else_Fun(){
       composer.removePass( ssaaRenderPass );        
@@ -1245,9 +1262,8 @@ async loadLightsGLTF() {
     renderer.setAnimationLoop(function () {      
 
       cameraControls.update();
-       renderer.info.reset();
-       composer.render();
-      //  renderer2.render( scene, camera );
+      //  renderer.info.reset();       
+       composer.render();     
       //renderer.render(scene, camera);
       camera.updateMatrixWorld()       
       const delta = clock.getDelta();  
