@@ -73,30 +73,7 @@ border-top: 1px solid #E5E5E5;
 .largerCheckbox {
   width: 15px;
   height: 15px;    
-  margin-right: 5px;
-    
-}
-
-.arrow {
-  border: solid rgb(67, 65, 65);
-  border-width: 0 1px 1px 0;
-  display: inline-block;
-  padding: 3px;
-}
-.up {
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-}
-
-.down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
-.panel {
-  padding: 0 5px;  
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  margin-right: 5px;    
 }
 .themes_Desktop_Label{
   font-size: 10px;
@@ -168,30 +145,6 @@ background: #FFF;
 #ar-prompt > img {
   animation: circle 4s linear infinite;
 }
-
-
-.tab {  
-  /* float: left; */
-  border: 1px solid #ccc;  
-  /* width: 35%;   */  
-  height: 100%;
-}
-
-/* Style the buttons inside the tab */
-.desktop_top_buttons {
-  display: block;  
-  background-color: inherit;
-  border-radius: 5px;  
-  color: #27282D;  
-  background-color: #FFFFFF;
-  width: 92%;
-  height: 25px;
-  margin: 5px;
-  border: none;
-  outline: none;
-  text-align: left;    
-  font-size: 12px;
-}
 button:hover{
   color: #F5F5F5;
   background-color: #FF5A50;
@@ -202,14 +155,15 @@ button:hover{
   border-radius: 5px;  
   color: #27282D;  
   background-color: #E5E5E5;
-  width: 90%;
+  width: 96%;
   height: 25px;
-  margin: 5px;
+  margin: 2%;
+  padding-top: 2%;
   border: none;
   outline: none;
   text-align: left;    
   font-size: 12px;
-}
+} 
 #lightControls_Button{
   display: block;  
   background-color: inherit;
@@ -289,99 +243,10 @@ button:hover{
   background: #FF5A50;
   color: #FFFFFF;
 }
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #FF5A50;
-  color: #FFFFFF;
-}
-
-/* Create an active/current "tab button" class */
-.tab button.active {
-  background-color: #FF5A50;
-  color: #FFFFFF;
-}
 .icon{
   width: 20px;height: 20px;padding-right: 5px;
 }
-/* Style the tab content */
-.tabcontent {  
-  text-align: center;  
-  border: 1px solid #ccc;  
-  border-left: none;
-  height: 100%;
-}
 
-.tabH {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
-
-/* Style the buttons inside the tab */
-.tabH button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;  
-  transition: 0.3s;
-  font-size: 12px;
-  padding-bottom: 5px;
-  padding-top: 5px;
-}
-
-/* Change background color of buttons on hover */
-.tabH button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-.tabH button.active {
-  background-color: #FFF;
-  color: #FF5A50;
-}
-
-/* Style the tab content */
-.tabcontent_horizontal {
-  display: none;  
-  border: 1px solid #ccc;  
-  border-top: none;
-  height: 100vh;
-}
-.measurementLabel {
-  font-family: monospace;
-  background-color: black;
-  color: white;
-}
-.measurementsHC .measurementsHover{
-  visibility: hidden;
-  width: 150px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  left:57%;
-  top: 60%;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  font-size: 10px;
-}
-.measurementsHC .measurementsHover::after{
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: black transparent transparent transparent;
-  
-}
-.measurementsHC:hover .measurementsHover{
-  visibility: visible; 
-}
 .material_variants{
   font-size: 12px;
   font-weight: 600;

@@ -499,7 +499,7 @@ async loadLightsGLTF() {
     selectableObjects.push(mirrorParent); 
     renderer.info.reset();          
     renderer.render(scene, camera);   
-    console.log("mirror",renderer.info.render.calls)         
+    console.log("mirror drawcalls",renderer.info.render.calls)         
   } 
   async loadAccessoriesGLTF() {
      
