@@ -76,7 +76,7 @@ border-top: 1px solid #E5E5E5;
   margin-right: 5px;    
 }
 .themes_Desktop_Label{
-  font-size: 10px;
+  font-size: 12px;  
 }
  .home_card_container{
   display: flex;
@@ -164,6 +164,9 @@ button:hover{
   text-align: left;    
   font-size: 12px;
 } 
+/* .sideUI_BG_Active:active{
+background-color: #FFF;
+} */
 #lightControls_Button{
   display: block;  
   background-color: inherit;

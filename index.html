@@ -148,7 +148,7 @@
 
         <div class="tab" style="width: 30vw;">
           <div class="d-flex justify-content-between">
-            <div style="font-size: 12px;width: 10vw;" class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <div style="font-size: 12px;width: 10vw;margin-left: 10px;" class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link active top_buttons" id="v-pills-Sample-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Sample" type="button" role="tab" aria-controls="v-pills-Sample" aria-selected="true"><img src="./icons/desktopUI/room.svg" style="width: 12px;height: 12px;margin-right: 5px;"/>Sample Room</button>
               <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link top_buttons" id="v-pills-Furniture-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Furniture" type="button" role="tab" aria-controls="v-pills-Furniture" aria-selected="false"><img src="./icons/desktopUI/furniture.svg" class="icon"/>Furniture</button>
               <button style="background-color: #FFF;color: black;margin: 2%;padding: 2%;text-align: start;" class="nav-link top_buttons" id="v-pills-Lighting-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Lighting" type="button" role="tab" aria-controls="v-pills-Lighting" aria-selected="false"><img src="./icons/desktopUI/light.svg" class="icon"/>Lighting</button>
@@ -538,19 +538,19 @@
 
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="true" aria-controls="flush-collapseTwo">
                     Navigation
                   </button>
                 </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body" style="margin: 0;padding: 5px;">
                     <div style="margin-left: 5px;">
                       <input type="checkbox" class="btn-check navigation_Desktop" id="zoom_Desktop" autocomplete="off">
-                      <label for="zoom_Desktop">  <img src="./icons/desktopUI/zoom.svg" width="15px" height="15px" style="margin-right: 5px;margin-left: 5px;" data-toggle="tooltip" title="Zoom"/></label>  
+                      <label for="zoom_Desktop" class="nav_Bg_color">  <img src="./icons/desktopUI/zoom.svg" width="15px" height="15px" style="margin-right: 5px;margin-left: 5px;" data-toggle="tooltip" title="Zoom"/></label>  
                       <input type="checkbox" class="btn-check navigation_Desktop" id="pan_Desktop" autocomplete="off">
-                      <label for="pan_Desktop">  <img src="./icons/desktopUI/pan.svg"  width="15px" height="15px" style="margin-right: 5px;" data-toggle="tooltip" title="Pan"/></label>  
+                      <label for="pan_Desktop" class="nav_Bg_color">  <img src="./icons/desktopUI/pan.svg"  width="15px" height="15px" style="margin-right: 5px;" data-toggle="tooltip" title="Pan"/></label>  
                       <input type="checkbox" class="btn-check navigation_Desktop" id="rotateScene_Desktop" autocomplete="off">
-                      <label for="rotateScene_Desktop"><img src="./icons/desktopUI/rotateScene.svg" width="15px" height="15px" data-toggle="tooltip" title="Rotate"/></label>                                                                           
+                      <label for="rotateScene_Desktop" class="nav_Bg_color"><img src="./icons/desktopUI/rotateScene.svg" width="15px" height="15px" data-toggle="tooltip" title="Rotate"/></label>                                                                           
                       </div>
                   </div>
                 </div>
@@ -565,17 +565,17 @@
                   <div class="accordion-body" style="margin: 0;padding: 5px;">
                     <div>               
                       <input type="checkbox" class="btn-check tranform_Desktop" id="select_Desktop" autocomplete="off">
-                      <label for="select_Desktop">  <img src="./icons/desktopUI/Select.svg" width="20px" height="20px" style="margin: 5px;" data-toggle="tooltip" title="Select"/></label>  
+                      <label for="select_Desktop" class="sideUI_BG_Active">  <img src="./icons/desktopUI/Select.svg" width="20px" height="20px" style="margin: 5px;" data-toggle="tooltip" title="Select"/></label>  
                       <input type="checkbox" class="btn-check tranform_Desktop" id="unselect_Desktop" autocomplete="off">
-                      <label for="unselect_Desktop">  <img src="./icons/desktopUI/unselect.svg"  width="15px" height="15px" style="margin: 5px;" data-toggle="tooltip" title="Unselect"/></label>  
+                      <label for="unselect_Desktop" class="sideUI_BG_Active">  <img src="./icons/desktopUI/unselect.svg"  width="15px" height="15px" style="margin: 5px;" data-toggle="tooltip" title="Unselect"/></label>  
                       <input type="radio" name="transformTools" value="translate" class="btn-check tranform_Desktop" id="move_Desktop" autocomplete="off">
-                      <label for="move_Desktop"><img src="./icons/desktopUI/move.svg" width="15px" height="15px" style="margin: 5px;" data-toggle="tooltip" title="Move"/></label>  
+                      <label for="move_Desktop" class="sideUI_BG_Active"><img src="./icons/desktopUI/move.svg" width="15px" height="15px" style="margin: 5px;" data-toggle="tooltip" title="Move"/></label>  
                       <input type="radio" name="transformTools" value="rotate" class="btn-check tranform_Desktop" id="rotate_Desktop" autocomplete="off">
-                      <label for="rotate_Desktop"><img src="./icons/desktopUI/rotateObject.svg"  width="15px" height="15px" style="margin: 5px;" data-toggle="tooltip" title="Rotate"/></label>                  
+                      <label for="rotate_Desktop" class="sideUI_BG_Active"><img src="./icons/desktopUI/rotateObject.svg"  width="15px" height="15px" style="margin: 5px;" data-toggle="tooltip" title="Rotate"/></label>                  
                       <input type="radio" name="transformTools" value="scale" class="btn-check tranform_Desktop" id="scale_Desktop" autocomplete="off">
-                      <label for="scale_Desktop">  <img src="./icons/desktopUI/scale.svg"  width="15px" height="15px" style="margin: 5px;" data-toggle="tooltip" title="Scale"/></label>                
+                      <label for="scale_Desktop" class="sideUI_BG_Active">  <img src="./icons/desktopUI/scale.svg"  width="15px" height="15px" style="margin: 5px;" data-toggle="tooltip" title="Scale"/></label>                
                       <input type="checkbox" class="btn-check tranform_Desktop" id="delete_Desktop" autocomplete="off">
-                      <label for="delete_Desktop">  <img src="./icons/desktopUI/delete.svg" width="15px" height="15px" style="margin: 5px;" data-toggle="tooltip" title="Delete"/></label>              
+                      <label for="delete_Desktop" class="sideUI_BG_Active">  <img src="./icons/desktopUI/delete.svg" width="15px" height="15px" style="margin: 5px;" data-toggle="tooltip" title="Delete"/></label>              
                     </div>
                   </div>
                 </div>

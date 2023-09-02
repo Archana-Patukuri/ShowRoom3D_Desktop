@@ -105,7 +105,7 @@ let scene;
 let cameraControls;
 let debug;
 let clock;
-let plantsParent, lampsParent,mirrorParent,vaseParent,laptopParent,fanParent;
+let plantsParent, lampsParent,mirrorParent,vaseParent,laptopParent,fanParent,vaseFloorParent,framesParent,wallLightParent;
 let composer;
 let chairModels, tableModels, blindsModels,lightsModels;
 let gui;   
@@ -146,6 +146,16 @@ lampsParent.name="selectable";
 
 laptopParent=new Group();
 laptopParent.name="selectable";
+
+vaseFloorParent=new Group();
+vaseFloorParent.name="selectable";
+
+framesParent=new Group();
+framesParent.name="selectable";
+
+wallLightParent=new Group();
+wallLightParent.name="selectable";
+
 let rectAreaLights = [];
 
 
@@ -318,7 +328,7 @@ class World {
      let input = document.createElement("input");
       input.type = "radio";
       input.value = gltfData.userData.variants[i];
-      input.className = "form-check-input";      
+      input.className = "form-check-input largerCheckbox";      
       input.name=gltfData.userData.variants[i].name;      
       input.id = gltfData.userData.variants[i]; 
 
@@ -463,8 +473,9 @@ async loadLightsGLTF() {
     const { gltfData } = await gltfLoad(modelURL.url);
     const loadedmodel = gltfData.scene;
     const cylindricalLight1 = loadedmodel;
-    scene.add(cylindricalLight1);
-    selectableObjects.push(cylindricalLight1)
+    wallLightParent.add(cylindricalLight1)
+    scene.add(wallLightParent);
+    selectableObjects.push(wallLightParent)
     cylindricalLampSpotLight1 = scene.getObjectByName(
       "Cylindrical_spot_light_1"
     );
@@ -507,11 +518,14 @@ async loadLightsGLTF() {
 
     const { gltfData } = await gltfLoad(modelURL.url); 
     const loadedmodel = gltfData.scene; 
-    // shadowEnabler(loadedmodel)             
-    scene.add(loadedmodel);        
+    // shadowEnabler(loadedmodel)   
+    framesParent.add(loadedmodel)          
+    scene.add(framesParent);   
+    selectableObjects.push(framesParent);     
     renderer.info.reset();
     renderer.render(scene, camera); 
-    console.log("frames drawcalls",renderer.info.render.calls)         
+    console.log("frames drawcalls",renderer.info.render.calls)  
+    viewPoints(camera,scene,framesParent);          
   } 
   async loadVaseGLTF() {
      
@@ -519,8 +533,10 @@ async loadLightsGLTF() {
 
     const { gltfData } = await gltfLoad(modelURL.url); 
     const loadedmodel = gltfData.scene;  
-    // shadowEnabler(loadedmodel)         
-    scene.add(loadedmodel);  
+    // shadowEnabler(loadedmodel)   
+    vaseFloorParent.add(loadedmodel)      
+    scene.add(vaseFloorParent);  
+    selectableObjects.push(vaseFloorParent);
     renderer.info.reset();      
     renderer.render(scene, camera); 
     console.log("vase drawcalls",renderer.info.render.calls)         
@@ -541,14 +557,10 @@ async loadLightsGLTF() {
 
    
   let tableLamp = scene.getObjectByName("Desktop_Lamp_Light002");                               
-  let sunLight = scene.getObjectByName("Sun");     
-    /* sunLight.shadow.mapSize.width = 2048;
-    sunLight.shadow.mapSize.height = 2048;
-    sunLight.shadow.camera.near = 0.1;
-    sunLight.shadow.camera.far = 1000;
-    sunLight.shadow.autoUpdate = true; 
-    sunLight.shadow.camera.updateProjectionMatrix(); */   
-    dayLightSettings = function (hdri1) {            
+  let sunLight = scene.getObjectByName("Sun");         
+  let Spinner = document.getElementById("Spinner");  
+
+    /* dayLightSettings = function (hdri1) {            
       console.time("DayLight Preset time"); 
        scene.background = new Color(0xffffff);          
         tableLamp.intensity = 0;
@@ -563,7 +575,7 @@ async loadLightsGLTF() {
         shadowLight=0;        
         shadows(scene,shadowLight,sunLight,fanLight,roomParent);             
     };   
-         let flag=0   
+         
     nightLightSettings1 = function (hdri0) { 
       console.time("NightLight Preset time");                
       renderer.toneMappingExposure = 1;                                     
@@ -588,9 +600,24 @@ async loadLightsGLTF() {
      } 
        flag+=1                              
     };
-   
+    */
     const dayLightSettings_fn = async () => {                      
-        dayLightSettings(this.hdri1);        
+        // dayLightSettings(this.hdri1);        
+        Spinner.style.display="block";
+        console.time("DayLight Preset time"); 
+       scene.background = new Color(0xffffff);          
+        tableLamp.intensity = 0;
+        fanLight.intensity = 0;            
+        cylindricalLampSpotLight1.intensity = 0;
+        cylindricalLampSpotLight2.intensity = 0;
+        cylindricalLampSpotLight3.intensity = 0;
+        cylindricalLampSpotLight4.intensity = 0;                                                                  
+        sunLight.intensity = 30;                           
+        scene.environment = this.hdri1;  
+        renderer.toneMappingExposure=0.2;  
+        shadowLight=0;        
+        shadows(scene,shadowLight,sunLight,fanLight,roomParent);  
+          
     }; 
     async function dayLightSettings_Fun() {                                      
       const spinnedFn = useSpinner(dayLightSettings_fn, {
@@ -598,11 +625,36 @@ async loadLightsGLTF() {
      });      
      // execute with a loading spinner     
      await spinnedFn(); 
-     console.timeEnd("DayLight Preset time");        
+     console.timeEnd("DayLight Preset time"); 
+     Spinner.style.display="none";         
    }              
-   
-   const NightLight1_fn = async () => {               
-      nightLightSettings1(this.hdri0);     
+   let flag=0   
+   const NightLight1_fn = async () => {     
+    Spinner.style.display="block";          
+      // nightLightSettings1(this.hdri0);     
+      console.time("NightLight Preset time");                
+      renderer.toneMappingExposure = 1;                                     
+         
+      sunLight.intensity = 0;
+      ambientLightSun.intensity = 0;   
+      scene.environment = this.hdri0;      
+      scene.background = new Color(0x000000);  
+              
+      fanLight.intensity = 30;                  
+      fanLight.castShadow=true 
+      cylindricalLampSpotLight1.intensity = 2;
+      cylindricalLampSpotLight2.intensity = 2;
+      cylindricalLampSpotLight3.intensity = 2;
+      cylindricalLampSpotLight4.intensity = 2;
+      if(flag==0){
+      shadowLight=3;        
+      shadows(scene,shadowLight,sunLight,fanLight,roomParent);  
+     }else{
+      shadowLight=1;        
+      shadows(scene,shadowLight,sunLight,fanLight,roomParent);  
+     } 
+       flag+=1              
+       Spinner.style.display="none";                
     }; 
   async function NightLight1_Fun() {                                      
     const spinnedFn = useSpinner(NightLight1_fn, {
@@ -617,9 +669,12 @@ async loadLightsGLTF() {
     let dayLight_Desktop=document.getElementById("dayLight_Desktop");
     let nightLight_Desktop=document.getElementById("nightLight_Desktop");
     dayLight_Desktop.addEventListener("click",function(){
-     dayLightSettings_Fun();   
+      dayLightSettings_Fun();   
+    
+    // await dayLightSettings_fn()
      nightLight_Desktop.style.display="block"      
-     dayLight_Desktop.style.display="none"     
+     dayLight_Desktop.style.display="none"    
+    
     })
     nightLight_Desktop.addEventListener("click",function(){
      NightLight1_Fun();
@@ -906,36 +961,32 @@ async loadLightsGLTF() {
   createTransfromCtrls() {
     exportScene(scene);
     reflection(scene,clock,gui);        
-    viewPoints(camera);         
+          
 
   let tranform_Desktop=document.querySelectorAll(".tranform_Desktop");
   tranform_Desktop[0].addEventListener("change", selectToolToggle);    
 
-    let transforms=document.querySelectorAll(".transforms");
+    let sideUI_BG_Active=document.querySelectorAll(".sideUI_BG_Active");
     transformControl = new TransformControls(camera, renderer.domElement);
-
+    
     function selectToolToggle(event) {
       raycaster.layers.set( 0 );
-      if (mobile) {
+      
         if (event.target.checked) {
-          renderer.domElement.addEventListener("click", onPointerMove);           
-        } else { 
-          renderer.domElement.removeEventListener("click", onPointerMove);
-          outlinePass.selectedObjects = [];
-          selectedObjects = [];
-          transformControl.detach();
-        }
-      } else {
-        if (event.target.checked) {
-          renderer.domElement.addEventListener("pointerdown", selectEvent);          
-         
+          renderer.domElement.addEventListener("pointerdown", selectEvent); 
+          for(let i=0;i<6;i++){ 
+            if(i==0){
+              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+            }else{
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+            }
+          }
         } else {
-          renderer.domElement.removeEventListener("pointerdown", selectEvent);
+          renderer.domElement.removeEventListener("pointerdown", selectEvent);          
           outlinePass.selectedObjects = [];
           selectedObjects = [];         
           transformControl.detach();
-        }
-      }
+        }      
     }
 
     function selectEvent(event) {
@@ -976,10 +1027,7 @@ async loadLightsGLTF() {
             outlinePass.edgeStrength = Number(10);
             outlinePass.edgeThickness = Number(0.1);    
             outlinePass.visibleEdgeColor.set('#161ef8');
-            outlinePass.hiddenEdgeColor.set( '#161ef8' );
-                
-            console.log(i.children[0].children[0].userData.gltfExtensions.KHR_xmp_json_ld)
-            console.log(i.children[0].children[0])
+            outlinePass.hiddenEdgeColor.set( '#161ef8' );                            
              if (transformControl.enabled) {
               transformControl.attach(i);               
               box.setFromObject(i);
@@ -988,7 +1036,7 @@ async loadLightsGLTF() {
               transformControl.position.copy(boxCenter);               
             } 
 
-            console
+            
           }
         }
       }
@@ -1052,13 +1100,35 @@ async loadLightsGLTF() {
         }
                                             
       
-        if(e.target.value=="translate"){      
-          translate_Fun()                
+        if(e.target.value=="translate"){  
+          for(let i=0;i<6;i++){ 
+            if(i==2){
+              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+            }else{
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+            }
+          }    
+          translate_Fun()   
+
         }
-        if(e.target.value=="rotate"){          
+        if(e.target.value=="rotate"){  
+          for(let i=0;i<6;i++){ 
+            if(i==3){
+              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+            }else{
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+            }
+          }        
           rotate_Fun()       
         }
         if(e.target.value=="scale"){
+          for(let i=0;i<6;i++){ 
+            if(i==4){
+              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+            }else{
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+            }
+          }
           scale_Fun()     
         }    
       }
@@ -1078,6 +1148,13 @@ async loadLightsGLTF() {
       tranform_Desktop[1].addEventListener("change", (e) => {
         if (e.target.checked) {
           Unselect_Fun();
+          for(let i=0;i<6;i++){ 
+            if(i==1){
+              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+            }else{
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+            }
+          }
         }
       });
       function del_Fun(){
@@ -1104,6 +1181,13 @@ async loadLightsGLTF() {
       tranform_Desktop[5].addEventListener("change", (e) => {
         if (e.target.checked) {
           del_Fun();
+          for(let i=0;i<6;i++){ 
+            if(i==5){
+              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+            }else{
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+            }
+          }
         }
       });
       let helper;

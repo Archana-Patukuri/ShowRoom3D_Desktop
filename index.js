@@ -51,7 +51,7 @@ async function main() {
         // await world.loadPlants(),
         await world.loadMirrorGLTF(),  
         await world.loadAccessoriesGLTF(),
-        await world.loadWallPlantsGLTF(),
+        // await world.loadWallPlantsGLTF(),
         await world.loadVaseGLTF() 
       ]);                               
       Spinner.style.display="none";     

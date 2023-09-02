@@ -27,45 +27,39 @@ function basicControls(scene,camera,controls,renderer) {
     LEFT: MOUSE.ROTATE,
     MIDDLE: MOUSE.DOLLY,
     RIGHT: MOUSE.PAN
-  } 
-    let navigationOpt=document.querySelectorAll(".navigationOpt");
-   
-    function Zoom_Fun(){     
-        console.log("zoom clicked")
-        controls.enableZoom = true;    
-        navigationOpt[0].style.background="#FF5A50";
-        navigationOpt[0].style.color="#FFFFFF";       
+  }     
+   let nav_Bg_color=document.querySelectorAll(".nav_Bg_color")
+    function Zoom_Fun(){             
+        controls.enableZoom = true;          
+        nav_Bg_color[0].style.backgroundColor="#e5e5e5"                           
+        nav_Bg_color[1].style.backgroundColor="#F5F5F5"                            
+        nav_Bg_color[2].style.backgroundColor="#F5F5F5"                                                
     };     
     function Zoom_Else_Fun(){     
-        controls.enableZoom = false;  
-        navigationOpt[0].style.background="#FFFFFF";
-        navigationOpt[0].style.color="#000000";       
+        controls.enableZoom = false;          
     };     
    
-        function Rotate_Fun(){          
-            console.log("rotate clicked")
-            controls.enableRotate=true;  
-            navigationOpt[2].style.background="#FF5A50";
-            navigationOpt[2].style.color="#FFFFFF";            
+        function Rotate_Fun(){                      
+            controls.enableRotate=true;   
+            nav_Bg_color[2].style.backgroundColor="#e5e5e5"                           
+            nav_Bg_color[1].style.backgroundColor="#F5F5F5"                            
+            nav_Bg_color[0].style.backgroundColor="#F5F5F5"    
         }; 
            
         function Rotate_Else_Fun(){          
-            controls.enableRotate=false; 
-            navigationOpt[2].style.background="#FFFFFF";
-            navigationOpt[2].style.color="#000000";            
+            controls.enableRotate=false;                    
         };           
    
-        function Pan_Fun(){          
-            console.log("PAN clicked")
-            controls.enablePan=true;   
-            navigationOpt[1].style.background="#FF5A50";
-            navigationOpt[1].style.color="#FFFFFF";             
+        function Pan_Fun(){                      
+            controls.enablePan=true; 
+            nav_Bg_color[1].style.backgroundColor="#e5e5e5"                           
+            nav_Bg_color[0].style.backgroundColor="#F5F5F5"                            
+            nav_Bg_color[2].style.backgroundColor="#F5F5F5"    
+                            
         };          
           
         function Pan_Else_Fun(){         
-            controls.enablePan=false; 
-            navigationOpt[1].style.background="#FFFFFF";
-            navigationOpt[1].style.color="#000000";                    
+            controls.enablePan=false;                             
         };                    
      
       
@@ -74,6 +68,7 @@ function basicControls(scene,camera,controls,renderer) {
     navigation_Desktop[0].addEventListener("click",function(){Zoom_Fun()})
     navigation_Desktop[1].addEventListener("click",function(){Pan_Fun()})
     navigation_Desktop[2].addEventListener("click",function(){Rotate_Fun()})
+
   controls.maxDistance=10;  
   controls.update();
   

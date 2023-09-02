@@ -206,9 +206,9 @@ async function lightControls(
     checkbox.addEventListener('change', (e) => {
       if (e.target.dataset.type === 'pitchDark') {       
           renderer.toneMappingExposure = 0.2; 
-          emissive_Obj.material.emissive=new Color(0.05, 0.05, 0.05);
-          emissive_Obj_fan.material.emissive=new Color(0.05, 0.05, 0.05);              
-          Motor_emissive.material.emissive=new Color(0.05, 0.05, 0.05);                
+          emissive_Obj.material.emissive=new Color(0x251D11);
+          emissive_Obj_fan.material.emissive=new Color(0x251D11);              
+          Motor_emissive.material.emissive=new Color(0x251D11);                
       }
       
 
@@ -362,9 +362,9 @@ async function lightControls(
         Motor_emissive.material.emissive=new Color(1, 1, 1);         
         emissive_Obj_fan.material.emissive=new Color(1, 1, 1);      
     }else{           
-      emissive_Obj.material.emissive=new Color(0.05, 0.05, 0.05);
-      emissive_Obj_fan.material.emissive=new Color(0.05, 0.05, 0.05);              
-      Motor_emissive.material.emissive=new Color(0.05, 0.05, 0.05);    
+      emissive_Obj.material.emissive=new Color(0x251D11);
+      emissive_Obj_fan.material.emissive=new Color(0x251D11);              
+      Motor_emissive.material.emissive=new Color(0x251D11);    
            
     }
   }) 
