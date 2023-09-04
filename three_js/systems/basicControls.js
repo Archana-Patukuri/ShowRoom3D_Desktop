@@ -31,9 +31,12 @@ function basicControls(scene,camera,controls,renderer) {
    let nav_Bg_color=document.querySelectorAll(".nav_Bg_color")
     function Zoom_Fun(){             
         controls.enableZoom = true;          
-        nav_Bg_color[0].style.backgroundColor="#e5e5e5"                           
-        nav_Bg_color[1].style.backgroundColor="#F5F5F5"                            
-        nav_Bg_color[2].style.backgroundColor="#F5F5F5"                                                
+        nav_Bg_color[0].classList.add("changeColor")  
+        nav_Bg_color[0].style.backgroundColor="#FFF"                                  
+        nav_Bg_color[1].style.backgroundColor="#F5F5F5" 
+        nav_Bg_color[1].classList.remove("changeColor")                            
+        nav_Bg_color[2].style.backgroundColor="#F5F5F5" 
+        nav_Bg_color[2].classList.remove("changeColor")                                                
     };     
     function Zoom_Else_Fun(){     
         controls.enableZoom = false;          
@@ -41,9 +44,12 @@ function basicControls(scene,camera,controls,renderer) {
    
         function Rotate_Fun(){                      
             controls.enableRotate=true;   
-            nav_Bg_color[2].style.backgroundColor="#e5e5e5"                           
-            nav_Bg_color[1].style.backgroundColor="#F5F5F5"                            
-            nav_Bg_color[0].style.backgroundColor="#F5F5F5"    
+            nav_Bg_color[2].style.backgroundColor="#FFF"      
+            nav_Bg_color[2].classList.add("changeColor")                                   
+            nav_Bg_color[1].style.backgroundColor="#F5F5F5"                
+            nav_Bg_color[1].classList.remove("changeColor")                       
+            nav_Bg_color[0].style.backgroundColor="#F5F5F5" 
+            nav_Bg_color[0].classList.remove("changeColor")    
         }; 
            
         function Rotate_Else_Fun(){          
@@ -52,9 +58,12 @@ function basicControls(scene,camera,controls,renderer) {
    
         function Pan_Fun(){                      
             controls.enablePan=true; 
-            nav_Bg_color[1].style.backgroundColor="#e5e5e5"                           
-            nav_Bg_color[0].style.backgroundColor="#F5F5F5"                            
-            nav_Bg_color[2].style.backgroundColor="#F5F5F5"    
+            nav_Bg_color[1].style.backgroundColor="#FFF"   
+            nav_Bg_color[1].classList.add("changeColor")                        
+            nav_Bg_color[0].style.backgroundColor="#F5F5F5"   
+            nav_Bg_color[0].classList.remove("changeColor")                         
+            nav_Bg_color[2].style.backgroundColor="#F5F5F5" 
+            nav_Bg_color[2].classList.remove("changeColor")    
                             
         };          
           

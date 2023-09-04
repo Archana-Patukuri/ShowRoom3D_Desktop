@@ -1,3 +1,10 @@
+.spinner {
+  width: 100px;
+  height: 100px;
+  perspective: 100px;
+  background-size: cover;
+}
+
 #scene-container {
   height: 100vh;  
   background-color: rgb(236, 236, 236);  
@@ -30,6 +37,23 @@
  text-decoration: none;
 
 }
+.changeColor{
+  fill: #FFF;
+  stroke:#FF5A50;
+}
+label:hover path{
+  fill: #FFF;
+  stroke:#FF5A50;
+  cursor: pointer;
+}
+button:hover path{
+  fill: #FFF;
+  cursor: pointer;
+}
+#Measurements:hover path{
+  fill: #FFF;
+  stroke: #FFF;  
+}
 .separate_Line{  
   width: 10vw;
 padding: 0px 20px 3px 7px;
@@ -51,20 +75,6 @@ border-top: 1px solid #E5E5E5;
     font-size: 12px;    
     padding: 5px;
   } 
-/* .accordion {    
-  cursor: pointer;
-  padding: 8px;
-  width: 10vw;
-  height: 35px;
-  font-weight: 600;
-  background-color: #F5F5F5;
-  border-top: 1px solid #E5E5E5;  
-  border-right: none;
-  border-left: none;
-  text-align: left;  
-  font-size: 12px;
-  transition: 0.4s;
-} */
 .Objectthumbnail{
   width: 70px;
   height: 70px;
@@ -164,9 +174,6 @@ button:hover{
   text-align: left;    
   font-size: 12px;
 } 
-/* .sideUI_BG_Active:active{
-background-color: #FFF;
-} */
 #lightControls_Button{
   display: block;  
   background-color: inherit;
@@ -185,7 +192,7 @@ background-color: #FFF;
 }
 .furnitureThumbnail{
   border: none;
-  outline: none;
+  outline: none;    
 }
 .objectName{
   font-size: 10px;
@@ -200,14 +207,15 @@ background-color: #FFF;
   /* border: 1px solid #FF5A50; */
   background-color: #FFF; 
   margin: 2px; 
-  border-radius: 5px;
+  border-radius: 5px;  
 }
 .furniture_Style:active{
   border: 2px solid #FF5A50;  
 }
 
-.furniture_Style:hover{
-  border: 2px solid #FF5A50;  
+.furniture_Style:hover{  
+  /* border: 2px solid #FF5A50;   */
+  box-shadow: 0px 0px 16px 0px rgba(255, 90, 80, 0.50), 0px 2px 7px 0px rgba(255, 90, 80, 0.25);
 }
 .lightModes{
   background-color: white;  
@@ -314,24 +322,49 @@ background-color: #FFF;
 .helpImage{
   margin-bottom: 100vh;
   margin-top: -95vh; 
-  margin-left: 18vw;  
-  /* margin-bottom: 200px;
-  margin-top: -380px; 
-  margin-left: -30px;   */   
+  margin-left: 18vw;   
 }
 .LightModesImage{
   margin-bottom: 100vh;
   margin-top: -100vh; 
   margin-left: 18vw;
-  /* margin-bottom: 200px;
-  margin-top: -380px;
-  margin-left: 10px; */
 }
 .LightModesImage1{
   margin-bottom: 100vh;
   margin-top: -100vh; 
   margin-left: 18vw; 
-  /* margin-bottom: 200px;
-  margin-top: -380px;
-  margin-left: 10px; */
+}
+
+.bottom_buttons_UI{
+  margin-top: 20vh;
+}
+@media screen and (min-height: 700px) and (max-height: 991px) {
+  .bottom_buttons_UI{
+    margin-top: 40vh;
+  }
+}
+@media screen and (min-height: 992px) {
+  .bottom_buttons_UI{
+    margin-top: 50vh;
+  }
+    .helpImage{
+      margin-bottom: 100vh;
+      margin-top: -97vh; 
+      margin-left: 23vw;   
+    }
+    .LightModesImage{
+      margin-bottom: 100vh;
+      margin-top: -100vh; 
+      margin-left: 18.5vw;
+    }
+    .LightModesImage1{
+      margin-bottom: 100vh;
+      margin-top: -100vh; 
+      margin-left: 18.5vw; 
+    }  
+}
+@media screen and (min-height: 1300px) {
+  .bottom_buttons_UI{
+    margin-top: 60vh;
+  }
 }

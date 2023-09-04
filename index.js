@@ -58,7 +58,7 @@ async function main() {
       prompt.style.display="block";   
       console.timeEnd('Accessories Loading Time');        
       })        
-      let lightControls_Button=document.getElementById("lightControls_Button")
+      let lightControls_Button=document.querySelector(".lightControls_Button")
       let LightsContainer=document.getElementById("LightsContainer")
       lightControls_Button.addEventListener("click",function(){        
         LightsContainer.style.display="block"

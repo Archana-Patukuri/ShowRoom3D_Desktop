@@ -27,9 +27,9 @@ function viewPoints(camera,scene,framesParent) {
   }
   function view4_Fun(){
     var tween = new TWEEN.Tween(camera.position).to({
-      x: 0.479,
-      y: 2.165,
-      z: 3.033}, 1500);
+      x: 0.0479,
+      y: 4.165,
+      z: 2.0533}, 1500);
     tween.easing(TWEEN.Easing.Sinusoidal.InOut);
     tween.start(); 
   }

@@ -976,9 +976,11 @@ async loadLightsGLTF() {
           renderer.domElement.addEventListener("pointerdown", selectEvent); 
           for(let i=0;i<6;i++){ 
             if(i==0){
-              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#FFF"                  
+              sideUI_BG_Active[i].classList.add("changeColor")                               
             }else{
-              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5" 
+              sideUI_BG_Active[i].classList.remove("changeColor")                 
             }
           }
         } else {
@@ -1103,9 +1105,11 @@ async loadLightsGLTF() {
         if(e.target.value=="translate"){  
           for(let i=0;i<6;i++){ 
             if(i==2){
-              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#FFF"   
+              sideUI_BG_Active[i].classList.add("changeColor")                
             }else{
-              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"  
+              sideUI_BG_Active[i].classList.remove("changeColor")                 
             }
           }    
           translate_Fun()   
@@ -1114,9 +1118,11 @@ async loadLightsGLTF() {
         if(e.target.value=="rotate"){  
           for(let i=0;i<6;i++){ 
             if(i==3){
-              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#FFF"  
+              sideUI_BG_Active[i].classList.add("changeColor")                 
             }else{
-              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5" 
+              sideUI_BG_Active[i].classList.remove("changeColor")                  
             }
           }        
           rotate_Fun()       
@@ -1124,9 +1130,11 @@ async loadLightsGLTF() {
         if(e.target.value=="scale"){
           for(let i=0;i<6;i++){ 
             if(i==4){
-              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#FFF" 
+              sideUI_BG_Active[i].classList.add("changeColor")                  
             }else{
-              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"  
+              sideUI_BG_Active[i].classList.remove("changeColor")                 
             }
           }
           scale_Fun()     
@@ -1150,9 +1158,11 @@ async loadLightsGLTF() {
           Unselect_Fun();
           for(let i=0;i<6;i++){ 
             if(i==1){
-              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#FFF"  
+              sideUI_BG_Active[i].classList.add("changeColor")                 
             }else{
-              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"  
+              sideUI_BG_Active[i].classList.remove("changeColor")                 
             }
           }
         }
@@ -1183,9 +1193,11 @@ async loadLightsGLTF() {
           del_Fun();
           for(let i=0;i<6;i++){ 
             if(i==5){
-              sideUI_BG_Active[i].style.backgroundColor="#e5e5e5"                  
+              sideUI_BG_Active[i].classList.add("changeColor") 
+              sideUI_BG_Active[i].style.backgroundColor="#FFF"                  
             }else{
-              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5"                  
+              sideUI_BG_Active[i].style.backgroundColor="#F5F5F5" 
+              sideUI_BG_Active[i].classList.remove("changeColor")                  
             }
           }
         }
