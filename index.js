@@ -22,10 +22,10 @@ async function main() {
     load_Furniture_Desktop.addEventListener("click",async function(){   
       console.time('Furniture Loading Time');  
       Spinner.style.display="block";
-       await Promise.all([                 
+      //  await Promise.all([                 
         await world.loadTableGLTF(),                              
         await world.loadChairGLTF(),              
-       ]);      
+      //  ]);      
       Spinner.style.display="none";  
       prompt.style.display="block";   
       console.timeEnd('Furniture Loading Time');  

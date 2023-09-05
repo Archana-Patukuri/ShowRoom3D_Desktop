@@ -8,6 +8,12 @@
   scene_buttons.style.display="block"
 }) 
 
+let OpenModal=document.querySelector(".OpenModal")
+let myModal=document.getElementById("myModal")
+OpenModal.addEventListener("click",function(){
+  myModal.classList.remove("fade")
+  myModal.classList.add("show")
+})
 
 
 

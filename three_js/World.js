@@ -314,8 +314,9 @@ class World {
   }
   //LoadRoom
   async loadRoomGLTF() {       
-    let modelURL = await fetch(assets.Room[0].URL); 
-    let { gltfData } = await gltfLoad(modelURL.url);
+    // let modelURL = await fetch(assets.Room[0].URL); 
+    let modelURL = assets.Room[0].URL
+    let { gltfData } = await gltfLoad(modelURL);
     let loadedmodel = gltfData.scene;  
     this.room=loadedmodel          
     roomParent.add(loadedmodel); 
@@ -385,7 +386,7 @@ async loadTableGLTF() {
   await tableModels.loadModel();  
   tableModels.parentGroup.position.set(0, 0, 0.5);  
   selectableObjects.push(tableModels.parentGroup);
-  scene.add(tableModels.parentGroup) 
+  //  scene.add(tableModels.parentGroup) 
   renderer.info.reset();
   renderer.render(scene, camera);       
   console.log("table drawcalls",renderer.info.render.calls)         
@@ -410,7 +411,7 @@ async loadLightsGLTF() {
   //LoadBlinds
   async loadBlindsGLTF() {       
     await blindsModels.loadModel();   
-    scene.add(blindsModels.parentGroup);
+    // scene.add(blindsModels.parentGroup);
     selectableObjects.push(blindsModels.parentGroup);   
     renderer.info.reset();       
     renderer.render(scene, camera);     
@@ -420,7 +421,7 @@ async loadLightsGLTF() {
   async loadChairGLTF() {  
         await chairModels.loadModel();    
         chairModels.parentGroup.position.set(0, 0, -0.5);
-        scene.add(chairModels.parentGroup);    
+        // scene.add(chairModels.parentGroup);    
         selectableObjects.push(chairModels.parentGroup); 
         renderer.info.reset();   
         renderer.render(scene, camera); 
@@ -443,34 +444,11 @@ async loadLightsGLTF() {
     }       */          
   }    
   //LoadPlants
-  async loadPlants() {     
-    if (window.Worker) {
-      const myWorker = new Worker("webworker.js");
-      let modelURL = await fetch(assets.Plants[0].URL);
-        if(modelURL){
-          myWorker.postMessage(modelURL.url);          
-        }
-    
-      myWorker.onmessage =async function(e) {               
-        const { gltfData } = await gltfLoad(e.data);
-        const loadedmodel = gltfData.scene;  
-        // shadowEnabler(loadedmodel)       
-        const plant1 = loadedmodel;            
-        plantsParent.add(plant1);  
-        scene.add(plantsParent);     
-        selectableObjects.push(plantsParent);  
-        renderer.info.reset(); 
-        renderer.render(scene, camera);
-        console.log("plants drawcalls",renderer.info.render.calls)         
-       }
-    } else {
-      console.log('Your browser doesn\'t support web workers.');
-    }                    
-    
-  }  
+
   async loadCylindricalLight() {            
-    let modelURL = await fetch(assets.Lights_2[0].URL);
-    const { gltfData } = await gltfLoad(modelURL.url);
+    // let modelURL = await fetch(assets.Lights_2[0].URL);
+    let modelURL = assets.Lights_2[0].URL
+    const { gltfData } = await gltfLoad(modelURL);
     const loadedmodel = gltfData.scene;
     const cylindricalLight1 = loadedmodel;
     wallLightParent.add(cylindricalLight1)
@@ -499,9 +477,10 @@ async loadLightsGLTF() {
   //LoadMirror
   async loadMirrorGLTF() {
      
-    let modelURL = await fetch(assets.Mirror[0].URL);    
+    // let modelURL = await fetch(assets.Mirror[0].URL);    
+    let modelURL = assets.Mirror[0].URL
 
-    const { gltfData } = await gltfLoad(modelURL.url); 
+    const { gltfData } = await gltfLoad(modelURL); 
     const loadedmodel = gltfData.scene; 
     // shadowEnabler(loadedmodel)    
     const mirror = loadedmodel;   
@@ -514,9 +493,10 @@ async loadLightsGLTF() {
   } 
   async loadAccessoriesGLTF() {
      
-    let modelURL = await fetch(assets.Accessories[0].URL);    
+    // let modelURL = await fetch(assets.Accessories[0].URL);    
+    let modelURL = assets.Accessories[0].URL
 
-    const { gltfData } = await gltfLoad(modelURL.url); 
+    const { gltfData } = await gltfLoad(modelURL); 
     const loadedmodel = gltfData.scene; 
     // shadowEnabler(loadedmodel)   
     framesParent.add(loadedmodel)          
@@ -527,11 +507,11 @@ async loadLightsGLTF() {
     console.log("frames drawcalls",renderer.info.render.calls)  
     viewPoints(camera,scene,framesParent);          
   } 
-  async loadVaseGLTF() {
-     
-    let modelURL = await fetch(assets.Accessories[2].URL);    
+  async loadVaseGLTF() {     
+    // let modelURL = await fetch(assets.Accessories[2].URL);    
+    let modelURL = assets.Accessories[2].URL
 
-    const { gltfData } = await gltfLoad(modelURL.url); 
+    const { gltfData } = await gltfLoad(modelURL); 
     const loadedmodel = gltfData.scene;  
     // shadowEnabler(loadedmodel)   
     vaseFloorParent.add(loadedmodel)      
@@ -540,18 +520,6 @@ async loadLightsGLTF() {
     renderer.info.reset();      
     renderer.render(scene, camera); 
     console.log("vase drawcalls",renderer.info.render.calls)         
-  } 
-  async loadWallPlantsGLTF() {
-     
-    let modelURL = await fetch(assets.Accessories[1].URL);    
-
-    const { gltfData } = await gltfLoad(modelURL.url); 
-    const loadedmodel = gltfData.scene;  
-    // shadowEnabler(loadedmodel)         
-    scene.add(loadedmodel); 
-    renderer.info.reset();       
-    renderer.render(scene, camera); 
-    console.log("wallplants drawcalls",renderer.info.render.calls)         
   }    
   async lightPresets() {      
 

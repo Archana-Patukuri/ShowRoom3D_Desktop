@@ -2,16 +2,10 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 import GLTFMeshGpuInstancingExtension from 'three-gltf-extensions/loaders/EXT_mesh_gpu_instancing/EXT_mesh_gpu_instancing.js';
-
 import GLTFMaterialsVariantsExtension from 'three-gltf-extensions/loaders/KHR_materials_variants/KHR_materials_variants.js';
-import { LoadingManager } from 'three';
-
+import { loadingManager } from '../loadingManager';
 async function gltfLoad(modelURL) {
-  const manager = new LoadingManager();
-  manager.onError = function (url) {
-    console.log('There was an error loading gltf model' + url);
-  };
-
+  let manager=loadingManager();
   const loader = new GLTFLoader(manager);
 
   //Draco Loader
@@ -22,11 +16,9 @@ async function gltfLoad(modelURL) {
   //MeshGPU Instancing
   loader.register((parser) => new GLTFMeshGpuInstancingExtension(parser));
   //Material Variants
-  loader.register((parser) => new GLTFMaterialsVariantsExtension(parser));
-  //Draco Loader
+  loader.register((parser) => new GLTFMaterialsVariantsExtension(parser));  
 
   const gltfData = await loader.loadAsync(`${modelURL}`);
-
   return { gltfData };
 }
 

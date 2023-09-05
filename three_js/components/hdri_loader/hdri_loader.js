@@ -6,12 +6,9 @@ import {
   sRGBEncoding,
   TextureLoader,
 } from 'three';
-
+import { loadingManager } from '../loadingManager';
 export default async function hdriLoad() {
-  const manager = new LoadingManager();
-  manager.onError = function (url) {
-    console.log('There was an error loading hdri ' + url);
-  };
+  let manager=loadingManager();
 
   const hdriLoader = new RGBELoader(manager).setPath('/hdri/');
 

@@ -42,8 +42,9 @@ class FurnitureContainer {
       //Spinner Display block before loading
 
       this.spinnerDisplay(spinner, "block");
-      let modelURL = await fetch(URL); 
-      const { gltfData } = await gltfLoad(modelURL.url); 
+      console.log(URL)
+      // let modelURL = await fetch(URL); 
+      const { gltfData } = await gltfLoad(URL); 
       this.data.push(gltfData)      
       let loadedModel = gltfData.scene;        
         //  console.log(gltfData.userData.gltfExtensions.KHR_xmp_json_ld.packets[0].measurements        )
